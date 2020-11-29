@@ -101,8 +101,7 @@ module.exports = {
       fieldname: 'amount',
       label: 'Amount',
       fieldtype: 'Currency',
-      required: 1,
-      default: doc => doc.getSum('for', 'amount')
+      required: 1 //Helkyds 29-11-2020 Removed Defaults causing error
     },
     {
       fieldname: 'writeoff',
@@ -110,7 +109,7 @@ module.exports = {
       fieldtype: 'Currency'
     },
     {
-      fieldname: 'for',
+      fieldname: 'payfor',   //Helkyds 29-11-2020 Renamed from for to payfor
       label: 'Payment For',
       fieldtype: 'Table',
       childtype: 'PaymentFor',
@@ -130,7 +129,7 @@ module.exports = {
     'clearanceDate',
     'amount',
     'writeoff',
-    'for'
+    'payfor'
   ],
 
   layout: [
@@ -170,7 +169,7 @@ module.exports = {
     {
       columns: [
         {
-          fields: ['for']
+          fields: ['payfor']
         }
       ]
     },

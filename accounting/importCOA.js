@@ -23,13 +23,15 @@ async function importAccounts(children, parent, rootType, rootAccount) {
       const doc = frappe.newDoc({
         doctype: 'Account',
         name: accountName,
+        account_number: child.account_name || "", //HELKyds 29-11-2020
         parentAccount: parent,
         isGroup,
         rootType,
         balance: 0,
         accountType: child.accountType || child.account_type
       });
-
+      //HELKYds 29-11-2020
+      console.log(doc);
       await doc.insert();
 
       await importAccounts(child, accountName, rootType);
@@ -55,7 +57,9 @@ function identifyIsGroup(child) {
 async function getCountryCOA() {
   const doc = await frappe.getDoc('AccountingSettings');
   const conCode = countries[doc.country].code;
-
+  //HELKYds 28-11-2020
+  console.log('getcountryCOA');
+  console.log('conCode ', conCode);
   try {
     const countryCoa = require('../fixtures/verified/' + conCode + '.json');
     return countryCoa.tree;
@@ -65,6 +69,7 @@ async function getCountryCOA() {
 }
 
 module.exports = async function importCharts() {
+  console.log('importCharts');
   const chart = await getCountryCOA();
   await importAccounts(chart, '', '', true);
 };
