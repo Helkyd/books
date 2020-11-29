@@ -17,13 +17,18 @@ async function importAccounts(children, parent, rootType, rootAccount) {
     if (rootAccount) {
       rootType = child.rootType || child.root_type;
     }
+    //HELKYds 29-11-2020
+    let accname_number = '';
+    if (child.account_number) {
+      accname_number = accountName + ' - ' + child.account_number;
+    }
 
     if (!accountFields.includes(accountName)) {
       let isGroup = identifyIsGroup(child);
       const doc = frappe.newDoc({
         doctype: 'Account',
-        name: accountName,
-        account_number: child.account_name || "", //HELKyds 29-11-2020
+        name: accname_number || accountName, //HELKyds 29-11-2020
+        account_number: child.account_number || '', //HELKyds 29-11-2020
         parentAccount: parent,
         isGroup,
         rootType,
