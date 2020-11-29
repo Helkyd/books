@@ -86,6 +86,13 @@ module.exports = {
     },
 
     {
+      fieldname: 'nifEmpresa',
+      label: 'NIF',
+      fieldtype: 'Data',
+      placeholder: 'NIF Empresa'
+    },
+
+    {
       fieldname: 'fiscalYearStart',
       label: 'Fiscal Year Start Date',
       fieldtype: 'Date',
@@ -116,6 +123,7 @@ module.exports = {
   quickEditFields: [
     'fullname',
     'email',
+    'nifEmpresa',
     'companyName',
     'country',
     'currency',

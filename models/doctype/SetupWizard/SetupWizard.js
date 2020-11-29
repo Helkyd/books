@@ -61,6 +61,14 @@ module.exports = {
     },
 
     {
+      fieldname: 'nifEmpresa',
+      label: 'NIF',
+      fieldtype: 'Data',
+      placeholder: 'NIF Empresa',
+      required: 1
+    },
+
+    {
       fieldname: 'fiscalYearStart',
       label: 'Fiscal Year Start Date',
       placeholder: 'Fiscal Year Start Date',
@@ -117,6 +125,7 @@ module.exports = {
     'fullname',
     'bankName',
     'country',
+    'nifEmpresa',
     'currency',
     'fiscalYearStart',
     'fiscalYearEnd'

@@ -2,7 +2,7 @@
     "country_code": "ao", 
     "name": "Angola - Plano de Contas v2", 
     "tree": {
-        "Imobilizado": {
+        "Imobilizados": {
             "Imobilizado": {
                 "Edificios E Outras Construcoes": {
                     "Instalacoes": {
@@ -40,8 +40,8 @@
                     "account_number": "123",
                     "account_type": "Fixed Asset"
                 }, 
-                "Outras Imobiliza\u00e7\u00f5es Incorporeas": {
-                    "Outras Imobiliza\u00e7\u00f5es Incorporeas": {
+                "Outras Imobilizacoes Incorporeas": {
+                    "Outras Imobilizacoes Incorporeas": {
                         "account_number": "12910000",
                         "account_type": "Fixed Asset"
                     },
@@ -62,7 +62,7 @@
             }, 
             "Amortizacoes Acumuladas": {
                 "Imobilizacoes Corporeas": {
-                    "AA Edificios E Outras Constru\u00e7\u00f5es": {
+                    "AA Edificios E Outras Construcoes": {
                         "account_number": "18120000",
                         "account_type": "Fixed Asset"
                     }, 
@@ -84,7 +84,7 @@
                     },
                     "account_number": "181"
                 }, 
-                "Imobiliza\u00e7\u00f5es Incorporeas": {
+                "Imobilizacoes Incorporeas": {
                     "AA Software": {
                         "account_number": "18243000",
                         "account_type": "Fixed Asset"
@@ -357,7 +357,7 @@
                     },
                     "account_number": "347"
                 }, 
-                "Subsidios A Pre\u00e7os": {
+                "Subsidios A Precos": {
                     "account_number": "348",
                     "is_group": 1
                 }, 
@@ -698,7 +698,7 @@
                     },
                     "account_number": "621"
                 }, 
-                "Servi\u00e7os Secundarios": {
+                "Servicos Secundarios": {
                     "account_number": "622",
                     "is_group": 1
                 }, 
@@ -710,7 +710,7 @@
             }, 
             "Outros Proveitos Operacionais": {
                 "Servicos Suplementares": {
-                    "Aluguer Espa\u00e7o": {
+                    "Aluguer Espaco": {
                       "account_number": "63110000"
                     }, 
                     "Cedencia de Equipamento": {
@@ -961,7 +961,7 @@
                     "Moveis E Utensilios": {
                       "account_number": "73153000"
                     }, 
-                    "Equipamento Comunica\u00e7\u00e3o": {
+                    "Equipamento Comunicacao": {
                       "account_number": "73154000"
                     }, 
                     "Outros Equipamentos": {
@@ -991,35 +991,35 @@
                     },
                     "account_number": "751"
                 }, 
-                "Fornecimentos e Servi\u00e7os De Terceiros": {
-                    "\u00c1gua": {
+                "Fornecimentos e Servicos De Terceiros": {
+                    "Agua": {
                       "account_number": "75211000"
                     }, 
                     "Electricidade": {
                       "account_number": "75212000"
                     }, 
-                    "Combust\u00edvel - Viaturas": {
+                    "Combustivel - Viaturas": {
                       "account_number": "75213000"
                     }, 
-                    "Conserva\u00e7\u00e3o E Repara\u00e7\u00e3o - Edif\u00edcios": {
+                    "Conservacao E Reparacao - Edificios": {
                       "account_number": "75214100"
                     }, 
-                    "Conserva\u00e7\u00e3o E Repara\u00e7\u00e3o - Viaturas": {
+                    "Conservacao E Reparacao - Viaturas": {
                       "account_number": "75214200"
                     }, 
-                    "Conserva\u00e7\u00e3o E Repara\u00e7\u00e3o - Equipamento": {
+                    "Conservacao E Reparacao - Equipamento": {
                       "account_number": "75214300"
                     }, 
-                    "Material Protec\u00e7\u00e3o, Seg.E Conforto": {
+                    "Material Proteccao, Seg.E Conforto": {
                       "account_number": "75215000"
                     }, 
-                    "Ferrament.E Utens\u00edlios Desg.R\u00e1pido": {
+                    "Ferrament.E Utensilios Desg.Rapido": {
                       "account_number": "75216000"
                     }, 
-                    "Material De Escrit\u00f3rio": {
+                    "Material De Escritorio": {
                       "account_number": "75217000"
                     }, 
-                    "Livros E Documenta\u00e7\u00e3o T\u00e9cnica": {
+                    "Livros E Documentacao Tecnica": {
                       "account_number": "75218000"
                     }, 
                     "Outros Fornecimentos": {
@@ -1034,10 +1034,10 @@
                     "Comunicacao - Internet": {
                       "account_number": "75220300"
                     }, 
-                    "Comunica\u00e7ao - Correio E Fax": {
+                    "Comunicacao - Correio E Fax": {
                       "account_number": "75220400"
                     }, 
-                    "Rendas De Im\u00f3veis - Escritorio": {
+                    "Rendas De Imoveis - Escritorio": {
                       "account_number": "75221100"
                     }, 
                     "Aluguer Equipamentos": {
@@ -1052,13 +1052,13 @@
                     "Seguros  - Instalacoes": {
                       "account_number": "75222200"
                     }, 
-                    "Desloca\u00e7\u00f5es E Estadas": {
+                    "Deslocacoes E Estadas": {
                       "account_number": "75223000"
                     }, 
-                    "Despesas De Representa\u00e7\u00e3o": {
+                    "Despesas De Representacao": {
                       "account_number": "75224200"
                     }, 
-                    "Vigil\u00e2ncia E Seguran\u00e7a": {
+                    "Vigilancia E Seguranca": {
                       "account_number": "75227000"
                     }, 
                     "Limpeza, Higiene E Conforto": {
@@ -1070,7 +1070,7 @@
                     "Contencioso E Notariado": {
                       "account_number": "75230000"
                     }, 
-                    "Comiss\u00f5es A Intermedi\u00e1rios": {
+                    "Comissoes A Intermediarios": {
                       "account_number": "75231000"
                     }, 
                     "Assistencia Tecnica -Nacionais": {
@@ -1082,10 +1082,10 @@
                     "Trabalhos Executados No Exterior": {
                       "account_number": "75233000"
                     }, 
-                    "Honor\u00e1rios E Aven\u00e7as - Informatica": {
+                    "Honorarios E Avencas - Informatica": {
                       "account_number": "75234000"
                     }, 
-                    "Outros Servi\u00e7os": {
+                    "Outros Servicos": {
                       "account_number": "75239000"
                     },
                     "account_number": "752"
@@ -1125,7 +1125,7 @@
                     },
                     "account_number": "761"
                 }, 
-                "Diferen\u00e7as De Cambios Desfavoraveis": {
+                "Diferencas De Cambios Desfavoraveis": {
                     "Dif De Cambios Desfavoraveis - Realizadas": {
                       "account_number": "76210000",
                       "root_type": "Expense"
@@ -1135,7 +1135,7 @@
                     },
                     "account_number": "762"
                 }, 
-                "Servi\u00e7os Banc\u00e1rios": {
+                "Servicos Bancarios": {
                     "Despesas Com Servicos Bancarios": {
                       "account_number": "76710000"
                     },
@@ -1155,7 +1155,7 @@
                     "Retencao Na Fonte Nao Relevada": {
                       "account_number": "78111000"
                     }, 
-                    "Provisoes Cobran\u00e7a Duvidosa": {
+                    "Provisoes Cobranca Duvidosa": {
                       "account_number": "78121000"
                     }, 
                     "Outros Riscos E Encargos": {
@@ -1188,25 +1188,25 @@
                 "Vendas": {
                   "account_number": "82010000"
                 }, 
-                "Presta\u00e7\u00e3o De Servi\u00e7o": {
+                "Prestacao De Servico": {
                   "account_number": "82020000"
                 }, 
                 "Outros Proveitos Operacionais": {
                   "account_number": "82030000"
                 }, 
-                "Varia\u00e7\u00e3o Inv. Prod.Acab./Vias Fab.": {
+                "Variacao Inv. Prod.Acab./Vias Fab.": {
                   "account_number": "82040000"
                 }, 
-                "Trabalhos Para A Pr\u00f3pria Empresa": {
+                "Trabalhos Para A Propria Empresa": {
                   "account_number": "82050000"
                 }, 
-                "Custo Merc.Vend.E Mat\u00e9rias Cons.": {
+                "Custo Merc.Vend.E Materias Cons.": {
                   "account_number": "82060000"
                 }, 
                 "Custo Com Pessoal": {
                   "account_number": "82070000"
                 }, 
-                "Amortiza\u00e7\u00f5es Do Exerc\u00edcio": {
+                "Amortizacoes Do Exercicio": {
                   "account_number": "82080000"
                 }, 
                 "Outros Custos Operacionais": {
@@ -1236,16 +1236,16 @@
                 "Proveitos E Ganhos N.Operacionais": {
                   "account_number": "85100000"
                 }, 
-                "Custos E Perdas N\u00e3o Operacionais": {
+                "Custos E Perdas Nao Operacionais": {
                   "account_number": "85200000"
                 },
                 "account_number": "85"
             }, 
             "Resultados Extraordinarios": {
-                "Proveitos E Ganhos Extraordin\u00e1rios": {
+                "Proveitos E Ganhos Extraordinarios": {
                   "account_number": "86100000"
                 }, 
-                "Custos E Perdas Extraordin\u00e1rios": {
+                "Custos E Perdas Extraordinarios": {
                   "account_number": "86200000"
                 },
                 "account_number": "86"
@@ -1269,19 +1269,19 @@
                 "Resultados Em Filiais E Associadas": {
                   "account_number": "88300000"
                 }, 
-                "Resultados N\u00e3o Operacionais": {
+                "Resultados Nao Operacionais": {
                   "account_number": "88400000"
                 }, 
                 "Imposto Sobre Resultados Correntes": {
                   "account_number": "88500000"
                 }, 
-                "Resultados Extraordin\u00e1rios": {
+                "Resultados Extraordinarios": {
                   "account_number": "88860000"
                 }, 
-                "Impostos S/Result.Extraordin\u00e1rios": {
+                "Impostos S/Result.Extraordinarios": {
                   "account_number": "88700000"
                 }, 
-                "Tranfer\u00eancia P/Result. Transitados": {
+                "Transferencia P/Result. Transitados": {
                   "account_number": "88900000"
                 },
                 "account_number": "88"

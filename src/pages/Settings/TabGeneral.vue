@@ -28,6 +28,7 @@ export default {
         'companyName',
         'country',
         'bankName',
+        'nifEmpresa', //HELKyds 29-11-2020
         'currency',
         'writeOffAccount',
         'roundOffAccount',
