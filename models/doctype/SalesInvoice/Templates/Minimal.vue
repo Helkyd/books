@@ -20,6 +20,9 @@
           >
             {{ frappe.AccountingSettings.companyName }}
           </div>
+          <div v-if="frappe.AccountingSettings.nifEmpresa">
+            {{ 'NIF: ' + frappe.AccountingSettings.nifEmpresa }}
+          </div>
           <div>
             {{ frappe.format(doc.date, 'Date') }}
           </div>

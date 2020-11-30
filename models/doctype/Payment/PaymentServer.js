@@ -2,11 +2,12 @@ const BaseDocument = require('frappejs/model/document');
 const frappe = require('frappejs');
 const LedgerPosting = require('../../../accounting/ledgerPosting');
 
+//HELKYds 30-11-2020; Changed For to payfor
 module.exports = class PaymentServer extends BaseDocument {
   async change({ changed }) {
-    if (changed === 'for') {
+    if (changed === 'payfor') {
       this.amount = 0;
-      for (let paymentReference of this.for) {
+      for (let paymentReference of this.payfor) {
         this.amount += paymentReference.amount;
       }
     }
@@ -15,17 +16,17 @@ module.exports = class PaymentServer extends BaseDocument {
   async getPosting() {
     let entries = new LedgerPosting({ reference: this, party: this.party });
     await entries.debit(this.paymentAccount, this.amount);
-    for (let row of this.for) {
+    for (let row of this.payfor) {
       await entries.credit(this.account, row.amount);
     }
     return entries;
   }
 
   async beforeSubmit() {
-    if (!this.for.length) {
+    if (!this.payfor.length) {
       throw new Error(`No reference for the payment.`);
     }
-    for (let row of this.for) {
+    for (let row of this.payfor) {
       if (!['SalesInvoice', 'PurchaseInvoice'].includes(row.referenceType)) {
         continue;
       }

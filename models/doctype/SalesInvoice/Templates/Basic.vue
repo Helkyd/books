@@ -13,6 +13,9 @@
             <div class="text-xl text-gray-700 font-semibold" v-else>
               {{ accountingSettings.companyName }}
             </div>
+            <div v-if="frappe.AccountingSettings.nifEmpresa">
+              {{ 'NIF: ' + frappe.AccountingSettings.nifEmpresa }}
+            </div>
           </div>
           <div class="w-1/3">
             <div>{{ printSettings.email }}</div>

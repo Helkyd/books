@@ -16,6 +16,11 @@ module.exports = {
       fieldtype: 'Data'
     },
     {
+      fieldname: 'nifEmpresa',  //HELKYds 30-11-2020
+      label: 'NIF Empresa',
+      fieldtype: 'Data'
+    },
+    {
       fieldname: 'email',
       label: 'Email',
       fieldtype: 'Data',
@@ -100,6 +105,7 @@ module.exports = {
     'template',
     'color',
     'email',
+    'nifEmpresa',
     'phone',
     'address',
     'gstin'

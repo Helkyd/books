@@ -39,6 +39,7 @@ module.exports = {
       fieldtype: 'Link',
       target: 'Account',
       disableCreation: true,
+      readOnly: 1,
       formula: doc => doc.getFrom('Party', doc.customer, 'defaultAccount'),
       getFilters: () => {
         return {

@@ -694,7 +694,7 @@
                 "Servicos Principais": {
                     "Servicos Principais": {
                       "account_number": "62110000",
-                      "root_type": "Income"
+                      "account_type": "Income Account"
                     },
                     "account_number": "621"
                 }, 

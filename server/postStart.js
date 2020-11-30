@@ -35,7 +35,6 @@ module.exports = async function postStart() {
 
   registerServerMethods();
   //HELKYDs 29-11-2020; check if KZ currency and set AccountingSettigs WriteOff accounts
-  console.log('currency ');
   if (frappe.AccountingSettings.currency === 'KZ') {
     if (frappe.AccountingSettings.roundOffAccount === 'Rounded Off') {
       frappe.AccountingSettings.roundOffAccount = '75890000 - Outras Despesas e Encargos';

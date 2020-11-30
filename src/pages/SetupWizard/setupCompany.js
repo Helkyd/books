@@ -33,6 +33,7 @@ export default async function setupCompany(setupWizardValues) {
     logo: companyLogo,
     companyName,
     email,
+    nifEmpresa, //HELKYds 30-11-2020
     displayLogo: companyLogo ? 1 : 0
   });
 

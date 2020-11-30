@@ -41,10 +41,20 @@ module.exports = {
       },
       formula: doc => {
         if (doc.customer) {
-          return 'Debtors';
+          //HELKYDS 30-11-2020; if KZ
+          if (frappe.AccountingSettings.currency === 'KZ') {
+            return '31121000 - Clientes Nacionais';
+          } else {
+            return 'Debtors';
+          }          
         }
         if (doc.supplier) {
-          return 'Creditors';
+          //HELKYDS 30-11-2020; if KZ
+          if (frappe.AccountingSettings.currency === 'KZ') {
+            return '32110000 - Fornecedores';
+          } else {
+            return 'Creditors';
+          }
         }
       }
     },
@@ -70,6 +80,16 @@ module.exports = {
         type: 'email'
       }
     },
+    {
+      fieldname: 'nif', //HELKYDS 30-11-2020
+      label: 'NIF',
+      fieldtype: 'Data',
+      placeholder: 'NIF',
+      required: () => {
+        return frappe.AccountingSettings.currency === 'KZ' ? 1 : 0;
+      }
+    },
+
     {
       fieldname: 'phone',
       label: 'Phone',
@@ -100,5 +120,5 @@ module.exports = {
     }
   ],
 
-  quickEditFields: ['email', 'phone', 'address', 'defaultAccount', 'currency']
+  quickEditFields: ['email', 'phone', 'address', 'defaultAccount', 'currency', 'nif']
 };
