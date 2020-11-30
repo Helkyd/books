@@ -46,7 +46,7 @@ module.exports = {
             return '31121000 - Clientes Nacionais';
           } else {
             return 'Debtors';
-          }          
+          }
         }
         if (doc.supplier) {
           //HELKYDS 30-11-2020; if KZ
@@ -120,5 +120,12 @@ module.exports = {
     }
   ],
 
-  quickEditFields: ['email', 'phone', 'address', 'defaultAccount', 'currency', 'nif']
+  quickEditFields: [
+    'email',
+    'phone',
+    'address',
+    'defaultAccount',
+    'currency',
+    'nif'
+  ]
 };

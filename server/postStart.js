@@ -36,12 +36,35 @@ module.exports = async function postStart() {
   registerServerMethods();
   //HELKYDs 29-11-2020; check if KZ currency and set AccountingSettigs WriteOff accounts
   if (frappe.AccountingSettings.currency === 'KZ') {
+    console.log('roundoff ', frappe.AccountingSettings.roundOffAccount);
     if (frappe.AccountingSettings.roundOffAccount === 'Rounded Off') {
-      frappe.AccountingSettings.roundOffAccount = '75890000 - Outras Despesas e Encargos';
-      frappe.AccountingSettings.writeOffAccount = '75890000 - Outras Despesas e Encargos';
+      frappe.AccountingSettings.roundOffAccount =
+        '75890000 - Outras Despesas e Encargos';
+      frappe.AccountingSettings.writeOffAccount =
+        '75890000 - Outras Despesas e Encargos';
 
       frappe.AccountingSettings.update();
+
     }
+    // init naming series if missing
+    //await naming.createNumberSeries('FT.YY./.#', 'SalesInvoiceSettings');
+    console.log('series ');
+    console.log('ft ' + new Date().toISOString().slice(0, 4));
+    let fact = 'FT ' + new Date().toISOString().slice(0, 4) + '-';
+    console.log('fact ', fact);
+
+    await naming.createNumberSeries(fact, 'SalesInvoiceSettings');
+    await naming.createNumberSeries('FF ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseInvoiceSettings');
+    await naming.createNumberSeries('RC ' + new Date().toISOString().slice(0, 4) + '-', 'PaymentSettings');
+    await naming.createNumberSeries('JV ' + new Date().toISOString().slice(0, 4) + '-', 'JournalEntrySettings');
+    await naming.createNumberSeries('PP ' + new Date().toISOString().slice(0, 4) + '-', 'QuotationSettings');
+    await naming.createNumberSeries('OV ' + new Date().toISOString().slice(0, 4) + '-', 'SalesOrderSettings');
+    await naming.createNumberSeries('OF ' + new Date().toISOString().slice(0, 4) + '-', 'FulfillmentSettings');
+    await naming.createNumberSeries('OC ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseOrderSettings');
+    await naming.createNumberSeries('REC ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseReceiptSettings');
+
+    console.log(await frappe.db.getAll({doctype: 'NumberSeries',fields:['name','current']}));
+
   }
 };
 

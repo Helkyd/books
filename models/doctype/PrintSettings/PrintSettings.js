@@ -16,7 +16,7 @@ module.exports = {
       fieldtype: 'Data'
     },
     {
-      fieldname: 'nifEmpresa',  //HELKYds 30-11-2020
+      fieldname: 'nifEmpresa', //HELKYds 30-11-2020
       label: 'NIF Empresa',
       fieldtype: 'Data'
     },

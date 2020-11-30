@@ -1,3 +1,6 @@
+let fact = 'FT ' + new Date().toISOString().slice(0, 4); // + '/';
+console.log('fact ',fact);
+
 module.exports = {
   name: 'SalesInvoiceSettings',
   label: 'SalesInvoice Settings',
@@ -12,7 +15,7 @@ module.exports = {
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,
-      default: 'SINV'
+      default: fact //'FT ' + new Date().toISOString().slice(0, 4) + '/' //'SINV'
     },
     {
       fieldname: 'template',

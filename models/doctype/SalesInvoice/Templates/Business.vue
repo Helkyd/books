@@ -21,8 +21,12 @@
             {{ frappe.AccountingSettings.companyName }}
           </div>
           <div class="text-sm text-gray-800" v-if="companyAddress">
-            {{ companyAddress.addressDisplay }} <br>
-            {{ frappe.AccountingSettings.nifEmpresa != '' ? 'NIF: ' + frappe.AccountingSettings.nifEmpresa : '' }}
+            {{ companyAddress.addressDisplay }} <br />
+            {{
+              frappe.AccountingSettings.nifEmpresa != ''
+                ? 'NIF: ' + frappe.AccountingSettings.nifEmpresa
+                : ''
+            }}
           </div>
         </div>
       </div>

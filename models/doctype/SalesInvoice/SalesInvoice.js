@@ -39,7 +39,7 @@ module.exports = {
       fieldtype: 'Link',
       target: 'Account',
       disableCreation: true,
-      readOnly: 1,
+      readOnly: 1,  //HELKYDS 30-11-2020
       formula: doc => doc.getFrom('Party', doc.customer, 'defaultAccount'),
       getFilters: () => {
         return {

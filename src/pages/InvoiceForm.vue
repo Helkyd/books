@@ -184,6 +184,8 @@ export default {
     BackLink
   },
   provide() {
+    console.log('provide');
+    console.log(this.name);
     return {
       doctype: this.doctype,
       name: this.name
@@ -211,13 +213,20 @@ export default {
       return this.printSettings && this.printSettings.getLink('address');
     },
     showSave() {
+      console.log('showsave');
+      console.log(this.doc);
+      console.log(this.doc._notInserted);
+      console.log(this.doc._dirty);
+
       return this.doc && (this.doc._notInserted || this.doc._dirty);
     },
     actions() {
+      console.log('actions');
       return getActionsForDocument(this.doc);
     }
   },
   async mounted() {
+    console.log('MOOUNTED');
     try {
       this.doc = await frappe.getDoc(this.doctype, this.name);
       window.d = this.doc;
@@ -240,6 +249,7 @@ export default {
   },
   methods: {
     async onSaveClick() {
+      console.log('ONSAVECLICK');
       await this.doc.set(
         'items',
         this.doc.items.filter(row => row.item)
@@ -274,6 +284,8 @@ export default {
       openSettings('Invoice');
     },
     routeToList() {
+      console.log(this.doctype); //HELKYDs 30-11-2020
+      console.log(this.doctype); //HELKYDs 30-11-2020
       this.$router.push(`/list/${this.doctype}`);
     },
     formattedValue(fieldname, doc) {

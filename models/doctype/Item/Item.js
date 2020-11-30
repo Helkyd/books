@@ -70,7 +70,6 @@ module.exports = {
           if (doc.itemType === 'Service') {
             return 'Service';
           }
-
         }
       }
     },
@@ -96,7 +95,7 @@ module.exports = {
             return '71110000 - Custo das Existencias Vendidas e Consumidas'; //'Sales';
           }
           if (doc.itemType === 'Service') {
-            //return '71110000 - Custo das Existencias Vendidas e Consumidas'; //'Sales';          
+            //return '71110000 - Custo das Existencias Vendidas e Consumidas'; //'Sales';
             return '75239000 - Outros Servicos'; //'Service';
           }
         } else {
