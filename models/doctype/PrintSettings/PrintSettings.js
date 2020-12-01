@@ -21,6 +21,16 @@ module.exports = {
       fieldtype: 'Data'
     },
     {
+      fieldname: 'regimeIva',
+      label: 'Regime do IVA',
+      fieldtype: 'Select',
+      options: ['Regime Geral', 'Regime Transitorio', 'Regime de Caixa', 'Regime de nao Sujeicao'],
+      default: 'Regime de nao Sujeicao',
+      required: 1      
+
+    },
+
+    {
       fieldname: 'email',
       label: 'Email',
       fieldtype: 'Data',
@@ -106,6 +116,7 @@ module.exports = {
     'color',
     'email',
     'nifEmpresa',
+    'regimeIva',
     'phone',
     'address',
     'gstin'

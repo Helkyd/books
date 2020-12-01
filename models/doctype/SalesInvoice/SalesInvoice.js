@@ -21,6 +21,28 @@ module.exports = {
       readOnly: 1
     },
     {
+      label: 'Doc AGT', //HELKyds 01-12-2020
+      fieldname: 'docAgt',
+      fieldtype: 'Data',
+      required: 0,
+      readOnly: 1
+    },
+    {
+      label: 'Hash AGT', //HELKyds 01-12-2020
+      fieldname: 'hashAgt',
+      fieldtype: 'Long Text',
+      required: 0,
+      readOnly: 1
+    },
+    {
+      label: 'Hash AGT Control', //HELKyds 01-12-2020
+      fieldname: 'hashAgtControl',
+      fieldtype: 'Data',
+      required: 0,
+      readOnly: 1
+    },
+
+    {
       fieldname: 'date',
       label: 'Date',
       fieldtype: 'Date',

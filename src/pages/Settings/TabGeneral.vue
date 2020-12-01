@@ -29,6 +29,7 @@ export default {
         'country',
         'bankName',
         'nifEmpresa', //HELKyds 29-11-2020
+        'regimeIva', // 01-12-2020
         'currency',
         'writeOffAccount',
         'roundOffAccount',

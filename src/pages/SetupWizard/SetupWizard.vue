@@ -1,9 +1,9 @@
 <template>
-  <div class="flex-1 py-10 bg-white window-drag">
+  <div class="flex-1 py-3 bg-white window-drag">
     <div class="px-12">
       <h1 class="text-2xl font-semibold">{{ _('Setup your organization') }}</h1>
     </div>
-    <div class="px-8 mt-5 window-no-drag" v-if="doc">
+    <div class="px-8 mt-1 window-no-drag" v-if="doc">
       <div class="flex items-center px-6 py-5 mb-4 border bg-brand rounded-xl">
         <FormControl
           :df="meta.getField('companyLogo')"

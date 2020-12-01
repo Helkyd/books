@@ -1,4 +1,5 @@
-let fact = 'FT ' + new Date().toISOString().slice(0, 4); // + '/';
+//HELKYDS 01-12-2020
+let fact = 'INT-FT ' + new Date().toISOString().slice(0, 4); // + '/';
 console.log('fact ',fact);
 
 module.exports = {

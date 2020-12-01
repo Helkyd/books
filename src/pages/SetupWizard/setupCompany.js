@@ -8,6 +8,7 @@ export default async function setupCompany(setupWizardValues) {
     companyName,
     country,
     nifEmpresa,
+    regimeIva,
     name,
     email,
     bankName,
@@ -20,6 +21,7 @@ export default async function setupCompany(setupWizardValues) {
     companyName,
     country,
     nifEmpresa,
+    regimeIva,
     fullname: name,
     email,
     bankName,
@@ -34,6 +36,7 @@ export default async function setupCompany(setupWizardValues) {
     companyName,
     email,
     nifEmpresa, //HELKYds 30-11-2020
+    regimeIva, //01-12-2020
     displayLogo: companyLogo ? 1 : 0
   });
 
