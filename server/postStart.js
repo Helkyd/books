@@ -44,7 +44,6 @@ module.exports = async function postStart() {
         '75890000 - Outras Despesas e Encargos';
 
       frappe.AccountingSettings.update();
-
     }
     // init naming series if missing
     //await naming.createNumberSeries('FT.YY./.#', 'SalesInvoiceSettings');
@@ -53,32 +52,92 @@ module.exports = async function postStart() {
     let fact = 'FT ' + new Date().toISOString().slice(0, 4) + '-';
     console.log('fact ', fact);
 
-    await naming.createNumberSeries(fact, 'SalesInvoiceSettings',0);
-    await naming.createNumberSeries('INT-FT ' + new Date().toISOString().slice(0, 4) + '-', 'SalesInvoiceSettings',0);
+    await naming.createNumberSeries(fact, 'SalesInvoiceSettings', 0);
+    await naming.createNumberSeries(
+      'INT-FT ' + new Date().toISOString().slice(0, 4) + '-',
+      'SalesInvoiceSettings',
+      0
+    );
 
-    await naming.createNumberSeries('FF ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseInvoiceSettings',0);
-    await naming.createNumberSeries('INT-FF ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseInvoiceSettings',0);
+    await naming.createNumberSeries(
+      'FF ' + new Date().toISOString().slice(0, 4) + '-',
+      'PurchaseInvoiceSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-FF ' + new Date().toISOString().slice(0, 4) + '-',
+      'PurchaseInvoiceSettings',
+      0
+    );
 
-    await naming.createNumberSeries('RC ' + new Date().toISOString().slice(0, 4) + '-', 'PaymentSettings',0);
-    await naming.createNumberSeries('INT-RC ' + new Date().toISOString().slice(0, 4) + '-', 'PaymentSettings',0);
+    await naming.createNumberSeries(
+      'RC ' + new Date().toISOString().slice(0, 4) + '-',
+      'PaymentSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-RC ' + new Date().toISOString().slice(0, 4) + '-',
+      'PaymentSettings',
+      0
+    );
 
-    await naming.createNumberSeries('JV ' + new Date().toISOString().slice(0, 4) + '-', 'JournalEntrySettings',0);
+    await naming.createNumberSeries(
+      'JV ' + new Date().toISOString().slice(0, 4) + '-',
+      'JournalEntrySettings',
+      0
+    );
 
-    await naming.createNumberSeries('PP ' + new Date().toISOString().slice(0, 4) + '-', 'QuotationSettings',0);
-    await naming.createNumberSeries('INT-PP ' + new Date().toISOString().slice(0, 4) + '-', 'QuotationSettings',0);
+    await naming.createNumberSeries(
+      'PP ' + new Date().toISOString().slice(0, 4) + '-',
+      'QuotationSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-PP ' + new Date().toISOString().slice(0, 4) + '-',
+      'QuotationSettings',
+      0
+    );
 
-    await naming.createNumberSeries('OV ' + new Date().toISOString().slice(0, 4) + '-', 'SalesOrderSettings',0);
-    await naming.createNumberSeries('INT-OV ' + new Date().toISOString().slice(0, 4) + '-', 'SalesOrderSettings',0);
+    await naming.createNumberSeries(
+      'OV ' + new Date().toISOString().slice(0, 4) + '-',
+      'SalesOrderSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-OV ' + new Date().toISOString().slice(0, 4) + '-',
+      'SalesOrderSettings',
+      0
+    );
 
-    await naming.createNumberSeries('OF ' + new Date().toISOString().slice(0, 4) + '-', 'FulfillmentSettings',0);
+    await naming.createNumberSeries(
+      'OF ' + new Date().toISOString().slice(0, 4) + '-',
+      'FulfillmentSettings',
+      0
+    );
 
-    await naming.createNumberSeries('OC ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseOrderSettings',0);
-    await naming.createNumberSeries('INT-OC ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseOrderSettings',0);
-    
-    await naming.createNumberSeries('REC ' + new Date().toISOString().slice(0, 4) + '-', 'PurchaseReceiptSettings',0);
+    await naming.createNumberSeries(
+      'OC ' + new Date().toISOString().slice(0, 4) + '-',
+      'PurchaseOrderSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-OC ' + new Date().toISOString().slice(0, 4) + '-',
+      'PurchaseOrderSettings',
+      0
+    );
 
-    console.log(await frappe.db.getAll({doctype: 'NumberSeries',fields:['name','current']}));
+    await naming.createNumberSeries(
+      'REC ' + new Date().toISOString().slice(0, 4) + '-',
+      'PurchaseReceiptSettings',
+      0
+    );
 
+    console.log(
+      await frappe.db.getAll({
+        doctype: 'NumberSeries',
+        fields: ['name', 'current']
+      })
+    );
   }
 };
 

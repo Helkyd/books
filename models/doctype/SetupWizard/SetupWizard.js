@@ -71,10 +71,14 @@ module.exports = {
       fieldname: 'regimeIva',
       label: 'Regime do IVA',
       fieldtype: 'Select',
-      options: ['Regime Geral', 'Regime Transitorio', 'Regime de Caixa', 'Regime de nao Sujeicao'],
+      options: [
+        'Regime Geral',
+        'Regime Transitorio',
+        'Regime de Caixa',
+        'Regime de nao Sujeicao'
+      ],
       default: 'Regime de nao Sujeicao',
-      required: 1      
-
+      required: 1
     },
 
     {
