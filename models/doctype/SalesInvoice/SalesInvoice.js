@@ -41,6 +41,15 @@ module.exports = {
       required: 0,
       readOnly: 1
     },
+    {
+      fieldname: 'postingdate', //HELKyds 01-12-2020 2020-12-02T00:04:29
+      label: 'Date',
+      fieldtype: 'Date',
+      required: 1,
+      readOnly: 1,
+      hidden: 0,
+      default: new Date().toISOString().slice(0, 19)
+    },
 
     {
       fieldname: 'date',

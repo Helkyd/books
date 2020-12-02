@@ -53,5 +53,37 @@ module.exports = {
     }
     const entries = await this.getPosting();
     await entries.postReverse();
+  },
+
+  //HELKYds 01-12-2020
+  async beforeSubmit() {
+    console.log('On Submit HELYD');
+    console.log('To generate HASH');
+
+    console.log(this.date);
+    console.log(this.postingdate);
+    //Depeding the Document created FT or FF or FP; gets the Series
+    console.log(
+      await frappe.db.getAll({
+        doctype: 'NumberSeries',
+        fields: ['name', 'current']
+      })
+    );
+
+    console.log(this.grandTotal);
+
+    const hashinfo = String(this.date) + ';' + String(this.postingdate) + ';' + String('FT') + ';' + String(this.grandTotal) + ';'
+
+    const jsrasign = require('jsrsasign');
+    const fs = require('fs');
+
+    let key = fs.readFileSync('/tmp/pk/angolaerp-selfsigned-priv.pem','utf-8');
+    let sig = new jsrasign.KJUR.crypto.Signature({"alg":"SHA1withRSA"});
+    sig.init(key);
+    sig.updateString(hashinfo);
+    const sigValueHex = sig.sign();
+    console.log(sigValueHex);
+    console.log(jsrasign.hextob64(sigValueHex));
   }
+
 };

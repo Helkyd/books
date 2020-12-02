@@ -98,6 +98,16 @@
                   @change="value => doc.set('date', value)"
                   :read-only="doc.submitted"
                 />
+                <FormControl
+                  class="mt-2 text-base"
+                  input-class="bg-gray-100 px-3 py-2 text-base text-right"
+                  :df="meta.getField('docAgt')"
+                  :value="doc.docAgt"
+                  :placeholder="'Doc Agt'"
+                  @change="value => doc.set('docAgt', value)"
+                  :read-only="doc.submitted"
+                />
+
               </div>
             </div>
           </div>
