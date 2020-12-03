@@ -107,7 +107,6 @@
                   @change="value => doc.set('docAgt', value)"
                   :read-only="doc.submitted"
                 />
-
               </div>
             </div>
           </div>
@@ -162,6 +161,19 @@
             >
               <div>{{ _('Grand Total') }}</div>
               <div>{{ formattedValue('grandTotal') }}</div>
+            </div>
+            <div
+              class="flex pl-2 justify-between py-3 border-t text-green-600 font-semibold text-base"
+            >
+              <FormControl
+                v-if="doc.submitted || doc.hashAgt"
+                :df="meta.getField('hashAgt')"
+                :value="doc.hashAgt"
+                :show-label="true"
+                input-class="bg-gray-100"
+                @change="value => doc.set('hashAgt', value)"
+                :read-only="true"
+              />
             </div>
           </div>
         </div>
@@ -294,7 +306,6 @@ export default {
       openSettings('Invoice');
     },
     routeToList() {
-      console.log(this.doctype); //HELKYDs 30-11-2020
       console.log(this.doctype); //HELKYDs 30-11-2020
       this.$router.push(`/list/${this.doctype}`);
     },

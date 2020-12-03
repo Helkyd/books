@@ -1,6 +1,5 @@
-//HELKYDS 01-12-2020
-let fact = 'INT-FT ' + new Date().toISOString().slice(0, 4); // + '/';
-console.log('fact ', fact);
+//HELKYDS 02-12-2020
+let fact = 'INT-FT ' + new Date().toISOString().slice(0, 4);
 
 module.exports = {
   name: 'SalesInvoiceSettings',
@@ -16,7 +15,7 @@ module.exports = {
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,
-      default: fact //'FT ' + new Date().toISOString().slice(0, 4) + '/' //'SINV'
+      default: fact
     },
     {
       fieldname: 'template',

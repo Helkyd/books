@@ -51,6 +51,7 @@ module.exports = async function postStart() {
     console.log('ft ' + new Date().toISOString().slice(0, 4));
     let fact = 'FT ' + new Date().toISOString().slice(0, 4) + '-';
     console.log('fact ', fact);
+    //console.log((await frappe.getSingle('AccountingSettings')).currency);
 
     await naming.createNumberSeries(fact, 'SalesInvoiceSettings', 0);
     await naming.createNumberSeries(
