@@ -24,13 +24,17 @@
           <div class="w-1/3">
             <div v-if="address">{{ address.addressDisplay }}</div>
           </div>
+          <div class="w-1/3 text-right text-lg font-semibold">
+            <div>ORIGINAL</div>
+            <div>{{ accountingSettings.regimeIva }}</div>
+          </div>
         </div>
       </div>
       <div class="mt-8 px-6">
         <div class="flex justify-between">
           <div class="w-1/3">
             <h1 class="text-2xl font-semibold">
-              {{ doc.name }}
+              {{ doc.docAgt || doc.name }}
             </h1>
             <div class="py-2 text-base">
               {{ frappe.format(doc.date, 'Date') }}
@@ -43,6 +47,9 @@
             <div v-if="partyDoc" class="mt-1 text-xs text-gray-600 text-right">
               {{ partyDoc.addressDisplay }}
             </div>
+            <div v-if="partyDoc && partyDoc.nif">NIF:{{ partyDoc.nif }}</div>
+            <div v-else>Consumidor Final</div>
+
             <div
               v-if="partyDoc && partyDoc.gstin"
               class="mt-1 text-xs text-gray-600 text-right"

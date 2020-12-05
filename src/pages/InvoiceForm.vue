@@ -206,8 +206,6 @@ export default {
     BackLink
   },
   provide() {
-    console.log('provide');
-    console.log(this.name);
     return {
       doctype: this.doctype,
       name: this.name

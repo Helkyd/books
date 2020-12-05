@@ -139,6 +139,23 @@ module.exports = async function postStart() {
         fields: ['name', 'current']
       })
     );
+
+    console.log(frappe.AccountingSettings);
+    console.log(frappe.AccountingSettings.email);
+    let usuariodefault = 'Administrador';
+    let usuaaaa = await frappe.db.sql('select * from User;');
+    console.log(usuaaaa);
+
+    if (usuaaaa.length === 0) {
+      let usuarios = await frappe.getNewDoc('User');
+      await usuarios.set({
+        userId: usuariodefault,
+        fullName: usuariodefault,
+        name: String(frappe.AccountingSettings.email),
+        password: '123465789'
+      });
+      await usuarios.insert();
+    }
   }
 };
 

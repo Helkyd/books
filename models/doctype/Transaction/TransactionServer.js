@@ -1,5 +1,6 @@
 const frappe = require('frappejs');
 const naming = require('frappejs/model/naming');
+const { strdiffidx } = require('jsrsasign');
 const { isNull, isEmpty } = require('lodash');
 
 module.exports = {
@@ -24,6 +25,9 @@ module.exports = {
   async beforeInsert() {
     const entries = await this.getPosting();
     await entries.validateEntries();
+
+    let usera = await frappe.db.sql('select * from User');
+    console.log(usera);
   },
 
   async afterSubmit() {
@@ -98,19 +102,53 @@ module.exports = {
     console.log('naming');
     this.docAgt = await naming.getSeriesNext(numeroserie[0].name);
 
+    let ultimoHash = await frappe.db.sql(
+      " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM SalesInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from SalesInvoice where hashAgt <>'') "
+    );
+    console.log('SalesInvoice');
+
+    console.log(ultimoHash);
+    console.log(ultimoHash[0].creation);
+    console.log(ultimoHash[0].creation.slice(0, 19));
+
     console.log(this.grandTotal);
-
-    //First Record
-    const hashinfo =
+    console.log(
       String(this.date) +
-      ';' +
-      String(this.postingdate) +
-      ';' +
-      String(this.docAgt) +
-      ';' +
-      String(this.grandTotal) +
-      ';';
+        ';' +
+        String(this.creation.slice(0, 19)) +
+        ';' +
+        String(this.docAgt) +
+        ';' +
+        String(this.grandTotal) +
+        ';' +
+        String(ultimoHash[0].hashAgt)
+    );
 
+    let hashinfo = '';
+    if (ultimoHash) {
+      //Has Records gets last HASH
+      hashinfo =
+        String(this.date) +
+        ';' +
+        String(this.creation.slice(0, 19)) +
+        ';' +
+        String(this.docAgt) +
+        ';' +
+        String(this.grandTotal) +
+        ';' +
+        String(ultimoHash[0].hashAgt);
+    } else {
+      //First Record
+      hashinfo =
+        String(this.date) +
+        ';' +
+        String(this.postingdate) +
+        ';' +
+        String(this.docAgt) +
+        ';' +
+        String(this.grandTotal) +
+        ';';
+    }
     const jsrasign = require('jsrsasign');
     const fs = require('fs');
 

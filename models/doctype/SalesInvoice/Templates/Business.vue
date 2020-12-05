@@ -21,7 +21,9 @@
             {{ frappe.AccountingSettings.companyName }}
           </div>
           <div class="text-sm text-gray-800" v-if="companyAddress">
-            {{ companyAddress.addressDisplay }} <br />
+            {{ companyAddress.addressDisplay }}
+          </div>
+          <div class="text-sm text-gray-800">
             {{
               frappe.AccountingSettings.nifEmpresa != ''
                 ? 'NIF: ' + frappe.AccountingSettings.nifEmpresa
@@ -37,11 +39,14 @@
           </div>
           <div class="w-2/3 text-gray-800">
             <div class="font-semibold">
-              {{ doc.name }}
+              {{ doc.docAgt || doc.name }}
             </div>
             <div>
               {{ frappe.format(doc.date, 'Date') }}
             </div>
+          </div>
+          <div class="w-1/3 text-right text-lg font-semibold">
+            <div>ORIGINAL</div>
           </div>
         </div>
         <div class="mt-4 flex">
@@ -55,6 +60,11 @@
             <div>
               {{ party.addressDisplay }}
             </div>
+            <div v-if="party.nif">NIF:{{ party.nif }}</div>
+            <div v-else>Consumidor Final</div>
+          </div>
+          <div class="w-1/3 text-right text-lg font-semibold">
+            <div>{{ frappe.AccountingSettings.regimeIva }}</div>
           </div>
         </div>
       </div>

@@ -19,10 +19,13 @@ module.exports = {
       fieldtype: 'Float',
       required: 1,
       placeholder: '0%'
+    },
+    {
+      fieldname: 'motivo', //HELKYds 05-12-2020
+      label: 'Motive',
+      fieldtype: 'Data',
+      required: 0
     }
   ],
-  tableFields: [
-    'account',
-    'rate'
-  ]
+  tableFields: ['account', 'rate', 'motivo']
 };

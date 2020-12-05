@@ -26,6 +26,9 @@
           <div>
             {{ frappe.format(doc.date, 'Date') }}
           </div>
+          <div text-lg font-semibold>
+            <div>{{ frappe.AccountingSettings.regimeIva }}</div>
+          </div>
         </div>
       </div>
       <div class="text-right">
@@ -36,7 +39,10 @@
           {{ doc.doctype === 'SalesInvoice' ? 'Invoice' : 'Bill' }}
         </div>
         <div>
-          {{ doc.name }}
+          {{ doc.docAgt || doc.name }}
+        </div>
+        <div class="text-lg font-semibold">
+          <div>ORIGINAL</div>
         </div>
       </div>
     </div>
@@ -49,7 +55,9 @@
         </div>
         <div class="mt-4 text-black leading-relaxed text-lg">
           {{ party.name }} <br />
-          {{ party.addressDisplay }}
+          {{ party.addressDisplay }} <br />
+          <div v-if="party.nif">NIF:{{ party.nif }}</div>
+          <div v-else>Consumidor Final</div>
         </div>
       </div>
       <div class="w-1/2" v-if="companyAddress">

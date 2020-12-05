@@ -1,6 +1,7 @@
 import frappe from 'frappejs';
 import countryList from '~/fixtures/countryInfo.json';
 import config from '@/config';
+//import { userSetter } from 'core-js/fn/symbol';
 
 export default async function setupCompany(setupWizardValues) {
   const {
@@ -102,6 +103,8 @@ async function setupChartOfAccounts(bankName) {
 }
 
 async function setupRegionalChanges(country) {
+  console.log('setupRegionalChanges');
+
   const generateRegionalTaxes = require('~/models/doctype/Tax/RegionalChanges');
   await generateRegionalTaxes(country);
   if (country === 'India') {
@@ -109,6 +112,9 @@ async function setupRegionalChanges(country) {
     await frappe.db.migrate();
   } else if (country === 'Angola') {
     //HELKYDs 29-11-2020; check if KZ currency and set AccountingSettigs WriteOff accounts
+    frappe.models.Party = require('~/models/doctype/Party/RegionalChanges');
+    await frappe.db.migrate();
+
     const naming = require('frappejs/model/naming');
     if (frappe.AccountingSettings.currency === 'KZ') {
       console.log('roundoff ', frappe.AccountingSettings.roundOffAccount);
@@ -214,6 +220,41 @@ async function setupRegionalChanges(country) {
           fields: ['name', 'current']
         })
       );
+
+      //TODO: Create Username based on the Fullname given; Create default Administrador and pwd 123456789 and user typed
+
+      console.log('Full name ');
+
+      //console.log(frappe.AccountingSettings.fullname);
+
+      console.log(frappe.AccountingSettings);
+      console.log(frappe.AccountingSettings.email);
+      /*
+      let usuariodefault = 'Administrador';
+
+      let usuarios = await frappe.getNewDoc('User');
+      await usuarios.set({        
+        userId: usuariodefault,
+        email: String(frappe.AccountingSettings.email),
+        password: '123465789'
+      });
+      await usuarios.insert();
+      */
+
+      /*
+      if (this.fullname) {
+        usuariodefault = this.fullname.replace(' ');
+        usuarios = await frappe.getNewDoc('User');
+        await usuarios.set({
+          fullname: usuariodefault,
+          userId: usuariodefault,
+          email: usuariodefault,
+          password: '123465789'
+        });
+        await usuarios.insert();
+  
+      }
+      */
     }
   }
 }

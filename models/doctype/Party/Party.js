@@ -123,9 +123,9 @@ module.exports = {
   quickEditFields: [
     'email',
     'phone',
+    'nif',
     'address',
     'defaultAccount',
-    'currency',
-    'nif'
+    'currency'
   ]
 };
