@@ -21,6 +21,11 @@ module.exports = {
           status = 'Paid';
           color = 'green';
         }
+        if (doc.submitted === 2) {
+          status = 'Canceled';
+          color = 'red';
+        }
+
         return {
           template: `<Badge class="text-xs" color="${color}">${status}</Badge>`,
           components: { Badge }
@@ -32,7 +37,7 @@ module.exports = {
     return [
       {
         label: 'Make Payment',
-        condition: doc => doc.submitted && doc.outstandingAmount > 0,
+        condition: doc => doc.submitted < 2 && doc.outstandingAmount > 0, //HELKYds 06-12-2020
         action: async function makePayment(doc) {
           let payment = await frappe.getNewDoc('Payment');
           payment.once('afterInsert', async () => {
@@ -68,6 +73,8 @@ module.exports = {
           });
         }
       },
+      //HELKYDS 06-12-2020; Cannot be done on Angola after document Submitted; Need to implement Credit Note instead
+      /*
       {
         label: 'Revert',
         condition: doc =>
@@ -76,6 +83,17 @@ module.exports = {
           doc.revert();
         }
       },
+      */
+      {
+        label: 'Cancel',
+        condition: doc => doc.submitted === 1,
+        action(doc) {
+          console.log('Vair Cancelar....');
+          doc.submitted = 2;
+          doc.update();
+        }
+      },
+
       {
         label: 'Print',
         condition: doc => doc.submitted,

@@ -1,7 +1,5 @@
 const frappe = require('frappejs');
 const naming = require('frappejs/model/naming');
-const { strdiffidx } = require('jsrsasign');
-const { isNull, isEmpty } = require('lodash');
 
 module.exports = {
   async getPayments() {
@@ -25,9 +23,8 @@ module.exports = {
   async beforeInsert() {
     const entries = await this.getPosting();
     await entries.validateEntries();
-
-    let usera = await frappe.db.sql('select * from User');
-    console.log(usera);
+    let ddd = await frappe.db.getAll({doctype: 'SalesInvoice', filters: {}});
+    console.log(ddd);
   },
 
   async afterSubmit() {
@@ -108,24 +105,26 @@ module.exports = {
     console.log('SalesInvoice');
 
     console.log(ultimoHash);
-    console.log(ultimoHash[0].creation);
-    console.log(ultimoHash[0].creation.slice(0, 19));
+    if (ultimoHash.length > 0) {
+      console.log(ultimoHash[0].creation);
+      console.log(ultimoHash[0].creation.slice(0, 19));
 
-    console.log(this.grandTotal);
-    console.log(
-      String(this.date) +
-        ';' +
-        String(this.creation.slice(0, 19)) +
-        ';' +
-        String(this.docAgt) +
-        ';' +
-        String(this.grandTotal) +
-        ';' +
-        String(ultimoHash[0].hashAgt)
-    );
+      console.log(this.grandTotal);
+      console.log(
+        String(this.date) +
+          ';' +
+          String(this.creation.slice(0, 19)) +
+          ';' +
+          String(this.docAgt) +
+          ';' +
+          String(this.grandTotal) +
+          ';' +
+          String(ultimoHash[0].hashAgt)
+      );
+    }
 
     let hashinfo = '';
-    if (ultimoHash) {
+    if (ultimoHash.length > 0) {
       //Has Records gets last HASH
       hashinfo =
         String(this.date) +
