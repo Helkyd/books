@@ -25,7 +25,6 @@ module.exports = {
     await entries.validateEntries();
     let ddd = await frappe.db.getAll({ doctype: 'SalesInvoice', filters: {} });
     console.log(ddd);
-
   },
 
   async afterSubmit() {
