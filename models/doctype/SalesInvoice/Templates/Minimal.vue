@@ -23,16 +23,13 @@
           <div v-if="frappe.AccountingSettings.nifEmpresa">
             {{ 'NIF: ' + frappe.AccountingSettings.nifEmpresa }}
           </div>
-          <div>
-            {{ _('Date')}}: {{ frappe.format(doc.date, 'Date') }}
-          </div>
+          <div>{{ _('Date') }}: {{ frappe.format(doc.date, 'Date') }}</div>
           <div text-lg font-semibold>
             <div>{{ frappe.AccountingSettings.regimeIva }}</div>
           </div>
           <div text-lg>
-            <div>{{ _('User')}}: {{ frappe.session.user }}</div>
+            <div>{{ _('User') }}: {{ frappe.session.user }}</div>
           </div>
-
         </div>
       </div>
       <div class="text-right">
@@ -89,8 +86,18 @@
         <div class="w-4/12">{{ row.item }}</div>
         <div class="w-2/12 text-right">{{ format(row, 'quantity') }}</div>
         <div class="w-3/12 text-right">{{ format(row, 'rate') }}</div>
-        <div class="w-3/12 text-right" v-if="row.tax && row.tax.includes('IVA')">{{ row.tax.replace('IVA-','') }}%</div>
-        <div class="w-3/12 text-right" v-else-if="row.tax && row.tax.includes('Isencao')">0%</div>
+        <div
+          class="w-3/12 text-right"
+          v-if="row.tax && row.tax.includes('IVA')"
+        >
+          {{ row.tax.replace('IVA-', '') }}%
+        </div>
+        <div
+          class="w-3/12 text-right"
+          v-else-if="row.tax && row.tax.includes('Isencao')"
+        >
+          0%
+        </div>
         <div class="w-3/12 text-right" v-else-if="row.tax">{{ row.tax }}%</div>
         <div class="w-3/12 text-right" v-else>0%</div>
         <div class="w-3/12 text-right">{{ format(row, 'amount') }}</div>
@@ -132,9 +139,7 @@
           v-for="tax in doc.taxes"
           :key="tax.name"
         >
-          <div v-if="tax.account.includes('3451')">
-            IVA ({{ tax.rate }}%)
-          </div>
+          <div v-if="tax.account.includes('3451')">IVA ({{ tax.rate }}%)</div>
           <div v-else>{{ tax.account }} ({{ tax.rate }}%)</div>
           <div>{{ frappe.format(tax.amount, 'Currency') }}</div>
         </div>
@@ -147,13 +152,27 @@
         </div>
       </div>
     </div>
-    <div v-if="doc.submitted === 2" class="py-1 text-center text-lg font-semibold">
-      <p style="color:black; font-size:55px; transform:rotate(300deg); -webkit-transform:rotate(300deg);"> <b> ANULACAO </b> </p>
+    <div
+      v-if="doc.submitted === 2"
+      class="py-1 text-center text-lg font-semibold"
+    >
+      <p
+        style="color:black; font-size:55px; transform:rotate(300deg); -webkit-transform:rotate(300deg);"
+      >
+        <b> ANULACAO </b>
+      </p>
     </div>
     <footer class="absolute w-full bottom-0 pb-6">
       <div class="text-center small">
-        <p>Bens / Serviços colocados a disposição do adquirente a data do documento.</p>      
-        <p v-if="doc.hashAgt"> {{ doc.hashAgt[0,1] }} {{ doc.hashAgt[10,11] }} {{ doc.hashAgt[20,21] }} {{ doc.hashAgt[30,31] }} - Processado por Programa Validado n. 16/AGT/19 © AngolaERP</p>
+        <p>
+          Bens / Serviços colocados a disposição do adquirente a data do
+          documento.
+        </p>
+        <p v-if="doc.hashAgt">
+          {{ doc.hashAgt[(0, 1)] }} {{ doc.hashAgt[(10, 11)] }}
+          {{ doc.hashAgt[(20, 21)] }} {{ doc.hashAgt[(30, 31)] }} - Processado
+          por Programa Validado n. 16/AGT/19 © AngolaERP
+        </p>
         <p v-else>Processado por Programa Validado n. 16/AGT/19 © AngolaERP</p>
       </div>
     </footer>

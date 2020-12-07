@@ -3,7 +3,7 @@ const utils = require('../../../accounting/utils');
 const { openQuickEdit } = require('@/utils');
 const Badge = require('@/components/Badge').default;
 
-module.exports = {  
+module.exports = {
   getStatusColumn() {
     console.log('transiction');
     return {

@@ -37,11 +37,11 @@
               {{ doc.docAgt || doc.name }}
             </h1>
             <div class="py-2 text-base">
-              {{ _('Date')}}: {{ frappe.format(doc.date, 'Date') }}
+              {{ _('Date') }}: {{ frappe.format(doc.date, 'Date') }}
             </div>
             <div class="py-2 text-base">
               <div text-lg>
-                <div>{{ _('User')}}: {{ frappe.session.user }}</div>
+                <div>{{ _('User') }}: {{ frappe.session.user }}</div>
               </div>
             </div>
           </div>
@@ -52,7 +52,12 @@
             <div v-if="partyDoc" class="mt-1 text-xs text-gray-600 text-right">
               {{ partyDoc.addressDisplay }}
             </div>
-            <div v-if="partyDoc && partyDoc.nif" class="mt-1 text-xs font-semibold text-right">NIF:{{ partyDoc.nif }}</div>
+            <div
+              v-if="partyDoc && partyDoc.nif"
+              class="mt-1 text-xs font-semibold text-right"
+            >
+              NIF:{{ partyDoc.nif }}
+            </div>
             <div v-else>Consumidor Final</div>
             <div
               v-if="partyDoc && partyDoc.gstin"
@@ -75,7 +80,9 @@
               :key="df.fieldname"
               :class="textAlign(df)"
             >
-              <div v-if="df.label == 'Tax'" class="text-right"> {{ df.label }} </div>
+              <div v-if="df.label == 'Tax'" class="text-right">
+                {{ df.label }}
+              </div>
               <div v-else>{{ df.label }}</div>
             </div>
           </Row>
@@ -95,20 +102,31 @@
               :class="textAlign(df)"
             >
               <!-- {{ frappe.format(row[df.fieldname], df) }} -->
-              <div v-if="df.fieldname == 'tax'" class="text-right"> 
-                <div v-if="row[df.fieldname] && row[df.fieldname].includes('IVA')"> {{ row[df.fieldname].replace('IVA-','') }}% </div> 
-                <div v-else-if="row[df.fieldname] && row[df.fieldname].includes('Isencao')"> 0% </div> 
-                <div v-else-if="row[df.fieldname]"> {{ row[df.fieldname] }}% </div> 
-                <div v-else> 0% </div> 
+              <div v-if="df.fieldname == 'tax'" class="text-right">
+                <div
+                  v-if="row[df.fieldname] && row[df.fieldname].includes('IVA')"
+                >
+                  {{ row[df.fieldname].replace('IVA-', '') }}%
+                </div>
+                <div
+                  v-else-if="
+                    row[df.fieldname] && row[df.fieldname].includes('Isencao')
+                  "
+                >
+                  0%
+                </div>
+                <div v-else-if="row[df.fieldname]">
+                  {{ row[df.fieldname] }}%
+                </div>
+                <div v-else>0%</div>
               </div>
-              <div v-else> {{ frappe.format(row[df.fieldname], df) }} </div> 
+              <div v-else>{{ frappe.format(row[df.fieldname], df) }}</div>
               <!--
               <div class="w-3/12 text-right" v-if="row.tax && row.tax.includes('IVA')">{{ row.tax.replace('IVA-','') }}%</div>
               <div class="w-3/12 text-right" v-else-if="row.tax && row.tax.includes('Isencao')">0%</div>
               <div class="w-3/12 text-right" v-else-if="row.tax">{{ row.tax }}%</div>
               <div class="w-3/12 text-right" v-else>0%</div>
               -->
-
             </div>
           </Row>
         </div>
@@ -138,10 +156,8 @@
           v-for="tax in doc.taxes"
           :key="tax.name"
         >
-          <div v-if="tax.account.includes('3451')">
-            IVA ({{ tax.rate }}%)
-          </div>
-          <div v-else>{{ tax.account }} ({{ tax.rate }}%)</div>        
+          <div v-if="tax.account.includes('3451')">IVA ({{ tax.rate }}%)</div>
+          <div v-else>{{ tax.account }} ({{ tax.rate }}%)</div>
           <div>{{ frappe.format(tax.amount, 'Currency') }}</div>
         </div>
         <div
@@ -152,13 +168,27 @@
         </div>
       </div>
     </div>
-    <div v-if="doc.submitted === 2" class="py-1 text-center text-lg font-semibold">
-      <p style="color:black; font-size:55px; transform:rotate(300deg); -webkit-transform:rotate(300deg);"> <b> ANULACAO </b> </p>
+    <div
+      v-if="doc.submitted === 2"
+      class="py-1 text-center text-lg font-semibold"
+    >
+      <p
+        style="color:black; font-size:55px; transform:rotate(300deg); -webkit-transform:rotate(300deg);"
+      >
+        <b> ANULACAO </b>
+      </p>
     </div>
     <footer class="absolute w-full bottom-0 pb-6">
       <div class="text-center small">
-        <p>Bens / Serviços colocados a disposição do adquirente a data do documento.</p>      
-        <p v-if="doc.hashAgt"> {{ doc.hashAgt[0,1] }} {{ doc.hashAgt[10,11] }} {{ doc.hashAgt[20,21] }} {{ doc.hashAgt[30,31] }} - Processado por Programa Validado n. 16/AGT/19 © AngolaERP</p>
+        <p>
+          Bens / Serviços colocados a disposição do adquirente a data do
+          documento.
+        </p>
+        <p v-if="doc.hashAgt">
+          {{ doc.hashAgt[(0, 1)] }} {{ doc.hashAgt[(10, 11)] }}
+          {{ doc.hashAgt[(20, 21)] }} {{ doc.hashAgt[(30, 31)] }} - Processado
+          por Programa Validado n. 16/AGT/19 © AngolaERP
+        </p>
         <p v-else>Processado por Programa Validado n. 16/AGT/19 © AngolaERP</p>
       </div>
     </footer>
@@ -199,9 +229,11 @@ export default {
     },
     itemFields() {
       let itemsMeta = frappe.getMeta(`${this.doc.doctype}Item`);
-      console.log( ['item', 'quantity', 'rate', 'tax', 'amount'].map(fieldname =>
-        itemsMeta.getField(fieldname)
-      ));
+      console.log(
+        ['item', 'quantity', 'rate', 'tax', 'amount'].map(fieldname =>
+          itemsMeta.getField(fieldname)
+        )
+      );
       return ['item', 'quantity', 'rate', 'tax', 'amount'].map(fieldname =>
         itemsMeta.getField(fieldname)
       );
@@ -212,10 +244,9 @@ export default {
   },
   methods: {
     textAlign(df) {
-      console.log( ['Currency', 'Int', 'Float'].includes(df.fieldtype)
-        ? 'text-right'
-        : ''
-    );
+      console.log(
+        ['Currency', 'Int', 'Float'].includes(df.fieldtype) ? 'text-right' : ''
+      );
       return ['Currency', 'Int', 'Float'].includes(df.fieldtype)
         ? 'text-right'
         : '';

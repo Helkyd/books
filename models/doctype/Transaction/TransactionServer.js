@@ -23,8 +23,9 @@ module.exports = {
   async beforeInsert() {
     const entries = await this.getPosting();
     await entries.validateEntries();
-    let ddd = await frappe.db.getAll({doctype: 'SalesInvoice', filters: {}});
+    let ddd = await frappe.db.getAll({ doctype: 'SalesInvoice', filters: {} });
     console.log(ddd);
+
   },
 
   async afterSubmit() {
