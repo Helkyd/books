@@ -5677,6 +5677,11 @@
   dependencies:
     "assert-plus" "^1.0.0"
 
+"git-last-commit@^1.0.0":
+  "integrity" "sha512-wpnmsd2dW1MnoencljcWO/06VUealfMaY40ZjK5t3v9ljL+bKCMbNaTn/YzwIh4pDo2hk5QcN+pLzUJ8aWB17A=="
+  "resolved" "https://registry.npmjs.org/git-last-commit/-/git-last-commit-1.0.0.tgz"
+  "version" "1.0.0"
+
 "glob-parent@^3.1.0":
   "integrity" "sha1-nmr2KZ2NO9K9QEMIMr0RPfkGxa4="
   "resolved" "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz"
