@@ -151,8 +151,10 @@ module.exports = {
     const jsrasign = require('jsrsasign');
     const fs = require('fs');
 
-    let key = fs.readFileSync('/tmp/pk/angolaerp-selfsigned-priv.pem', 'utf-8');
-    if (!key) {
+    let key = "";
+    if (fs.existsSync('/tmp/pk/angolaerp-selfsigned-priv.pem', 'utf-8')) {
+      key = fs.readFileSync('/tmp/pk/angolaerp-selfsigned-priv.pem', 'utf-8');
+    } else if (fs.existsSync('c://temp//pk//angolaerp-selfsigned-priv.pem', 'utf-8')) {
       key = fs.readFileSync(
         'c://temp//pk//angolaerp-selfsigned-priv.pem',
         'utf-8'
