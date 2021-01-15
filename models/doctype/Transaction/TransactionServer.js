@@ -153,7 +153,10 @@ module.exports = {
 
     let key = fs.readFileSync('/tmp/pk/angolaerp-selfsigned-priv.pem', 'utf-8');
     if (!key) {
-      key = fs.readFileSync('c://temp//pk//angolaerp-selfsigned-priv.pem', 'utf-8');
+      key = fs.readFileSync(
+        'c://temp//pk//angolaerp-selfsigned-priv.pem',
+        'utf-8'
+      );
     }
     let sig = new jsrasign.KJUR.crypto.Signature({ alg: 'SHA1withRSA' });
     sig.init(key);
