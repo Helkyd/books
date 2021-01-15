@@ -25,7 +25,7 @@
     "git-last-commit": "^1.0.0",
     "jsrsasign": "^10.1.4",
     "jsrsasign-util": "^1.0.2",
-    "knex": "^0.20.4",
+    "knex": "^0.21.1",
     "lodash": "^4.17.15",
     "luxon": "^1.21.3",
     "portal-vue": "^2.1.6",
