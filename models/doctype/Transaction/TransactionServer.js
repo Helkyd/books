@@ -25,6 +25,20 @@ module.exports = {
     await entries.validateEntries();
     let ddd = await frappe.db.getAll({ doctype: 'SalesInvoice', filters: {} });
     console.log(ddd);
+    //replace - for / in Series
+    console.log(this.name);
+    console.log('Series replace');
+    console.log(
+      this.name
+        .substr(
+          this.name.search(new Date().toISOString().slice(0, 4)),
+          this.name.length
+        )
+        .search('-')
+    );
+    //if (this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length).search('-') != -1) {
+    //  this.name.replace(this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length),this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length).replace('-','/'));
+    //}
   },
 
   async afterSubmit() {
@@ -98,12 +112,46 @@ module.exports = {
     console.log(numeroserie[0].name);
     console.log('naming');
     this.docAgt = await naming.getSeriesNext(numeroserie[0].name);
+    console.log('naming ', this.docAgt);
+    console.log('Series replace');
+    console.log(
+      this.docAgt
+        .substr(
+          this.docAgt.search(new Date().toISOString().slice(0, 4)),
+          this.docAgt.length
+        )
+        .search('-')
+    );
+    if (
+      this.docAgt
+        .substr(
+          this.docAgt.search(new Date().toISOString().slice(0, 4)),
+          this.docAgt.length
+        )
+        .search('-') != -1
+    ) {
+      let novodocAGT = this.docAgt.replace(
+        this.docAgt.substr(
+          this.docAgt.search(new Date().toISOString().slice(0, 4)),
+          this.docAgt.length
+        ),
+        this.docAgt
+          .substr(
+            this.docAgt.search(new Date().toISOString().slice(0, 4)),
+            this.docAgt.length
+          )
+          .replace('-', '/')
+      );
+      console.log('aqui ', novodocAGT);
+      this.docAgt = novodocAGT;
+      console.log(this.docAgt);
+    }
 
     let ultimoHash = await frappe.db.sql(
       " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM SalesInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from SalesInvoice where hashAgt <>'') "
     );
     console.log('SalesInvoice');
-
+    console.log('ultimoHash');
     console.log(ultimoHash);
     if (ultimoHash.length > 0) {
       console.log(ultimoHash[0].creation);

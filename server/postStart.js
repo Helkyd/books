@@ -49,86 +49,86 @@ module.exports = async function postStart() {
     //await naming.createNumberSeries('FT.YY./.#', 'SalesInvoiceSettings');
     console.log('series ');
     console.log('ft ' + new Date().toISOString().slice(0, 4));
-    let fact = 'FT ' + new Date().toISOString().slice(0, 4) + String('/');
+    let fact = 'FT ' + new Date().toISOString().slice(0, 4) + String('-');
     console.log('fact ', fact);
     //console.log((await frappe.getSingle('AccountingSettings')).currency);
 
     await naming.createNumberSeries(fact, 'SalesInvoiceSettings', 0);
     await naming.createNumberSeries(
-      'INT-FT ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'INT-FT ' + new Date().toISOString().slice(0, 4) + String('-'),
       'SalesInvoiceSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'FF ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'FF ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PurchaseInvoiceSettings',
       0
     );
     await naming.createNumberSeries(
-      'INT-FF ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'INT-FF ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PurchaseInvoiceSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'RC ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'RC ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PaymentSettings',
       0
     );
     await naming.createNumberSeries(
-      'INT-RC ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'INT-RC ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PaymentSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'JV ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'JV ' + new Date().toISOString().slice(0, 4) + String('-'),
       'JournalEntrySettings',
       0
     );
 
     await naming.createNumberSeries(
-      'PP ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'PP ' + new Date().toISOString().slice(0, 4) + String('-'),
       'QuotationSettings',
       0
     );
     await naming.createNumberSeries(
-      'INT-PP ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'INT-PP ' + new Date().toISOString().slice(0, 4) + String('-'),
       'QuotationSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'OV ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'OV ' + new Date().toISOString().slice(0, 4) + String('-'),
       'SalesOrderSettings',
       0
     );
     await naming.createNumberSeries(
-      'INT-OV ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'INT-OV ' + new Date().toISOString().slice(0, 4) + String('-'),
       'SalesOrderSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'OF ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'OF ' + new Date().toISOString().slice(0, 4) + String('-'),
       'FulfillmentSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'OC ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'OC ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PurchaseOrderSettings',
       0
     );
     await naming.createNumberSeries(
-      'INT-OC ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'INT-OC ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PurchaseOrderSettings',
       0
     );
 
     await naming.createNumberSeries(
-      'REC ' + new Date().toISOString().slice(0, 4) + String('/'),
+      'REC ' + new Date().toISOString().slice(0, 4) + String('-'),
       'PurchaseReceiptSettings',
       0
     );
