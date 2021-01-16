@@ -28,11 +28,17 @@ module.exports = {
     //replace - for / in Series
     console.log(this.name);
     console.log('Series replace');
-    console.log(this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length).search('-'));
+    console.log(
+      this.name
+        .substr(
+          this.name.search(new Date().toISOString().slice(0, 4)),
+          this.name.length
+        )
+        .search('-')
+    );
     //if (this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length).search('-') != -1) {
     //  this.name.replace(this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length),this.name.substr(this.name.search(new Date().toISOString().slice(0, 4)),this.name.length).replace('-','/'));
     //}
-    
   },
 
   async afterSubmit() {
@@ -108,9 +114,34 @@ module.exports = {
     this.docAgt = await naming.getSeriesNext(numeroserie[0].name);
     console.log('naming ', this.docAgt);
     console.log('Series replace');
-    console.log(this.docAgt.substr(this.docAgt.search(new Date().toISOString().slice(0, 4)),this.docAgt.length).search('-'));
-    if (this.docAgt.substr(this.docAgt.search(new Date().toISOString().slice(0, 4)),this.docAgt.length).search('-') != -1) {
-      let novodocAGT = this.docAgt.replace(this.docAgt.substr(this.docAgt.search(new Date().toISOString().slice(0, 4)),this.docAgt.length),this.docAgt.substr(this.docAgt.search(new Date().toISOString().slice(0, 4)),this.docAgt.length).replace('-','/'));
+    console.log(
+      this.docAgt
+        .substr(
+          this.docAgt.search(new Date().toISOString().slice(0, 4)),
+          this.docAgt.length
+        )
+        .search('-')
+    );
+    if (
+      this.docAgt
+        .substr(
+          this.docAgt.search(new Date().toISOString().slice(0, 4)),
+          this.docAgt.length
+        )
+        .search('-') != -1
+    ) {
+      let novodocAGT = this.docAgt.replace(
+        this.docAgt.substr(
+          this.docAgt.search(new Date().toISOString().slice(0, 4)),
+          this.docAgt.length
+        ),
+        this.docAgt
+          .substr(
+            this.docAgt.search(new Date().toISOString().slice(0, 4)),
+            this.docAgt.length
+          )
+          .replace('-', '/')
+      );
       console.log('aqui ', novodocAGT);
       this.docAgt = novodocAGT;
       console.log(this.docAgt);
