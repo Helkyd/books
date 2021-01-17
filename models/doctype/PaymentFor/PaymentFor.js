@@ -4,11 +4,7 @@ module.exports = {
   isSingle: 0,
   isChild: 1,
   keywordFields: [],
-  tableFields: [
-    'referenceType',
-    'referenceName',
-    'amount'
-  ],
+  tableFields: ['referenceType', 'referenceName', 'amount'],
   fields: [
     {
       fieldname: 'referenceType',
@@ -24,7 +20,7 @@ module.exports = {
       references: 'referenceType',
       getFilters: () => {
         return {
-          outstandingAmount: ['>',0]
+          outstandingAmount: ['>', 0]
         };
       },
       required: 1
@@ -34,7 +30,11 @@ module.exports = {
       label: 'Amount',
       fieldtype: 'Currency',
       formula: (row, doc) => {
-        return doc.getFrom(row.referenceType, row.referenceName, 'outstandingAmount');
+        return doc.getFrom(
+          row.referenceType,
+          row.referenceName,
+          'outstandingAmount'
+        );
       },
       required: 1
     }

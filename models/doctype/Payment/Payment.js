@@ -110,7 +110,7 @@ module.exports = {
       default: 0
     },
     {
-      fieldname: 'payfor',   //Helkyds 29-11-2020 Renamed from for to payfor
+      fieldname: 'payfor', //Helkyds 29-11-2020 Renamed from for to payfor
       label: 'Payment For',
       fieldtype: 'Table',
       childtype: 'PaymentFor',

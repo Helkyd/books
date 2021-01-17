@@ -70,7 +70,7 @@ module.exports = {
       label: 'Account',
       fieldtype: 'Link',
       target: 'Account',
-      readOnly: 1,  //HELKYDS 30-11-2020
+      readOnly: 1, //HELKYDS 30-11-2020
       formula: doc => doc.getFrom('Party', doc.supplier, 'defaultAccount'),
       getFilters: () => {
         return {

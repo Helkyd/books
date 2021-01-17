@@ -148,12 +148,12 @@ module.exports = {
     }
 
     //Check if SalesInvoice or PurchaseInvoice
-    let ultimoHash = "";
-    if (this.doctype == "SalesInvoice") {
+    let ultimoHash = '';
+    if (this.doctype == 'SalesInvoice') {
       ultimoHash = await frappe.db.sql(
         " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM SalesInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from SalesInvoice where hashAgt <>'') "
       );
-    } else if (this.doctype == "PurchaseInvoice") {
+    } else if (this.doctype == 'PurchaseInvoice') {
       ultimoHash = await frappe.db.sql(
         " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM PurchaseInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from PurchaseInvoice where hashAgt <>'') "
       );

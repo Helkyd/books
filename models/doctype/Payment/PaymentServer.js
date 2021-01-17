@@ -15,7 +15,11 @@ module.exports = class PaymentServer extends BaseDocument {
       //Check account
       if (this.paymentMethod == 'Cash') {
         //Default account 4511
-        let ddd = await frappe.db.getAll({ doctype: 'Account', fields: ['*'], filters: { account_number: ['like', '4511%'] }});
+        let ddd = await frappe.db.getAll({
+          doctype: 'Account',
+          fields: ['*'],
+          filters: { account_number: ['like', '4511%'] }
+        });
         /*
         const salesInvoices = frappe.db.getAll({
           doctype: 'SalesInvoice',
