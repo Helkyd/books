@@ -22,6 +22,11 @@ module.exports = {
       label: 'Reference Name',
       fieldtype: 'DynamicLink',
       references: 'referenceType',
+      getFilters: () => {
+        return {
+          outstandingAmount: ['>',0]
+        };
+      },
       required: 1
     },
     {

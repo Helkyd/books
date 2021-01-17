@@ -35,6 +35,37 @@ module.exports = {
       required: 1
     },
     {
+      label: 'Doc AGT', //HELKyds 17-01-2021
+      fieldname: 'docAgt',
+      fieldtype: 'Data',
+      required: 0,
+      readOnly: 1
+    },
+    {
+      label: 'Hash AGT', //HELKyds 17-01-2021
+      fieldname: 'hashAgt',
+      fieldtype: 'Long Text',
+      required: 0,
+      readOnly: 1
+    },
+    {
+      label: 'Hash AGT Control', //HELKyds 17-01-2021
+      fieldname: 'hashAgtControl',
+      fieldtype: 'Data',
+      required: 0,
+      readOnly: 1
+    },
+    {
+      fieldname: 'postingdate', //HELKyds 17-01-2021 2020-12-02T00:04:29
+      label: 'Date',
+      fieldtype: 'Date',
+      required: 1,
+      readOnly: 1,
+      hidden: 0,
+      default: new Date().toISOString().slice(0, 19)
+    },
+
+    {
       fieldname: 'account',
       label: 'Account',
       fieldtype: 'Link',

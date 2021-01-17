@@ -106,7 +106,8 @@ module.exports = {
     {
       fieldname: 'writeoff',
       label: 'Write Off / Refund',
-      fieldtype: 'Currency'
+      fieldtype: 'Currency',
+      default: 0
     },
     {
       fieldname: 'payfor',   //Helkyds 29-11-2020 Renamed from for to payfor

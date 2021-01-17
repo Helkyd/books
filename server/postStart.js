@@ -140,6 +140,14 @@ module.exports = async function postStart() {
       })
     );
 
+    //List PAYments
+    console.log('PAYMENTS...');
+    console.log(
+      await frappe.db.getAll({
+        doctype: 'Payment'
+      })
+    );
+
     console.log(frappe.AccountingSettings);
     console.log(frappe.AccountingSettings.email);
     let usuariodefault = 'Administrador';

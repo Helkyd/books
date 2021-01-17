@@ -82,24 +82,24 @@ module.exports = {
     console.log(this.postingdate);
     //Depeding the Document created FT or FF or FP; gets the Series
     let seriedocumento = 'SINV-';
-    if (this.name.search('FT')) {
+    if (this.name.search('FT') != -1) {
       console.log('FT');
       seriedocumento = 'FT%';
-    } else if (this.name.search('FF')) {
+    } else if (this.name.search('FF') != -1) {
       seriedocumento = 'FF%';
-    } else if (this.name.search('RC')) {
+    } else if (this.name.search('RC') != -1) {
       seriedocumento = 'RC%';
-    } else if (this.name.search('JV')) {
+    } else if (this.name.search('JV') != -1) {
       seriedocumento = 'JV%';
-    } else if (this.name.search('PP')) {
+    } else if (this.name.search('PP') != -1) {
       seriedocumento = 'PP%';
-    } else if (this.name.search('OV')) {
+    } else if (this.name.search('OV') != -1) {
       seriedocumento = 'OV%';
-    } else if (this.name.search('OF')) {
+    } else if (this.name.search('OF') != -1) {
       seriedocumento = 'OF%';
-    } else if (this.name.search('OC')) {
+    } else if (this.name.search('OC') != -1) {
       seriedocumento = 'OC%';
-    } else if (this.name.search('REC')) {
+    } else if (this.name.search('REC') != -1) {
       seriedocumento = 'REC%';
     }
 
@@ -147,10 +147,18 @@ module.exports = {
       console.log(this.docAgt);
     }
 
-    let ultimoHash = await frappe.db.sql(
-      " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM SalesInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from SalesInvoice where hashAgt <>'') "
-    );
-    console.log('SalesInvoice');
+    //Check if SalesInvoice or PurchaseInvoice
+    let ultimoHash = "";
+    if (this.doctype == "SalesInvoice") {
+      ultimoHash = await frappe.db.sql(
+        " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM SalesInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from SalesInvoice where hashAgt <>'') "
+      );
+    } else if (this.doctype == "PurchaseInvoice") {
+      ultimoHash = await frappe.db.sql(
+        " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM PurchaseInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from PurchaseInvoice where hashAgt <>'') "
+      );
+    }
+    console.log('SalesInvoice/PurchaseInvoice ', this.doctype);
     console.log('ultimoHash');
     console.log(ultimoHash);
     if (ultimoHash.length > 0) {
@@ -199,6 +207,7 @@ module.exports = {
     const jsrasign = require('jsrsasign');
     const fs = require('fs');
 
+    //TODO:Still need to think where to keep this as a file...
     let key = '';
     if (fs.existsSync('/tmp/pk/angolaerp-selfsigned-priv.pem', 'utf-8')) {
       key = fs.readFileSync('/tmp/pk/angolaerp-selfsigned-priv.pem', 'utf-8');
