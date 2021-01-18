@@ -1,4 +1,8 @@
 const utils = require('../../../accounting/utils');
+const frappe = require('frappejs');
+
+const { getActions } = require('../Transaction/Transaction');
+const PaymentTemplate = require('./PaymentTemplate.vue').default;
 
 module.exports = {
   name: 'Payment',
@@ -7,6 +11,7 @@ module.exports = {
   isChild: 0,
   isSubmittable: 1,
   keywordFields: [],
+  printTemplate: PaymentTemplate,
   settings: 'PaymentSettings',
   fields: [
     {
@@ -14,13 +19,33 @@ module.exports = {
       label: 'Party',
       fieldtype: 'Link',
       target: 'Party',
-      required: 1
+      required: 1,
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'date',
       label: 'Posting Date',
       fieldtype: 'Date',
-      default: new Date().toISOString()
+      default: new Date().toISOString(),
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'account',
@@ -29,12 +54,23 @@ module.exports = {
       target: 'Account',
       required: 1,
       getFilters: (query, doc) => {
+        console.log('account');
         if (doc.paymentType === 'Pay') {
           if (doc.paymentMethod === 'Cash') {
             return { accountType: 'Cash', isGroup: 0 };
           } else {
             return { accountType: ['in', ['Bank', 'Cash']], isGroup: 0 };
           }
+        }
+      },
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
         }
       }
     },
@@ -43,7 +79,17 @@ module.exports = {
       label: 'Payment Type',
       fieldtype: 'Select',
       options: ['', 'Receive', 'Pay'],
-      required: 1
+      required: 1,
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'paymentAccount',
@@ -61,9 +107,26 @@ module.exports = {
           }
         }
       },
-      formula: doc => {
+      formula: async doc => {
         if (doc.paymentMethod === 'Cash') {
-          return 'Cash';
+          let conta = await frappe.db.getAll({
+            doctype: 'Account',
+            fields: ['name'],
+            filters: { account_number: ['like', '45110000%'] }
+          });
+          console.log(conta);
+          console.log(conta[0].name);
+          return conta[0].name;
+        }
+      },
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
         }
       }
     },
@@ -73,20 +136,50 @@ module.exports = {
       placeholder: 'Payment Method',
       fieldtype: 'Select',
       options: ['', 'Cash', 'Cheque', 'Transfer'],
-      required: 1
+      required: 1,
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'referenceId',
       label: 'Ref. / Cheque No.',
       placeholder: 'Ref. / Cheque No.',
       fieldtype: 'Data',
-      required: 1 // TODO: UNIQUE
+      required: 1, // TODO: UNIQUE
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'referenceDate',
       label: 'Ref. Date',
       placeholder: 'Ref. Date',
-      fieldtype: 'Date'
+      fieldtype: 'Date',
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'clearanceDate',
@@ -95,25 +188,66 @@ module.exports = {
       fieldtype: 'Date',
       hidden: doc => {
         return doc.paymentMethod === 'Cash' ? 1 : 0;
+      },
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
       }
     },
     {
       fieldname: 'amount',
       label: 'Amount',
       fieldtype: 'Currency',
-      required: 1 //Helkyds 29-11-2020 Removed Defaults causing error
+      required: 1, //Helkyds 29-11-2020 Removed Defaults causing error
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
       fieldname: 'writeoff',
       label: 'Write Off / Refund',
-      fieldtype: 'Currency'
+      fieldtype: 'Currency',
+      default: 0,
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     },
     {
-      fieldname: 'payfor',   //Helkyds 29-11-2020 Renamed from for to payfor
+      fieldname: 'payfor', //Helkyds 29-11-2020 Renamed from for to payfor
       label: 'Payment For',
       fieldtype: 'Table',
       childtype: 'PaymentFor',
-      required: 1
+      required: 1,
+      readOnly: async doc => {
+        if (
+          doc.submitted === 1 &&
+          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      }
     }
   ],
 
@@ -182,5 +316,6 @@ module.exports = {
     }
   ],
 
-  links: [utils.ledgerLink]
+  links: [utils.ledgerLink],
+  actions: getActions('Payment')
 };

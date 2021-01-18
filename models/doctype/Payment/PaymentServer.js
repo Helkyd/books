@@ -10,6 +10,25 @@ module.exports = class PaymentServer extends BaseDocument {
       for (let paymentReference of this.payfor) {
         this.amount += paymentReference.amount;
       }
+      console.log(this.account);
+      console.log(this.paymentAccount);
+      //Check account
+      if (this.paymentMethod == 'Cash') {
+        //Default account 4511
+        let ddd = await frappe.db.getAll({
+          doctype: 'Account',
+          fields: ['*'],
+          filters: { account_number: ['like', '4511%'] }
+        });
+        /*
+        const salesInvoices = frappe.db.getAll({
+          doctype: 'SalesInvoice',
+          filters,
+          fields: ['*']
+        });
+        */
+        console.log('Conta ', ddd);
+      }
     }
   }
 
