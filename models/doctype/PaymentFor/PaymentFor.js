@@ -20,7 +20,8 @@ module.exports = {
       references: 'referenceType',
       getFilters: () => {
         return {
-          outstandingAmount: ['>', 0]
+          outstandingAmount: ['>', 0],
+          submitted: ['!=',2]
         };
       },
       required: 1

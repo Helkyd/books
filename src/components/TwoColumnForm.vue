@@ -9,6 +9,7 @@
         :df="df"
         :value="doc[df.fieldname]"
         @change="value => onChange(df, value)"
+        :read-only="doc.submitted"
       />
       <template v-else>
         <template v-if="inlineEditField === df && inlineEditDoc">
@@ -74,6 +75,7 @@
               @change="value => onChange(df, value)"
               @focus="activateInlineEditing(df)"
               @new-doc="newdoc => onChange(df, newdoc.name)"
+              :read-only="doc.submitted"
             />
             <div
               class="text-sm text-red-600 mt-2 pl-2"

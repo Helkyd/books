@@ -167,6 +167,8 @@ export function openQuickEdit({ doctype, name, hideFields, defaults = {} }) {
   let currentRoute = router.currentRoute;
   let query = currentRoute.query;
   let method = 'push';
+  console.log('openquicedit - query');
+  console.log(query);
   if (query.edit && query.doctype === doctype) {
     // replace the current route if we are
     // editing another document of the same doctype

@@ -5,6 +5,15 @@
         <Button :icon="true" @click="routeToPrevious">
           <feather-icon name="x" class="w-4 h-4" />
         </Button>
+        <Button
+          v-if="doc.submitted"
+          class="text-gray-900 text-xs ml-2"
+          :icon="true"
+          @click="$router.push(`/print/${doc.doctype}/${doc.name}`)"
+        >
+          Print
+        </Button>
+        
         <span v-if="statusText" class="ml-2 text-base text-gray-600">{{
           statusText
         }}</span>
@@ -44,6 +53,7 @@
           :df="imageField"
           :value="doc[imageField.fieldname]"
           @change="value => valueChange(imageField, value)"
+          :read-only="doc.submitted"
           size="small"
           class="mb-1"
           :letter-placeholder="
@@ -58,6 +68,7 @@
           :df="titleField"
           :value="doc[titleField.fieldname]"
           @change="value => valueChange(titleField, value)"
+          :read-only="doc.submitted"
           @input="setTitleSize"
         />
       </div>
@@ -69,6 +80,7 @@
       :fields="fields"
       :autosave="true"
       :column-ratio="[1.1, 2]"
+      :read-only="doc.submitted"
     />
     <component v-if="doc && quickEditWidget" :is="quickEditWidget" />
   </div>
@@ -129,6 +141,7 @@ export default {
       if (!this.meta.quickEditWidget) {
         return null;
       }
+      console.log('quickediwdget');
       return this.meta.quickEditWidget(this.doc);
     }
   },
@@ -161,7 +174,7 @@ export default {
     async fetchDoc() {
       try {
         this.doc = await frappe.getDoc(this.doctype, this.name);
-
+        console.log('fetchdoc');
         this.doc.once('afterRename', () => {
           openQuickEdit({
             doctype: this.doctype,

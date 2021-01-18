@@ -65,6 +65,7 @@ const routes = [
     },
     props: {
       default: route => {
+        console.log('router - list doctype');
         const { doctype, filters } = route.params;
         return {
           doctype,
