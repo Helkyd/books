@@ -21,7 +21,7 @@ module.exports = {
       getFilters: () => {
         return {
           outstandingAmount: ['>', 0],
-          submitted: ['!=',2]
+          submitted: ['!=', 2]
         };
       },
       required: 1

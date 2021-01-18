@@ -70,7 +70,7 @@ module.exports = class PaymentServer extends BaseDocument {
         let party = await frappe.getDoc('Party', this.party);
         await party.updateOutstandingAmount();
         //docAGT
-            
+
         let seriedocumento = 'RC-';
         if (this.name.search('RC') != -1) {
           seriedocumento = 'RC%';
@@ -119,8 +119,8 @@ module.exports = class PaymentServer extends BaseDocument {
           this.docAgt = novodocAGT;
           console.log(this.docAgt);
         }
-          }
-        }
+      }
+    }
   }
 
   async afterSubmit() {
