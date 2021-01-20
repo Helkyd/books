@@ -14,12 +14,20 @@ export default {
       render(doc) {
         let status = 'Draft';
         let color = 'gray';
+        if (!doc.submitted) {
+          status = 'Draft';
+          color = 'gray';
+        }
+
         if (
           doc.submitted === 1 &&
           (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
         ) {
           color = 'green';
           status = 'Submitted';
+        } else if (doc.submitted === 2) {
+          color = 'red';
+          status = 'Canceled';
         }
 
         return {

@@ -6,7 +6,7 @@
           <feather-icon name="x" class="w-4 h-4" />
         </Button>
         <Button
-          v-if="doc.submitted"
+          v-if="meta && meta.isSubmittable && doc && doc.submitted != 0"
           class="text-gray-900 text-xs ml-2"
           :icon="true"
           @click="$router.push(`/print/${doc.doctype}/${doc.name}`)"
@@ -175,6 +175,7 @@ export default {
       try {
         this.doc = await frappe.getDoc(this.doctype, this.name);
         console.log('fetchdoc');
+        console.log(this.doc.doctype);
         this.doc.once('afterRename', () => {
           openQuickEdit({
             doctype: this.doctype,

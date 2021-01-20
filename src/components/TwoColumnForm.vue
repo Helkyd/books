@@ -140,7 +140,8 @@ let TwoColumnForm = {
         return;
       }
       let oldValue = this.doc.get(df.fieldname);
-
+      console.log('oldvalue', oldValue);
+      console.log('value ', value);
       if (oldValue === value) {
         return;
       }

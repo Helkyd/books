@@ -42,6 +42,14 @@ module.exports = class PaymentServer extends BaseDocument {
     return entries;
   }
 
+  async validate() {
+    console.log('Antes de salvar');
+    console.log(this.submitted);
+    if (this.submitted === null) {
+      this.submitted = 0;
+    }
+  }
+
   async beforeSubmit() {
     if (!this.payfor.length) {
       throw new Error(`No reference for the payment.`);
@@ -59,6 +67,9 @@ module.exports = class PaymentServer extends BaseDocument {
         outstandingAmount = baseGrandTotal;
       }
       if (this.amount <= 0 || this.amount > outstandingAmount) {
+        //Disable Print button
+        this.submitted = 0;
+        //$0.getElementsByClassName('focus:outline-none rounded-md shadow-button flex-center text-gray-900 text-xs ml-2')[0].style['display'] = 'none'
         throw new Error(
           `Payment amount (${this.amount}) should be greater than 0 and less than Outstanding amount (${outstandingAmount})`
         );
