@@ -15,37 +15,25 @@ module.exports = {
   settings: 'PaymentSettings',
   fields: [
     {
+      label: 'Doc AGT', //HELKyds 18-01-2021
+      fieldname: 'docAgt',
+      fieldtype: 'Data',
+      required: 0,
+      readOnly: 1
+    },
+
+    {
       fieldname: 'party',
       label: 'Party',
       fieldtype: 'Link',
       target: 'Party',
-      required: 1,
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      required: 1
     },
     {
       fieldname: 'date',
       label: 'Posting Date',
       fieldtype: 'Date',
-      default: new Date().toISOString(),
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      default: new Date().toISOString()
     },
     {
       fieldname: 'account',
@@ -62,16 +50,6 @@ module.exports = {
             return { accountType: ['in', ['Bank', 'Cash']], isGroup: 0 };
           }
         }
-      },
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
       }
     },
     {
@@ -79,17 +57,7 @@ module.exports = {
       label: 'Payment Type',
       fieldtype: 'Select',
       options: ['', 'Receive', 'Pay'],
-      required: 1,
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      required: 1
     },
     {
       fieldname: 'paymentAccount',
@@ -118,16 +86,6 @@ module.exports = {
           console.log(conta[0].name);
           return conta[0].name;
         }
-      },
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
       }
     },
     {
@@ -136,50 +94,20 @@ module.exports = {
       placeholder: 'Payment Method',
       fieldtype: 'Select',
       options: ['', 'Cash', 'Cheque', 'Transfer'],
-      required: 1,
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      required: 1
     },
     {
       fieldname: 'referenceId',
       label: 'Ref. / Cheque No.',
       placeholder: 'Ref. / Cheque No.',
       fieldtype: 'Data',
-      required: 1, // TODO: UNIQUE
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      required: 1 // TODO: UNIQUE
     },
     {
       fieldname: 'referenceDate',
       label: 'Ref. Date',
       placeholder: 'Ref. Date',
-      fieldtype: 'Date',
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      fieldtype: 'Date'
     },
     {
       fieldname: 'clearanceDate',
@@ -188,66 +116,26 @@ module.exports = {
       fieldtype: 'Date',
       hidden: doc => {
         return doc.paymentMethod === 'Cash' ? 1 : 0;
-      },
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
       }
     },
     {
       fieldname: 'amount',
       label: 'Amount',
       fieldtype: 'Currency',
-      required: 1, //Helkyds 29-11-2020 Removed Defaults causing error
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      required: 1 //Helkyds 29-11-2020 Removed Defaults causing error
     },
     {
       fieldname: 'writeoff',
       label: 'Write Off / Refund',
       fieldtype: 'Currency',
-      default: 0,
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      default: 0
     },
     {
       fieldname: 'payfor', //Helkyds 29-11-2020 Renamed from for to payfor
       label: 'Payment For',
       fieldtype: 'Table',
       childtype: 'PaymentFor',
-      required: 1,
-      readOnly: async doc => {
-        if (
-          doc.submitted === 1 &&
-          (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
-        ) {
-          return 1;
-        } else {
-          return 0;
-        }
-      }
+      required: 1
     }
   ],
 

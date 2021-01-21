@@ -47,15 +47,17 @@ module.exports = {
     await entries.post();
 
     // update outstanding amounts
-    await frappe.db.setValue(
-      this.doctype,
-      this.name,
-      'outstandingAmount',
-      this.baseGrandTotal
-    );
+    if (this.doctype != 'Quotation') {
+      await frappe.db.setValue(
+        this.doctype,
+        this.name,
+        'outstandingAmount',
+        this.baseGrandTotal
+      );
 
-    let party = await frappe.getDoc('Party', this.customer || this.supplier);
-    await party.updateOutstandingAmount();
+      let party = await frappe.getDoc('Party', this.customer || this.supplier);
+      await party.updateOutstandingAmount();
+    }
   },
 
   async afterRevert() {
@@ -157,7 +159,12 @@ module.exports = {
       ultimoHash = await frappe.db.sql(
         " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM PurchaseInvoice WHERE submitted = 1 and creation = (SELECT max(creation) from PurchaseInvoice where hashAgt <>'') "
       );
+    } else if (this.doctype == 'Quotation') {
+      ultimoHash = await frappe.db.sql(
+        " SELECT name, creation, docAgt, submitted, postingdate, hashAgt FROM Quotation WHERE submitted = 1 and creation = (SELECT max(creation) from Quotation where hashAgt <>'') "
+      );
     }
+
     console.log('SalesInvoice/PurchaseInvoice ', this.doctype);
     console.log('ultimoHash');
     console.log(ultimoHash);

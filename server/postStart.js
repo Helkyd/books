@@ -11,6 +11,9 @@ module.exports = async function postStart() {
   frappe.models.JournalEntry.documentClass = require('../models/doctype/JournalEntry/JournalEntryServer.js');
   frappe.models.GSTR3B.documentClass = require('../models/doctype/GSTR3B/GSTR3BServer.js');
 
+  //HELKYds 21-01-2021
+  frappe.models.Quotation.documentClass = require('../models/doctype/Quotation/QuotationServer.js');
+
   frappe.metaCache = {};
 
   // init naming series if missing

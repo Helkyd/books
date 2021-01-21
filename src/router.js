@@ -13,6 +13,7 @@ import GetStarted from '@/pages/GetStarted';
 import ChartOfAccounts from '@/pages/ChartOfAccounts';
 import InvoiceForm from '@/pages/InvoiceForm';
 import JournalEntryForm from '@/pages/JournalEntryForm';
+//import QuotationForm from '@/pages/QuotationForm'; //HELKYDs 21-01-2021
 
 Vue.use(Router);
 
@@ -44,6 +45,27 @@ const routes = [
       edit: route => route.query
     }
   },
+  /*
+  {
+    path: '/edit/:Quotation/:name',
+    name: 'QuotationForm',
+    components: {
+      default: QuotationForm,
+      edit: QuickEditForm
+    },
+    props: {
+      default: route => {
+        // for sidebar item active state
+        route.params.doctype = 'Quotation';
+        return {
+          doctype: 'Quotation',
+          name: route.params.name
+        };
+      },
+      edit: route => route.query
+    }
+  },
+  */
   {
     path: '/edit/:doctype/:name',
     name: 'InvoiceForm',
@@ -65,6 +87,7 @@ const routes = [
     },
     props: {
       default: route => {
+        console.log('router - list doctype');
         const { doctype, filters } = route.params;
         return {
           doctype,

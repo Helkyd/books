@@ -28,6 +28,12 @@ const config = {
       },
       items: [
         {
+          label: _('Quotations'),
+          route: '/list/Quotation',
+          doctype: 'Quotation'
+        },
+
+        {
           label: _('Invoices'),
           route: '/list/SalesInvoice',
           doctype: 'SalesInvoice'

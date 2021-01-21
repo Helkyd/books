@@ -15,7 +15,7 @@ export default {
       let type = this.printSettings.template;
       let templates = {
         Basic
-        //Minimal,
+        //Minimal.
         //Business
       };
       if (!(type in templates)) {

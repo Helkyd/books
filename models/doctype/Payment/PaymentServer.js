@@ -1,6 +1,7 @@
 const BaseDocument = require('frappejs/model/document');
 const frappe = require('frappejs');
 const LedgerPosting = require('../../../accounting/ledgerPosting');
+const naming = require('frappejs/model/naming');
 
 //HELKYds 30-11-2020; Changed For to payfor
 module.exports = class PaymentServer extends BaseDocument {
@@ -41,6 +42,14 @@ module.exports = class PaymentServer extends BaseDocument {
     return entries;
   }
 
+  async validate() {
+    console.log('Antes de salvar');
+    console.log(this.submitted);
+    if (this.submitted === null) {
+      this.submitted = 0;
+    }
+  }
+
   async beforeSubmit() {
     if (!this.payfor.length) {
       throw new Error(`No reference for the payment.`);
@@ -58,6 +67,9 @@ module.exports = class PaymentServer extends BaseDocument {
         outstandingAmount = baseGrandTotal;
       }
       if (this.amount <= 0 || this.amount > outstandingAmount) {
+        //Disable Print button
+        this.submitted = 0;
+        //$0.getElementsByClassName('focus:outline-none rounded-md shadow-button flex-center text-gray-900 text-xs ml-2')[0].style['display'] = 'none'
         throw new Error(
           `Payment amount (${this.amount}) should be greater than 0 and less than Outstanding amount (${outstandingAmount})`
         );
@@ -68,6 +80,56 @@ module.exports = class PaymentServer extends BaseDocument {
         await referenceDoc.update();
         let party = await frappe.getDoc('Party', this.party);
         await party.updateOutstandingAmount();
+        //docAGT
+
+        let seriedocumento = 'RC-';
+        if (this.name.search('RC') != -1) {
+          seriedocumento = 'RC%';
+        }
+
+        let numeroserie = await frappe.db.getAll({
+          doctype: 'NumberSeries',
+          fields: ['name', 'current'],
+          filters: { name: ['like', seriedocumento] }
+        });
+        console.log(numeroserie);
+        console.log(numeroserie[0].name);
+        console.log('naming');
+        this.docAgt = await naming.getSeriesNext(numeroserie[0].name);
+        console.log('naming ', this.docAgt);
+        console.log('Series replace');
+        console.log(
+          this.docAgt
+            .substr(
+              this.docAgt.search(new Date().toISOString().slice(0, 4)),
+              this.docAgt.length
+            )
+            .search('-')
+        );
+        if (
+          this.docAgt
+            .substr(
+              this.docAgt.search(new Date().toISOString().slice(0, 4)),
+              this.docAgt.length
+            )
+            .search('-') != -1
+        ) {
+          let novodocAGT = this.docAgt.replace(
+            this.docAgt.substr(
+              this.docAgt.search(new Date().toISOString().slice(0, 4)),
+              this.docAgt.length
+            ),
+            this.docAgt
+              .substr(
+                this.docAgt.search(new Date().toISOString().slice(0, 4)),
+                this.docAgt.length
+              )
+              .replace('-', '/')
+          );
+          console.log('aqui ', novodocAGT);
+          this.docAgt = novodocAGT;
+          console.log(this.docAgt);
+        }
       }
     }
   }

@@ -46,24 +46,15 @@
             </div>
           </div>
           <div class="w-1/3">
-            <div class="py-1 text-right text-lg font-semibold">
-              {{ doc[partyField.fieldname] }}
+            <div class="py-1 text-right text-2xl font-semibold">
+              {{ doc.party }}
             </div>
-            <div v-if="partyDoc" class="mt-1 text-xs text-gray-600 text-right">
-              {{ partyDoc.addressDisplay }}
+            <div class="mt-1 text-base text-1xl text-right">
+              {{ _('Mode of Payment') }}: {{ doc.paymentMethod }}
             </div>
-            <div
-              v-if="partyDoc && partyDoc.nif"
-              class="mt-1 text-xs font-semibold text-right"
-            >
-              NIF:{{ partyDoc.nif }}
-            </div>
-            <div v-else>Consumidor Final</div>
-            <div
-              v-if="partyDoc && partyDoc.gstin"
-              class="mt-1 text-xs text-gray-600 text-right"
-            >
-              GSTIN: {{ partyDoc.gstin }}
+            <div class="py-2 text-base text-right text-green-600 font-semibold">
+              {{ _('Paid Amount') }}:
+              {{ frappe.format(doc.amount, 'Currency') }}
             </div>
           </div>
         </div>
@@ -80,8 +71,11 @@
               :key="df.fieldname"
               :class="textAlign(df)"
             >
-              <div v-if="df.label == 'Tax'" class="text-right">
-                {{ df.label }}
+              <div v-if="df.label == 'PurchaseInvoice'" class="text-right">
+                {{ _('Purchase Invoice') }}
+              </div>
+              <div v-else-if="df.label == 'SalesInvoice'">
+                {{ _('Sales Invoice') }}
               </div>
               <div v-else>{{ df.label }}</div>
             </div>
@@ -120,6 +114,24 @@
                 </div>
                 <div v-else>0%</div>
               </div>
+
+              <div
+                v-else-if="
+                  row[df.fieldname] && row[df.fieldname] == 'PurchaseInvoice'
+                "
+              >
+                {{ _('Purchase Invoice') }}
+              </div>
+              <div
+                v-else-if="
+                  row[df.fieldname] && row[df.fieldname] == 'SalesInvoice'
+                "
+              >
+                {{ _('Sales Invoice') }}
+              </div>
+              <div v-else-if="df.fieldname == 'referenceName'">
+                {{ numerodocAgt }}
+              </div>
               <div v-else>{{ frappe.format(row[df.fieldname], df) }}</div>
               <!--
               <div class="w-3/12 text-right" v-if="row.tax && row.tax.includes('IVA')">{{ row.tax.replace('IVA-','') }}%</div>
@@ -132,25 +144,24 @@
         </div>
       </div>
     </div>
-    <div class="px-6 mt-2 flex justify-end text-base">
-      <div class="w-64">
-        <div class="flex pl-2 justify-between py-3 border-b">
-          <div>{{ _('Total Iliquido') }}</div>
-          <div>{{ frappe.format(doc.amount, 'Currency') }}</div>
+    <div class="mt-8 px-6">
+      <div class="flex justify-between">
+        <div class="w-1/3">
+          <div class="py-2 text-base">
+            <b>{{ _('Reference ID') }}:</b> {{ doc.referenceId }}
+          </div>
         </div>
-
-        <div class="flex pl-2 justify-between py-3 border-b">
-          <div>{{ _('Subtotal') }}</div>
-          <div>{{ frappe.format(doc.amount, 'Currency') }}</div>
-        </div>
-        <div
-          class="flex pl-2 justify-between py-3 border-t text-green-600 font-semibold text-base"
-        >
-          <div>{{ _('Grand Total') }}</div>
-          <div>{{ frappe.format(doc.amount, 'Currency') }}</div>
+        <div class="w-1/3">
+          <div
+            v-if="doc.clearenceDate"
+            class="mt-1 text-base text-1xl text-right"
+          >
+            <b>{{ _('Clearence Date') }}:</b> {{ doc.clearenceDate }}
+          </div>
         </div>
       </div>
     </div>
+
     <div
       v-if="doc.submitted === 2"
       class="py-1 text-center text-lg font-semibold"
@@ -181,7 +192,8 @@ export default {
   },
   data() {
     return {
-      accountingSettings: null
+      accountingSettings: null,
+      numerodocAgt: null
     };
   },
   computed: {
@@ -192,33 +204,32 @@ export default {
       return this.printSettings && this.printSettings.getLink('address');
     },
     partyDoc() {
-      return this.doc.getLink(this.partyField.fieldname);
+      console.log('partydoc');
+      console.log(this.doc.getLink(this.doc.party));
+      return this.doc.getLink(this.doc.party);
     },
     partyField() {
       let fieldname = {
         SalesInvoice: 'customer',
         PurchaseInvoice: 'supplier'
-      }[this.doc.doctype];
+      }[this.doc.payfor[0].referenceType];
+      console.log('Partyfield');
+      console.log(fieldname);
+      console.log(this.doc.doctype);
+      console.log(this.doc.payfor[0].referenceType);
+
       return this.meta.getField(fieldname);
     },
     itemFields() {
-      let itemsMeta = frappe.getMeta(`${this.doc.doctype}PaymentFor`);
+      let itemsMeta = frappe.getMeta(`PaymentFor`);
       console.log(
-        [
-          'parent',
-          'parenttype',
-          'referenceType',
-          'referenceName',
-          'amount'
-        ].map(fieldname => itemsMeta.getField(fieldname))
+        ['referenceType', 'referenceName', 'amount'].map(fieldname =>
+          itemsMeta.getField(fieldname)
+        )
       );
-      return [
-        'parent',
-        'parenttype',
-        'referenceType',
-        'referenceName',
-        'amount'
-      ].map(fieldname => itemsMeta.getField(fieldname));
+      return ['referenceType', 'referenceName', 'amount'].map(fieldname =>
+        itemsMeta.getField(fieldname)
+      );
     },
     ratio() {
       return [0.3].concat(this.itemFields.map(() => 1));
@@ -235,6 +246,26 @@ export default {
     }
   },
   async mounted() {
+    console.log('mounted');
+    console.log(this.doc);
+    console.log(this.doc.payfor[0].referenceType);
+    console.log(this.doc.payfor[0].referenceName);
+    if (this.doc.payfor[0].referenceType == 'PurchaseInvoice') {
+      this.numerodocAgt = await frappe.db.getValue(
+        'PurchaseInvoice',
+        this.doc.payfor[0].referenceName,
+        'docAgt'
+      );
+    } else if (this.doc.payfor[0].referenceType == 'SalesInvoice') {
+      this.numerodocAgt = await frappe.db.getValue(
+        'SalesInvoice',
+        this.doc.payfor[0].referenceName,
+        'docAgt'
+      );
+    }
+    console.log('numerodocagt');
+    console.log(this.numerodocAgt);
+
     this.accountingSettings = await frappe.getSingle('AccountingSettings');
     await this.doc.loadLink(this.partyField.fieldname);
   }

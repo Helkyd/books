@@ -223,7 +223,8 @@ export default {
     partyField() {
       let fieldname = {
         SalesInvoice: 'customer',
-        PurchaseInvoice: 'supplier'
+        PurchaseInvoice: 'supplier',
+        Quotation: 'customer'
       }[this.doc.doctype];
       return this.meta.getField(fieldname);
     },
