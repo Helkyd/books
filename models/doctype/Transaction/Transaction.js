@@ -17,7 +17,10 @@ module.exports = {
           status = 'Draft';
           color = 'gray';
         }
-        if (doc.submitted === 1 && doc.outstandingAmount === 0.0) {
+        if (doc.submitted === 1 && doc.name.includes('INT-PP')) {
+          status = 'Ordered';
+          color = 'green';
+        } else if (doc.submitted === 1 && doc.outstandingAmount === 0.0) {
           status = 'Paid';
           color = 'green';
         }
@@ -37,13 +40,17 @@ module.exports = {
     return [
       {
         label: 'Make Payment',
-        condition: doc => doc.submitted < 2 && doc.outstandingAmount > 0, //HELKYds 06-12-2020
+        condition: doc =>
+          doc.submitted < 2 &&
+          doc.outstandingAmount > 0 &&
+          doc.doctype != 'Quotation', //HELKYds 06-12-2020
         action: async function makePayment(doc) {
           let payment = await frappe.getNewDoc('Payment');
           payment.once('afterInsert', async () => {
             await payment.submit();
           });
           let isSales = doctype === 'SalesInvoice';
+          //let isSales = doctype ? 'Quotation' : 'SalesInvoice';
           let party = isSales ? doc.customer : doc.supplier;
           let paymentType = isSales ? 'Receive' : 'Pay';
           let hideAccountField = isSales ? 'account' : 'paymentAccount';
@@ -186,6 +193,7 @@ module.exports = {
             doc.submitted = 2;
             doc.update();
           } else {
+            //Quotations
             doc.submitted = 2;
             doc.update();
           }

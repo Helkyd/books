@@ -10,8 +10,10 @@ import JournalEntry from '../../../models/doctype/JournalEntry/JournalEntryList'
 import AccountingLedgerEntry from '../../../models/doctype/AccountingLedgerEntry/AccountingLedgerEntryList';
 import Account from '../../../models/doctype/Account/AccountList';
 import GSTR3B from '../../../models/doctype/GSTR3B/GSTR3BList';
+import Quotation from '../../../models/doctype/Quotation/QuotationList'; //HELKYds 21-01-21
 
 export default {
+  Quotation,
   SalesInvoice,
   PurchaseInvoice,
   Customer,
