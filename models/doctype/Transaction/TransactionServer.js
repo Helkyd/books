@@ -48,7 +48,7 @@ module.exports = {
       await entries.post();
 
       // update outstanding amounts
-    
+
       await frappe.db.setValue(
         this.doctype,
         this.name,
