@@ -43,11 +43,12 @@ module.exports = {
 
   async afterSubmit() {
     // post ledger entries
-    const entries = await this.getPosting();
-    await entries.post();
-
-    // update outstanding amounts
     if (this.doctype != 'Quotation') {
+      const entries = await this.getPosting();
+      await entries.post();
+
+      // update outstanding amounts
+    
       await frappe.db.setValue(
         this.doctype,
         this.name,
