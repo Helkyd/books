@@ -80,6 +80,17 @@ module.exports = {
       default: 'Regime de nao Sujeicao',
       required: 1
     },
+    {
+      fieldname: 'language',  //HELKYDS 26-03-2021
+      label: 'System Language',
+      fieldtype: 'Select',
+      options: [
+        'EN',
+        'PT-PT'
+      ],
+      default: 'EN',
+      required: 1
+    },
 
     {
       fieldname: 'fiscalYearStart',
@@ -140,6 +151,7 @@ module.exports = {
     'country',
     'nifEmpresa',
     'regimeIva',
+    'language',
     'currency',
     'fiscalYearStart',
     'fiscalYearEnd'

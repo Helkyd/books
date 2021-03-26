@@ -27,10 +27,23 @@ module.exports = {
       options: [
         'Regime Geral',
         'Regime Transitorio',
+        'Regime Simplificado',
         'Regime de Caixa',
-        'Regime de nao Sujeicao'
+        'Regime de nao Sujeicao',
+        'Regime de Exclusao'
       ],
-      default: 'Regime de nao Sujeicao',
+      default: 'Regime de Exclusao',
+      required: 1
+    },
+    {
+      fieldname: 'language',  //HELKYds 26-03-2021
+      label: 'System Language',
+      fieldtype: 'Select',
+      options: [
+        'EN',
+        'PT-PT'
+      ],
+      default: 'EN',
       required: 1
     },
 
@@ -121,6 +134,7 @@ module.exports = {
     'email',
     'nifEmpresa',
     'regimeIva',
+    'language',
     'phone',
     'address',
     'gstin'

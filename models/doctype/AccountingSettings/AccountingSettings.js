@@ -98,10 +98,23 @@ module.exports = {
       options: [
         'Regime Geral',
         'Regime Transitorio',
+        'Regime Simplificado',
         'Regime de Caixa',
-        'Regime de nao Sujeicao'
+        'Regime de nao Sujeicao',
+        'Regime de Exclusao'
       ],
-      default: 'Regime de nao Sujeicao',
+      default: 'Regime de Exclusao',
+      required: 1
+    },
+    {
+      fieldname: 'language',
+      label: 'System Language',
+      fieldtype: 'Select',
+      options: [
+        'EN',
+        'PT-PT'
+      ],
+      default: 'EN',
       required: 1
     },
 
@@ -138,6 +151,7 @@ module.exports = {
     'email',
     'nifEmpresa',
     'regimeIva',
+    'language',
     'companyName',
     'country',
     'currency',
