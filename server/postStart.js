@@ -11,6 +11,9 @@ module.exports = async function postStart() {
   frappe.models.JournalEntry.documentClass = require('../models/doctype/JournalEntry/JournalEntryServer.js');
   frappe.models.GSTR3B.documentClass = require('../models/doctype/GSTR3B/GSTR3BServer.js');
 
+  //HELKYds 21-01-2021
+  frappe.models.Quotation.documentClass = require('../models/doctype/Quotation/QuotationServer.js');
+
   frappe.metaCache = {};
 
   // init naming series if missing
@@ -34,6 +37,145 @@ module.exports = async function postStart() {
   frappe.currencySymbols = await getCurrencySymbols();
 
   registerServerMethods();
+  //HELKYDs 29-11-2020; check if KZ currency and set AccountingSettigs WriteOff accounts
+  if (frappe.AccountingSettings.currency === 'KZ') {
+    console.log('roundoff ', frappe.AccountingSettings.roundOffAccount);
+    if (frappe.AccountingSettings.roundOffAccount === 'Rounded Off') {
+      frappe.AccountingSettings.roundOffAccount =
+        '75890000 - Outras Despesas e Encargos';
+      frappe.AccountingSettings.writeOffAccount =
+        '75890000 - Outras Despesas e Encargos';
+
+      frappe.AccountingSettings.update();
+    }
+    // init naming series if missing
+    //await naming.createNumberSeries('FT.YY./.#', 'SalesInvoiceSettings');
+    console.log('series ');
+    console.log('ft ' + new Date().toISOString().slice(0, 4));
+    let fact = 'FT ' + new Date().toISOString().slice(0, 4) + String('-');
+    console.log('fact ', fact);
+    //console.log((await frappe.getSingle('AccountingSettings')).currency);
+
+    await naming.createNumberSeries(fact, 'SalesInvoiceSettings', 0);
+    await naming.createNumberSeries(
+      'INT-FT ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'SalesInvoiceSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'FF ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PurchaseInvoiceSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-FF ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PurchaseInvoiceSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'RC ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PaymentSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-RC ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PaymentSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'JV ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'JournalEntrySettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'PP ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'QuotationSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-PP ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'QuotationSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'OV ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'SalesOrderSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-OV ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'SalesOrderSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'OF ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'FulfillmentSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'OC ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PurchaseOrderSettings',
+      0
+    );
+    await naming.createNumberSeries(
+      'INT-OC ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PurchaseOrderSettings',
+      0
+    );
+
+    await naming.createNumberSeries(
+      'REC ' + new Date().toISOString().slice(0, 4) + String('-'),
+      'PurchaseReceiptSettings',
+      0
+    );
+
+    console.log(
+      await frappe.db.getAll({
+        doctype: 'NumberSeries',
+        fields: ['name', 'current']
+      })
+    );
+
+    //List PAYments
+    console.log('PAYMENTS...');
+    console.log(
+      await frappe.db.getAll({
+        doctype: 'Payment'
+      })
+    );
+
+    console.log(frappe.AccountingSettings);
+    console.log(frappe.AccountingSettings.email);
+    let usuariodefault = 'Administrador';
+    let usuaaaa = await frappe.db.sql('select * from User;');
+    console.log(usuaaaa);
+
+    if (usuaaaa.length === 0) {
+      let usuarios = await frappe.getNewDoc('User');
+      await usuarios.set({
+        userId: usuariodefault,
+        fullName: usuariodefault,
+        name: String(frappe.AccountingSettings.email),
+        password: '123465789'
+      });
+      await usuarios.insert();
+    }
+
+    //Adds Languange PT
+    frappe.AccountingSettings.linguasistema = 'PT-PT';
+    //Carregar o file das traducoes...
+    //console.log(frappeutils.utils.readFile(traducao));
+
+  } else {
+    frappe.AccountingSettings.linguasistema = 'EN';
+  }
 };
 
 function getCurrencySymbols() {

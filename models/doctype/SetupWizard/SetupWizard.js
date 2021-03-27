@@ -61,6 +61,38 @@ module.exports = {
     },
 
     {
+      fieldname: 'nifEmpresa',
+      label: 'NIF',
+      fieldtype: 'Data',
+      placeholder: 'NIF Empresa',
+      required: 1
+    },
+    {
+      fieldname: 'regimeIva',
+      label: 'Regime do IVA',
+      fieldtype: 'Select',
+      options: [
+        'Regime Geral',
+        'Regime Transitorio',
+        'Regime de Caixa',
+        'Regime de nao Sujeicao'
+      ],
+      default: 'Regime de nao Sujeicao',
+      required: 1
+    },
+    {
+      fieldname: 'linguasistema',  //HELKYDS 26-03-2021
+      label: 'System linguasistema',
+      fieldtype: 'Select',
+      options: [
+        'EN',
+        'PT-PT'
+      ],
+      default: 'EN',
+      required: 1
+    },
+
+    {
       fieldname: 'fiscalYearStart',
       label: 'Fiscal Year Start Date',
       placeholder: 'Fiscal Year Start Date',
@@ -117,6 +149,9 @@ module.exports = {
     'fullname',
     'bankName',
     'country',
+    'nifEmpresa',
+    'regimeIva',
+    'linguasistema',
     'currency',
     'fiscalYearStart',
     'fiscalYearEnd'

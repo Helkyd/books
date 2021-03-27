@@ -1,3 +1,3 @@
-const SalesInvoiceDocument = require('../SalesInvoice/SalesInvoiceDocument');
+const TransactionDocument = require('../Transaction/TransactionDocument');
 
-module.exports = class Quotation extends SalesInvoiceDocument {};
+module.exports = class Quotation extends TransactionDocument {};

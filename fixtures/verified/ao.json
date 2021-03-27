@@ -1,0 +1,1293 @@
+{
+    "country_code": "ao", 
+    "name": "Angola - Plano de Contas v2", 
+    "tree": {
+        "Imobilizados": {
+            "Imobilizado": {
+                "Edificios E Outras Construcoes": {
+                    "Instalacoes": {
+                        "account_number": "11230000",
+                        "account_type": "Fixed Asset"
+                    },
+                    "account_number": "112"
+                }, 
+                "Equipamento De Carga E Transporte": {
+                    "account_type": "Fixed Asset", 
+                    "account_number": "114",
+                    "is_group": 1
+                }, 
+                "Equipamento Administrativo": {
+                    "Equipamento Informatico": {
+                        "account_number": "11510000",
+                        "account_type": "Fixed Asset"
+                    }, 
+                    "Mobiliario": {
+                        "account_number": "11530000",
+                        "account_type": "Fixed Asset"
+                    },
+                    "account_number": "115", 
+                    "account_type": "Fixed Asset"
+                }, 
+                "account_number": "11",
+                "account_type": "Fixed Asset"
+            }, 
+            "Imobilizacoes Incorporeas": {
+                "Propriedade Industrial E Outros": {
+                    "Licenca De Software": {
+                        "account_number": "12320000",
+                        "account_type": "Fixed Asset"
+                    }, 
+                    "account_number": "123",
+                    "account_type": "Fixed Asset"
+                }, 
+                "Outras Imobilizacoes Incorporeas": {
+                    "Outras Imobilizacoes Incorporeas": {
+                        "account_number": "12910000",
+                        "account_type": "Fixed Asset"
+                    },
+                    "account_number": "129", 
+                    "account_type": "Fixed Asset"
+                }, 
+                "account_number": "12",
+                "account_type": "Fixed Asset"
+            }, 
+            "Imobilizacoes Em Curso": {
+                "Imobilizacoes Em Curso": {
+                    "Obra Em Curso": {
+                      "account_number": "14100000"
+                    },
+                    "account_number": "141"
+                },
+                "account_number": "14"
+            }, 
+            "Amortizacoes Acumuladas": {
+                "Imobilizacoes Corporeas": {
+                    "AA Edificios E Outras Construcoes": {
+                        "account_number": "18120000",
+                        "account_type": "Fixed Asset"
+                    }, 
+                    "AA Equipamento De Carga E Transporte": {
+                        "account_number": "18140000",
+                        "account_type": "Fixed Asset"
+                    }, 
+                    "AA Equipamento Informatico": {
+                        "account_number": "18151000",
+                        "account_type": "Fixed Asset"
+                    }, 
+                    "AA Mobiliario": {
+                        "account_number": "18153000",
+                        "account_type": "Fixed Asset"
+                    }, 
+                    "AA Outras Amortizacoes Acumuladas": {
+                        "account_number": "18191000",
+                        "account_type": "Accumulated Depreciation"
+                    },
+                    "account_number": "181"
+                }, 
+                "Imobilizacoes Incorporeas": {
+                    "AA Software": {
+                        "account_number": "18243000",
+                        "account_type": "Fixed Asset"
+                    },
+                    "account_number": "182"
+                },
+                "account_number": "18"
+            },
+            "account_number": "1", 
+            "root_type": "Asset"
+        }, 
+        "Existencias": {
+            "Compras": {
+                "Materias Primas, Materiais e de Consumo": {
+                    "account_number": "211",
+                    "is_group": 1
+                }, 
+                "Mercadorias": {
+                    "account_number": "212",
+                    "is_group": 1
+                }, 
+                "account_number": "21",
+                "account_type": "Stock"
+            }, 
+            "Materias Primas, Subsidiarias e de Consumo": {
+                "Materias Primas": {
+                    "account_number": "221",
+                    "is_group": 1
+                }, 
+                "Materias Subsidiarias": {
+                    "account_number": "222",
+                    "is_group": 1
+                }, 
+                "Materiais Diversos": {
+                    "account_number": "223",
+                    "is_group": 1
+                }, 
+                "Embalagens de Consumo": {
+                    "account_number": "224",
+                    "is_group": 1
+                }, 
+                "Outros Materiais": {
+                    "account_number": "225",
+                    "is_group": 1
+                },
+                "account_number": "22"
+            }, 
+            "Produtos e Trabalhos Em Curso": {
+                    "Produtos e Trabalhos Em Curso": {
+                        "account_number": "23100000",
+                        "account_type": "Stock Adjustment"
+                    },            
+                "account_number": "23",
+                "is_group": 1
+            }, 
+            "Produtos Acabados e Intermedios": {
+                "Produtos Acabados": {
+                    "account_number": "241",
+                    "is_group": 1
+                }, 
+                "Produtos Intermedios": {
+                    "account_number": "242",
+                    "is_group": 1
+                }, 
+                "Produto Acabado e Intermedio Em Poder De Terceiros": {
+                    "account_number": "249",
+                    "is_group": 1
+                },
+                "account_number": "24"
+            }, 
+            "Sub-Produtos, Desperdicios, Residuos e Refugos": {
+                "Sub-Produtos": {
+                    "account_number": "251",
+                    "is_group": 1
+                }, 
+                "Desperdicios, Residuos e Refugos": {
+                    "account_number": "252",
+                    "is_group": 1
+                },
+                "account_number": "25"
+            }, 
+            "Mercadorias": {
+                "Armazem 01": {
+                    "account_number": "261",
+                    "is_group": 1
+                }, 
+                "Mercadorias Em Poder de Terceiros": {
+                    "account_number": "269",
+                    "is_group": 1
+                },
+                "account_number": "26"
+            }, 
+            "Materias Primas, Mercadorias e Materiais em Transito": {
+                "Materias Primas Em Transito": {
+                    "account_number": "271",
+                    "is_group": 1
+                }, 
+                "Outros Materiais Em Transito": {
+                    "account_number": "272",
+                    "is_group": 1
+                }, 
+                "Mercadorias Em Transito": {
+                    "account_number": "273",
+                    "is_group": 1
+                },
+                "account_number": "27"
+            }, 
+            "Adiantamentos Por Conta de Compras": {
+                "Adiantamentos P Compras Materias Primas": {
+                    "account_number": "281",
+                    "is_group": 1
+                }, 
+                "Adiantamentos P Compras Mercadorias": {
+                    "account_number": "282",
+                    "is_group": 1
+                },
+                "account_number": "28"
+            }, 
+            "Provisao Para Depreciacao de Mercadorias": {
+                "Provisao Depreciacao Materias Primas, Subs, Consumo": {
+                    "account_number": "292",
+                    "is_group": 1
+                }, 
+                "Provisao Depreciacao Produto e Trabalho Em Curso": {
+                    "account_number": "293",
+                    "is_group": 1
+                }, 
+                "Provisao Depreciacao Produtos Acabados e Intermedios": {
+                    "account_number": "294",
+                    "is_group": 1
+                }, 
+                "Provisao Depreciacao Subprodutos e Desperdicios": {
+                    "account_number": "295",
+                    "is_group": 1
+                }, 
+                "Provisao Depreciacao Mercadorias": {
+                    "account_number": "296",
+                    "is_group": 1
+                },
+                "account_number": "29"
+            },
+            "account_number": "2", 
+            "root_type": "Asset"
+        }, 
+        "Terceiros": {
+            "Clientes": {
+                "Clientes Nacionais C/C": {
+                    "Clientes Nacionais": {
+                        "account_number": "31121000",
+                        "account_type": "Receivable"
+                    },
+                    "account_number": "311"
+                }, 
+                "Clientes Estrangeiros C/C": {
+                    "Clientes Estrangeiros": {
+                        "account_number": "31200000"
+                    },
+                    "account_number": "312"
+                },
+                "account_number": "31"
+            }, 
+            "Fornecedores": {
+                "Fornecedores Nacionais": {
+                    "Fornecedores": {
+                        "account_number": "32110000",
+                        "account_type": "Payable"
+                    },
+                    "account_number": "321"
+                }, 
+                "Fornecedores Estrangeiros": {
+                    "account_number": "322",
+                    "is_group": 1
+                }, 
+                "Fornecedores C Facturas em Recepcao e Conferencia": {
+                    "Facturas em Recepcao em Conferencia": {
+                        "account_number": "32810000",
+                        "account_type": "Stock Received But Not Billed"
+                    },
+                    "account_number": "328"
+                }, 
+                "Fornecedores C Saldos Devedores": {
+                    "account_number": "329",
+                    "is_group": 1
+                },
+                "account_number": "32"
+            }, 
+            "Emprestimos": {
+                "Emprestimos Bancarios": {
+                    "account_number": "331",
+                    "is_group": 1
+                }, 
+                "Emprestimos Por Obrigacoes": {
+                    "account_number": "332",
+                    "is_group": 1
+                }, 
+                "Meprestimos Por Titulos de Participacao": {
+                    "account_number": "333",
+                    "is_group": 1
+                }, 
+                "Outros Emprestimos Obtidos": {
+                    "account_number": "339",
+                    "is_group": 1
+                },
+                "account_number": "33"
+            }, 
+            "Estado": {
+                "Imposto Sobre Lucros": {
+                    "I Industrial - Imposto Corrente": {
+                      "account_number": "34110000"
+                    }, 
+                    "I Industrial - Pagamentos Por Conta": {
+                      "account_number": "34120000"
+                    }, 
+                    "I Industrial - Retencao A Liquidar": {
+                      "account_number": "34130000"
+                    }, 
+                    "I Industrial - Retencao A Justificar Clientes": {
+                      "account_number": "34140000"
+                    }, 
+                    "I Industrial - Retencao A Deduzir Estado": {
+                      "account_number": "34150000"
+                    },
+                    "I Industrial - Pagamentos Por Conta": {
+                      "account_number": "34190000"
+                    },                     
+                    "account_number": "341"
+                }, 
+                "Imposto de Producao e Consumo": {
+                    "Imposto De Producao E Consumo": {
+                        "account_number": "34210000",
+                        "account_type": "Tax"
+                    },
+                    "account_number": "342"
+                }, 
+                "Imposto de Rendimento de Trabalho": {
+                    "Imposto De Rendimento De Trabalho Dependentes": {
+                      "account_number": "34310000"
+                    }, 
+                    "account_number": "343"
+                }, 
+                "Imposto Sobre o Valor Acrescentado": {
+                    "IVA Suportado": {
+                      "account_number": "34510000",
+                      "account_type": "Tax"
+                    },
+                    "IVA Dedutivel": {
+                      "account_number": "34520000",
+                      "account_type": "Tax"
+                    },
+                    "IVA Liquidado": {
+                      "account_number": "34530000",
+                      "account_type": "Tax"
+                    },
+                    "IVA a Pagar": {
+                      "account_number": "34560000",
+                       "account_type": "Tax"
+                    },
+
+                    "account_number": "345"
+                }, 
+                "Instituto Nacional de Seguranca Social": {
+                    "Instituto Nacional de Seguranca Social": {
+                      "account_number": "34610000"
+                    },
+                    "account_number": "346"
+                }, 
+                "Imposto Do Selo": {
+                    "Imposto Do Selo": {
+                      "account_number": "34710000"
+                    },
+                    "account_number": "347"
+                }, 
+                "Subsidios A Precos": {
+                    "account_number": "348",
+                    "is_group": 1
+                }, 
+                "Outros Impostos": {
+                    "Imposto Predial Urbano": {
+                      "account_number": "34910000"
+                    },
+                    "account_number": "349"
+                },
+                "account_number": "34"
+            }, 
+            "Entidades Participante E Participadas": {
+                "Entidades Participantes": {
+                    "account_number": "351",
+                    "is_group": 1
+                }, 
+                "Entidades Participadas": {
+                    "account_number": "352",
+                    "is_group": 1
+                },
+                "account_number": "35"
+            }, 
+            "Pessoal": {
+                "Pessoal - Remuneracoes": {
+                    "Salarios a Receber": {
+                      "account_number": "36110000"
+                    },
+                    "account_number": "361",
+                    "is_group": 1
+                    
+                }, 
+                "Pessoal - Participacao Nos Resultados": {
+                    "account_number": "362",
+                    "is_group": 1
+                }, 
+                "Pessoal - Adiantamentos": {
+                    "Adiantamentos Pessoal": {
+                      "account_number": "36310000"
+                    },
+
+                    "account_number": "363",
+                    "is_group": 1
+                }, 
+                "Pessoal - Outros": {
+                    "account_number": "369",
+                    "is_group": 1
+                },
+                "root_type": "Liability",
+                "account_number": "36"
+            }, 
+            "Outros Valores A Receber E A Pagar": {
+                "Compras de Imobilizado": {
+                    "account_number": "371",
+                    "is_group": 1
+                }, 
+                "Vendas de Imobilizado": {
+                    "account_number": "372",
+                    "is_group": 1
+                }, 
+                "Proveitos a Facturar": {
+                    "account_number": "373",
+                    "is_group": 1
+                }, 
+                "Encargos a Repartir Por Periodos Futuros": {
+                    "account_number": "374",
+                    "is_group": 1
+                }, 
+                "Encargos a Pagar": {
+                    "account_number": "375",
+                    "is_group": 1
+                }, 
+                "376 - Proveitos a Repartir Por Periodos Futuros": {
+                    "account_number": "376",
+                    "is_group": 1
+                }, 
+                "Contas Transitorias": {
+                    "IPC Temporario": {
+                      "account_number": "37710000",
+                      "account_type": "Temporary"
+                    },
+                    "account_number": "377",
+                    "is_group": 1
+                }, 
+                "Outros Valores a Receber e a Pagar": {
+                    "account_number": "379",
+                    "is_group": 1
+                },
+                "account_number": "37"
+            }, 
+            "Provisoes Para Cobrancas Duvidosas": {
+                "Provisoes Para Clientes": {
+                    "account_number": "381",
+                    "is_group": 1
+                }, 
+                "Provisoes Para Saldos Devedores de Fornecedores": {
+                    "account_number": "382",
+                    "is_group": 1
+                }, 
+                "Provisoes Para Participantes e Participadas": {
+                    "account_number": "383",
+                    "is_group": 1
+                }, 
+                "Provisoes Para Dividas do Pessoal": {
+                    "account_number": "384",
+                    "is_group": 1
+                }, 
+                "Provisoes Outros Saldos a Receber": {
+                    "account_number": "389",
+                    "is_group": 1
+                },
+                "account_number": "38"
+            }, 
+            "Provisoes Para Outros Riscos e Encargos": {
+                "Provisao para Pensoes": {
+                    "account_number": "391",
+                    "is_group": 1
+                }, 
+                "Provisao Para Processos Judiciais Em Curso": {
+                    "account_number": "392",
+                    "is_group": 1
+                }, 
+                "Provisao Para Acidentes de Trabalho": {
+                    "account_number": "393",
+                    "is_group": 1
+                }, 
+                "Provisao Para Garantias Dadas a Clientes": {
+                    "account_number": "394",
+                    "is_group": 1
+                }, 
+                "Provisoes Para Outros Riscos e Encargos": {
+                    "account_number": "399",
+                    "is_group": 1
+                },
+                "account_number": "39"
+            }, 
+            "account_number": "3",
+            "root_type": "Liability"
+        }, 
+        "Meios Monetarios": {
+            "Titulos Negociaveis": {
+                "Accoes": {
+                    "account_number": "411",
+                    "is_group": 1
+                }, 
+                "Obrigacoes": {
+                    "Titulos da Divida Publica": {
+                        "account_number": "413",
+                        "is_group": 1
+                    },
+                    "account_number": "412"
+                },
+                "account_number": "41"
+            }, 
+            "Depositos a Prazo": {
+                "Depositos a Prazo - Moeda Nacional": {
+                    "account_number": "421",
+                    "is_group": 1
+                }, 
+                "Depositos a Prazo - Moeda Estrangeira": {
+                    "account_number": "422",
+                    "is_group": 1
+                },
+                "account_number": "42"
+            }, 
+            "Depositos A Ordem": {
+                "Depositos A Ordem - Moeda Nacional": {
+                    "Depositos A Ordem - Moeda Nacional Banco 1": {
+                      "account_number": "43100000"
+                    }, 
+                    "Depositos A Ordem - Moeda Nacional Banco 1": {
+                      "account_number": "43110000"
+                    }, 
+                    "Depositos A Ordem - Moeda Nacional Banco 1": {
+                      "account_number": "43120000"
+                    }, 
+                    "TPA": {
+                        "account_number": "43130000",
+                        "account_type": "Bank"
+                    }, 
+                    "account_number": "431",
+                    "account_type": "Bank"
+                }, 
+                "Depositos A Ordem - Moeda Estrangeira": {
+                    "account_number": "432",
+                    "is_group": 1
+                }, 
+                "account_number": "43",
+                "account_type": "Bank"
+            }, 
+            "Outros Depositos": {
+                "Outros Depositos - Moeda Nacional": {
+                    "account_number": "441",
+                    "is_group": 1
+                }, 
+                "Outros Depositos - Moeda Estrangeira": {
+                    "account_number": "442",
+                    "is_group": 1
+                },
+                "account_number": "44"
+            }, 
+            "Caixa": {
+                "Fundo de Maneio": {
+                    "Caixa Kwanza": {
+                        "account_number": "45110000",
+                        "account_type": "Cash"
+                    }, 
+                    "Caixa Dolares": {
+                      "account_number": "45120000",
+                      "account_type": "Cash"
+                    },
+                    "account_number": "451"
+                }, 
+                "Valores Para Deposito": {
+                    "account_number": "452",
+                    "is_group": 1
+                }, 
+                "Valores Destinados a Pagamentos Especificos": {
+                    "account_number": "453",
+                    "is_group": 1
+                }, 
+                "Contas Transitorias": {
+                    "account_number": "458",
+                    "is_group": 1
+                },
+                "account_number": "45"
+            }, 
+            "Provisoes Para Aplicacoes De Tesouraria": {
+                "Titulos Negociaveis": {
+                    "account_number": "491",
+                    "is_group": 1
+                }, 
+                "Outras Aplicacoes de Tesouraria": {
+                    "account_number": "492",
+                    "is_group": 1
+                },
+                "account_number": "49"
+            }, 
+            "account_number": "4",
+            "root_type": "Asset"
+        }, 
+        "Capital e Reservas": {
+            "Capital": {
+                "account_number": "51",
+                "is_group": 1
+            }, 
+            "Accoes / Quotas Proprias": {
+                "Valor Nominal": {
+                    "account_number": "521",
+                    "is_group": 1
+                }, 
+                "Descontos": {
+                    "account_number": "522",
+                    "is_group": 1
+                }, 
+                "Premios": {
+                    "account_number": "523",
+                    "is_group": 1
+                },
+                "account_number": "52"
+            }, 
+            "Premios": {
+                "account_number": "53",
+                "is_group": 1
+            }, 
+            "Prestacoes Suplementares": {
+                "account_number": "54",
+                "is_group": 1
+            }, 
+            "Reservas Legais": {
+                "account_number": "55",
+                "is_group": 1
+            }, 
+            "Reservas de Reavaliacao": {
+                "Reservas de Reavaliacao - Autonomas": {
+                    "account_number": "561",
+                    "is_group": 1
+                }, 
+                "Reservas de Reavaliacao - Legais": {
+                    "account_number": "562",
+                    "is_group": 1
+                },
+                "account_number": "56"
+            }, 
+            "Reservas Com Fins Especiais": {
+                "account_number": "57",
+                "is_group": 1
+            }, 
+            "Reservas Livres": {
+                "account_number": "58",
+                "is_group": 1
+            }, 
+            "account_number": "5",
+            "root_type": "Asset"
+        }, 
+        "Proveitos Por Natureza": {
+            "Vendas": {
+                "Produtos Acabados e Intermedios": {
+                    "Vendas": {
+                        "account_number": "61110000",
+                        "account_type": "Income Account"
+                    }, 
+                    "Restauracao": {
+                      "account_number": "61120000"
+                    },
+                    "account_number": "611"
+                }, 
+                "Subprodutos, Desperdicios e Refugos": {
+                    "account_number": "612",
+                    "is_group": 1
+                }, 
+                "Mercadorias": {
+                    "account_number": "613",
+                    "is_group": 1
+                }, 
+                "Embalagens de Consumo": {
+                    "account_number": "614",
+                    "is_group": 1
+                }, 
+                "Subsidios a Precos": {
+                    "account_number": "615",
+                    "is_group": 1
+                }, 
+                "Devolucoes": {
+                    "account_number": "617",
+                    "is_group": 1
+                }, 
+                "Descontos e Abatimentos": {
+                    "account_number": "619",
+                    "is_group": 1
+                },
+                "account_number": "61"
+            }, 
+            "Prestacoes de Servicos": {
+                "Servicos Principais": {
+                    "Servicos Principais": {
+                      "account_number": "62110000",
+                      "account_type": "Income Account"
+                    },
+                    "account_number": "621"
+                }, 
+                "Servicos Secundarios": {
+                    "account_number": "622",
+                    "is_group": 1
+                }, 
+                "Descontos e Abatimentos": {
+                    "account_number": "628",
+                    "is_group": 1
+                },
+                "account_number": "62"
+            }, 
+            "Outros Proveitos Operacionais": {
+                "Servicos Suplementares": {
+                    "Aluguer Espaco": {
+                      "account_number": "63110000"
+                    }, 
+                    "Cedencia de Equipamento": {
+                      "account_number": "63120000"
+                    },
+                    "account_number": "631"
+                }, 
+                "Royalties": {
+                    "account_number": "632",
+                    "is_group": 1
+                }, 
+                "Subisidios a Exploracao": {
+                    "account_number": "633",
+                    "is_group": 1
+                }, 
+                "Subisidios a Investimento": {
+                    "account_number": "634",
+                    "is_group": 1
+                }, 
+                "Outros Proveitos Operacionais": {
+                    "account_number": "638",
+                    "is_group": 1
+                },
+                "account_number": "63"
+            }, 
+            "Variacao Nos Produtos Acabados e Vias de Fabrico": {
+                "Produtos e Trabalhos Em Curso": {
+                    "Variacao de Produtos e Trabalhos Em Curso": {
+                        "account_number": "64110000",
+                        "account_type": "Stock Adjustment"
+                    },
+                    "account_number": "641"
+                }, 
+                "Produtos Acabados": {
+                    "account_number": "642",
+                    "is_group": 1
+                }, 
+                "Produtos Intermedios": {
+                    "account_number": "643",
+                    "is_group": 1
+                },
+                "account_number": "64"
+            }, 
+            "Trabalhos Para a Propria Empresa": {
+                "Para Imobilizado": {
+                    "account_number": "651",
+                    "is_group": 1
+                }, 
+                "Para Encargos a Repartir Em Periodos Futuros": {
+                    "account_number": "652",
+                    "is_group": 1
+                },
+                "account_number": "65"
+            }, 
+            "Proveitos e Ganhos Financeiros Gerais": {
+                "Juros": {
+                    "account_number": "661",
+                    "is_group": 1
+                }, 
+                "Diferencas de Cambio Favoraveis": {
+                    "Diferencas de Cambio Favoraveis Realizadas": {
+                      "account_number": "66210000"
+                    }, 
+                    "Diferencas de Cambio Favoraveis Nao Realizadas": {
+                      "account_number": "66220000"
+                    },
+                    "account_number": "662"
+                }, 
+                "Descontos de Pronto PAgamento Obtidos": {
+                    "account_number": "663",
+                    "is_group": 1
+                }, 
+                "Rendimentos de Investimento em Imoveis": {
+                    "account_number": "664",
+                    "is_group": 1
+                }, 
+                "Rendimentos de Participacoes de Capital": {
+                    "account_number": "665",
+                    "is_group": 1
+                }, 
+                "Ganhos na Alienacao de Participacoes Financeiras": {
+                    "account_number": "666",
+                    "is_group": 1
+                }, 
+                "Reposicao de Provisoes": {
+                    "account_number": "667",
+                    "is_group": 1
+                },
+                "account_number": "66"
+            }, 
+            "Proveitos e Ganhos Financeiros em Filiais e Associadas": {
+                "Rendimentos de Participacao de Capital": {
+                    "account_number": "671",
+                    "is_group": 1
+                },
+                "account_number": "67"
+            }, 
+            "Outros Proveitos e Ganhos Nao Operacionais": {
+                "Reposicao De Provisoes": {
+                    "account_number": "681",
+                    "is_group": 1
+                }, 
+                "Anulacao de Amortizacoes Extraordinarias": {
+                    "account_number": "682",
+                    "is_group": 1
+                }, 
+                "Ganhos Em Imobilizacoes": {
+                    "account_number": "683",
+                    "is_group": 1
+                }, 
+                "Ganhos Em Existencias": {
+                    "account_number": "684",
+                    "is_group": 1
+                }, 
+                "Beneficios de Penalidades Contratuais": {
+                    "account_number": "685",
+                    "is_group": 1
+                }, 
+                "Descontinuidade De Operacoes": {
+                    "account_number": "688",
+                    "is_group": 1
+                }, 
+                "Alteracoes de Politicas Contabilisticas": {
+                    "account_number": "689",
+                    "is_group": 1
+                },
+                "account_number": "68"
+            }, 
+            "Proveitos e Ganhos Extraordinarios": {
+                "Ganhos Resultantes de Catastrofes Naturais": {
+                    "account_number": "691",
+                    "is_group": 1
+                }, 
+                "Ganhos Resultantes de Convulsoes Politicas": {
+                    "account_number": "692",
+                    "is_group": 1
+                }, 
+                "Ganhos Resultantes de Expropriacoes": {
+                    "account_number": "693",
+                    "is_group": 1
+                }, 
+                "Ganhos Resultantes de Sinistros": {
+                    "account_number": "694",
+                    "is_group": 1
+                }, 
+                "Subsidios": {
+                    "account_number": "695",
+                    "is_group": 1
+                }, 
+                "Anulacao de Passivos Nao Exigiveis": {
+                    "account_number": "696",
+                    "is_group": 1
+                },
+                "account_number": "69"
+            }, 
+            "account_number": "6",
+            "root_type": "Income"
+        }, 
+        "Custos Por Natureza": {
+            "Custo das Mercadorias Vendidas e Materias Consumidas": {
+                "Materia Prima": {
+                    "Custo das Existencias Vendidas e Consumidas": {
+                        "account_number": "71110000",
+                        "account_type": "Cost of Goods Sold"
+                    },
+                    "account_number": "711"
+                }, 
+                "Materias Subsidiarias": {
+                    "Diferencas de Reavaliacao Stocks": {
+                        "account_number": "71120000",
+                        "account_type": "Expenses Included In Valuation"
+                    },
+                    "account_number": "712"
+                }, 
+                "Materiais Diversos": {
+                    "account_number": "713",
+                    "is_group": 1
+                }, 
+                "Embalagens de Consumo": {
+                    "account_number": "714",
+                    "is_group": 1
+                }, 
+                "Outros Materiais": {
+                    "account_number": "715",
+                    "is_group": 1
+                },
+                "account_number": "71"
+            }, 
+            "Custos Com O Pessoal": {
+                "Remuneracoes Orgaos Sociais": {
+                    "account_number": "721",
+                    "is_group": 1
+                }, 
+                "Remuneracoes Pessoal": {
+                    "Ordenados e Salarios": {
+                      "account_number": "72210000"
+                    },
+                    "account_number": "722"
+                }, 
+                "Pensoes": {
+                    "account_number": "723",
+                    "is_group": 1
+                }, 
+                "Premios Para Pensoes": {
+                    "account_number": "724",
+                    "is_group": 1
+                }, 
+                "Encargos Sobre Remuneracoes": {
+                    "Seguranca Social": {
+                      "account_number": "72520000"
+                    },
+                    "account_number": "725"
+                }, 
+                "Seguro de Acidentes de Trabalho e Doencas Profissionais": {
+                    "Seguro de Acidentes de Trabalho e Doencas Profissionais": {
+                      "account_number": "72610000"
+                    },
+                    "account_number": "726"
+                }, 
+                "Formacao do Pessoal": {
+                    "Formacao do Pessoal": {
+                      "account_number": "72710000"
+                    },
+                    "account_number": "727"
+                }, 
+                "Outras Despesas Com O Pessoal": {
+                    "Refeitorio e Alimentacao Pessoal": {
+                      "account_number": "72810000"
+                    },
+                    "account_number": "728"
+                },
+                "account_number": "72"
+            }, 
+            "Amortizacoes do Exercicio": {
+                "Imobilizacoes Corporeas": {
+                    "Edificios": {
+                      "account_number": "73120000"
+                    }, 
+                    "Equipamento Basico": {
+                      "account_number": "73130000"
+                    }, 
+                    "Equipamento De Carga E Transporte": {
+                      "account_number": "73140000"
+                    }, 
+                    "Equipamento Informatico": {
+                      "account_number": "73151000"
+                    }, 
+                    "Moveis E Utensilios": {
+                      "account_number": "73153000"
+                    }, 
+                    "Equipamento Comunicacao": {
+                      "account_number": "73154000"
+                    }, 
+                    "Outros Equipamentos": {
+                      "account_number": "73155000"
+                    }, 
+                    "Outras Amortizacoes e Encargos": {
+                        "account_number": "73190000",
+                        "account_type": "Depreciation"
+                    },
+                    "account_number": "731"
+                }, 
+                "Amortizacoes Do Exercicio - Incorporeas": {
+                    "Amortizacao Exercicio - Software": {
+                      "account_number": "73240000"
+                    }, 
+                    "Outras Despesas Incorporeas": {
+                      "account_number": "73290000"
+                    },
+                    "account_number": "732"
+                },
+                "account_number": "73"
+            }, 
+            "Outros Custos E Perdas Operacionais": {
+                "Sub-Contratos": {
+                    "Subcontratos": {
+                      "account_number": "75110000"
+                    },
+                    "account_number": "751"
+                }, 
+                "Fornecimentos e Servicos De Terceiros": {
+                    "Agua": {
+                      "account_number": "75211000"
+                    }, 
+                    "Electricidade": {
+                      "account_number": "75212000"
+                    }, 
+                    "Combustivel - Viaturas": {
+                      "account_number": "75213000"
+                    }, 
+                    "Conservacao E Reparacao - Edificios": {
+                      "account_number": "75214100"
+                    }, 
+                    "Conservacao E Reparacao - Viaturas": {
+                      "account_number": "75214200"
+                    }, 
+                    "Conservacao E Reparacao - Equipamento": {
+                      "account_number": "75214300"
+                    }, 
+                    "Material Proteccao, Seg.E Conforto": {
+                      "account_number": "75215000"
+                    }, 
+                    "Ferrament.E Utensilios Desg.Rapido": {
+                      "account_number": "75216000"
+                    }, 
+                    "Material De Escritorio": {
+                      "account_number": "75217000"
+                    }, 
+                    "Livros E Documentacao Tecnica": {
+                      "account_number": "75218000"
+                    }, 
+                    "Outros Fornecimentos": {
+                      "account_number": "75219000"
+                    }, 
+                    "Comunicacao - Telemoveis": {
+                      "account_number": "75220100"
+                    }, 
+                    "Comunicacao - Telefones": {
+                      "account_number": "75220200"
+                    }, 
+                    "Comunicacao - Internet": {
+                      "account_number": "75220300"
+                    }, 
+                    "Comunicacao - Correio E Fax": {
+                      "account_number": "75220400"
+                    }, 
+                    "Rendas De Imoveis - Escritorio": {
+                      "account_number": "75221100"
+                    }, 
+                    "Aluguer Equipamentos": {
+                      "account_number": "75221300"
+                    }, 
+                    "Custos Com Rendas": {
+                      "account_number": "75221800"
+                    }, 
+                    "Seguros  - Viaturas": {
+                      "account_number": "75222100"
+                    }, 
+                    "Seguros  - Instalacoes": {
+                      "account_number": "75222200"
+                    }, 
+                    "Deslocacoes E Estadas": {
+                      "account_number": "75223000"
+                    }, 
+                    "Despesas De Representacao": {
+                      "account_number": "75224200"
+                    }, 
+                    "Vigilancia E Seguranca": {
+                      "account_number": "75227000"
+                    }, 
+                    "Limpeza, Higiene E Conforto": {
+                      "account_number": "75228000"
+                    }, 
+                    "Publicidade E Propaganda": {
+                      "account_number": "75229000"
+                    }, 
+                    "Contencioso E Notariado": {
+                      "account_number": "75230000"
+                    }, 
+                    "Comissoes A Intermediarios": {
+                      "account_number": "75231000"
+                    }, 
+                    "Assistencia Tecnica -Nacionais": {
+                      "account_number": "75232100"
+                    }, 
+                    "Assistencia Tecnica -Estrangeiros": {
+                      "account_number": "75232200"
+                    }, 
+                    "Trabalhos Executados No Exterior": {
+                      "account_number": "75233000"
+                    }, 
+                    "Honorarios E Avencas - Informatica": {
+                      "account_number": "75234000"
+                    }, 
+                    "Outros Servicos": {
+                      "account_number": "75239000"
+                    },
+                    "account_number": "752"
+                }, 
+                "Impostos": {
+                    "Imposto De Selo": {
+                      "account_number": "75311000"
+                    }, 
+                    "IVA": {
+                      "account_number": "75312000"
+                    },
+                    "Impostos": {
+                      "account_number": "75319000"
+                    },                    
+                    "account_number": "753"
+                }, 
+                "Outros Custos E Perdas Operacionais": {
+                    "Outros Custos E Perdas Operacionais": {
+                      "account_number": "75810000"
+                    }, 
+                    "Outras Despesas e Encargos": {
+                        "account_number": "75890000",
+                        "account_type": "Round Off",
+                        "root_type": "Expense"
+                    },
+                    "account_number": "758"
+                },
+                "account_number": "75"
+            }, 
+            "Custos Perdas Financeiros Gerais": {
+                "Juros": {
+                    "Juros De Emprestimos Bancarios": {
+                      "account_number": "76111000"
+                    }, 
+                    "Juros De Descobertos Bancarios": {
+                      "account_number": "76121000"
+                    },
+                    "account_number": "761"
+                }, 
+                "Diferencas De Cambios Desfavoraveis": {
+                    "Dif De Cambios Desfavoraveis - Realizadas": {
+                      "account_number": "76210000",
+                      "root_type": "Expense"
+                    }, 
+                    "Dif De Cambios Desfavoraveis - N Realizadas": {
+                      "account_number": "76220000"
+                    },
+                    "account_number": "762"
+                }, 
+                "Servicos Bancarios": {
+                    "Despesas Com Servicos Bancarios": {
+                      "account_number": "76710000"
+                    },
+                    "account_number": "767"
+                },
+                "account_number": "76"
+            }, 
+            "Custos Perdas Finan. Filiais Assoc.": {
+                "Custos Perdas Finan. Filiais Assoc.": {
+                    "account_number": "771",
+                    "is_group": 1
+                },
+                "account_number": "77"
+            }, 
+            "Resultados Nao Operacionais": {
+                "Resultados Nao Operacionais": {
+                    "Retencao Na Fonte Nao Relevada": {
+                      "account_number": "78111000"
+                    }, 
+                    "Provisoes Cobranca Duvidosa": {
+                      "account_number": "78121000"
+                    }, 
+                    "Outros Riscos E Encargos": {
+                      "account_number": "78139000"
+                    }, 
+                    "Amortizacao Extraordinaria - Viaturas": {
+                      "account_number": "78214000"
+                    }, 
+                    "Multas Fiscais": {
+                      "account_number": "78610000"
+                    }, 
+                    "Multas Nao Fiscais": {
+                      "account_number": "78611000"
+                    },
+                    "account_number": "781"
+                },
+                "account_number": "78"
+            }, 
+            "account_number": "7",
+            "root_type": "Expense"
+        }, 
+        " Resultados": {
+            "Resultados Transitados": {
+                "Resultados Transitados": {
+                  "account_number": "81100000"
+                },
+                "account_number": "81"
+            }, 
+            "Resultados Operacionais": {
+                "Vendas": {
+                  "account_number": "82010000"
+                }, 
+                "Prestacao De Servico": {
+                  "account_number": "82020000"
+                }, 
+                "Outros Proveitos Operacionais": {
+                  "account_number": "82030000"
+                }, 
+                "Variacao Inv. Prod.Acab./Vias Fab.": {
+                  "account_number": "82040000"
+                }, 
+                "Trabalhos Para A Propria Empresa": {
+                  "account_number": "82050000"
+                }, 
+                "Custo Merc.Vend.E Materias Cons.": {
+                  "account_number": "82060000"
+                }, 
+                "Custo Com Pessoal": {
+                  "account_number": "82070000"
+                }, 
+                "Amortizacoes Do Exercicio": {
+                  "account_number": "82080000"
+                }, 
+                "Outros Custos Operacionais": {
+                  "account_number": "82090000"
+                },
+                "account_number": "82"
+            }, 
+            "Resultados Financeiros": {
+                "Proveitos E Ganhos Financ.Gerais": {
+                  "account_number": "83100000"
+                }, 
+                "Custos E Perdas Financeiros Gerais": {
+                  "account_number": "83200000"
+                },
+                "account_number": "83"
+            }, 
+            "Result.Finan.Filiais Associadas": {
+                "Proveitos E Ganhos Filiais E Assoc.": {
+                  "account_number": "84100000"
+                }, 
+                "Custos E Perdas Em Filiais E Assoc.": {
+                  "account_number": "84200000"
+                },
+                "account_number": "84"
+            }, 
+            "Resultados Nao Operacionais": {
+                "Proveitos E Ganhos N.Operacionais": {
+                  "account_number": "85100000"
+                }, 
+                "Custos E Perdas Nao Operacionais": {
+                  "account_number": "85200000"
+                },
+                "account_number": "85"
+            }, 
+            "Resultados Extraordinarios": {
+                "Proveitos E Ganhos Extraordinarios": {
+                  "account_number": "86100000"
+                }, 
+                "Custos E Perdas Extraordinarios": {
+                  "account_number": "86200000"
+                },
+                "account_number": "86"
+            }, 
+            "Impostos Sobre Os Lucros": {
+                "Impostos S/Os Resultados Correntes": {
+                  "account_number": "87100000"
+                }, 
+                "Impostos S/Resultados Extraord.": {
+                  "account_number": "87200000"
+                },
+                "account_number": "87"
+            }, 
+            "Resultados Liquidos Do Exercicio": {
+                "Reultados Operacionais": {
+                  "account_number": "88100000"
+                }, 
+                "Resultados Financeiros Gerais": {
+                  "account_number": "88200000"
+                }, 
+                "Resultados Em Filiais E Associadas": {
+                  "account_number": "88300000"
+                }, 
+                "Resultados Nao Operacionais": {
+                  "account_number": "88400000"
+                }, 
+                "Imposto Sobre Resultados Correntes": {
+                  "account_number": "88500000"
+                }, 
+                "Resultados Extraordinarios": {
+                  "account_number": "88860000"
+                }, 
+                "Impostos S/Result.Extraordinarios": {
+                  "account_number": "88700000"
+                }, 
+                "Transferencia P/Result. Transitados": {
+                  "account_number": "88900000"
+                },
+                "account_number": "88"
+            },
+            "account_number": "8", 
+            "root_type": "Equity"
+        }
+    }
+}

@@ -12,7 +12,7 @@ module.exports = {
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,
-      default: 'PINV'
+      default: 'FF ' + new Date().toISOString().slice(0, 4) //'PINV'
     }
   ]
 };

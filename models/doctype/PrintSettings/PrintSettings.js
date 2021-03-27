@@ -16,6 +16,38 @@ module.exports = {
       fieldtype: 'Data'
     },
     {
+      fieldname: 'nifEmpresa', //HELKYds 30-11-2020
+      label: 'NIF Empresa',
+      fieldtype: 'Data'
+    },
+    {
+      fieldname: 'regimeIva',
+      label: 'Regime do IVA',
+      fieldtype: 'Select',
+      options: [
+        'Regime Geral',
+        'Regime Transitorio',
+        'Regime Simplificado',
+        'Regime de Caixa',
+        'Regime de nao Sujeicao',
+        'Regime de Exclusao'
+      ],
+      default: 'Regime de Exclusao',
+      required: 1
+    },
+    {
+      fieldname: 'linguasistema',  //HELKYds 26-03-2021
+      label: 'System linguasistema',
+      fieldtype: 'Select',
+      options: [
+        'EN',
+        'PT-PT'
+      ],
+      default: 'EN',
+      required: 1
+    },
+
+    {
       fieldname: 'email',
       label: 'Email',
       fieldtype: 'Data',
@@ -100,6 +132,9 @@ module.exports = {
     'template',
     'color',
     'email',
+    'nifEmpresa',
+    'regimeIva',
+    'linguasistema',
     'phone',
     'address',
     'gstin'

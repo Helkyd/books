@@ -1,13 +1,44 @@
-const model = require('frappejs/model');
-const SalesInvoiceSettings = require('../SalesInvoiceSettings/SalesInvoiceSettings');
+let proform = 'INT-PP ' + new Date().toISOString().slice(0, 4);
 
-module.exports = model.extend(SalesInvoiceSettings, {
-    "name": "QuotationSettings",
-    "label": "Quotation Settings",
-    "fields": [
-        {
-            "fieldname": "numberSeries",
-            "default": "QTN"
-        }
-    ]
-});
+module.exports = {
+  name: 'QuotationSettings',
+  label: 'Quotation Settings',
+  doctype: 'DocType',
+  isSingle: 1,
+  isChild: 0,
+  keywordFields: [],
+  fields: [
+    {
+      fieldname: 'numberSeries',
+      label: 'Number Series',
+      fieldtype: 'Link',
+      target: 'NumberSeries',
+      required: 1,
+      default: proform
+    },
+    {
+      fieldname: 'template',
+      label: 'Template',
+      fieldtype: 'Select',
+      options: ['Basic I', 'Basic II', 'Modern'],
+      required: 1,
+      default: 'Basic I'
+    },
+    {
+      fieldname: 'font',
+      label: 'Font',
+      fieldtype: 'Select',
+      options: ['Montserrat', 'Open Sans', 'Oxygen', 'Merriweather'],
+      required: 1,
+      default: 'Montserrat'
+    },
+    {
+      fieldname: 'themeColor',
+      label: 'Theme Color',
+      fieldtype: 'Data',
+      required: 1,
+      default: '#000000',
+      hidden: 1
+    }
+  ]
+};

@@ -7,7 +7,7 @@ module.exports = {
   documentClass: require('./AccountDocument.js'),
   isSingle: 0,
   isTree: 1,
-  keywordFields: ['name', 'rootType', 'accountType'],
+  keywordFields: ['name', 'rootType', 'accountType', 'account_number'],
   fields: [
     {
       fieldname: 'name',
@@ -15,6 +15,12 @@ module.exports = {
       fieldtype: 'Data',
       required: 1
     },
+    {
+      fieldname: 'account_number',  //HELKYds 29-11-2020
+      label: 'Account Number',
+      fieldtype: 'Data',
+      required: 0
+    },    
     {
       fieldname: 'rootType',
       label: 'Root Type',
@@ -78,6 +84,7 @@ module.exports = {
 
   quickEditFields: [
     'name',
+    'account_number',
     'rootType',
     'parentAccount',
     'accountType',

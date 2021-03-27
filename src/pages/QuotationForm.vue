@@ -61,8 +61,8 @@
             <h1 class="text-2xl font-semibold">
               {{
                 doc._notInserted
-                  ? doc.doctype === 'SalesInvoice'
-                    ? _('New Invoice')
+                  ? doc.doctype === 'Quotation'
+                    ? _('New Quotation')
                     : _('New Bill')
                   : doc.name
               }}
@@ -196,7 +196,7 @@ import {
 } from '@/utils';
 
 export default {
-  name: 'InvoiceForm',
+  name: 'QuotationForm',
   props: ['doctype', 'name'],
   components: {
     PageHeader,
@@ -207,13 +207,13 @@ export default {
   },
   provide() {
     return {
-      doctype: this.doctype,
+      doctype: 'Quotation', //this.doctype,
       name: this.name
     };
   },
   data() {
     return {
-      doc: null,
+      doc: 'Quotation', //null,
       printSettings: null,
       companyName: null
     };
@@ -224,19 +224,9 @@ export default {
     },
     partyField() {
       let fieldname = {
-        SalesInvoice: 'customer',
-        PurchaseInvoice: 'supplier',
         Quotation: 'customer'
+        //PurchaseInvoice: 'supplier'
       }[this.doctype];
-      /*
-      } else if (this.doctype === 'Quotation') {
-        let fieldname = {
-          Quotation: 'customer'
-          //PurchaseInvoice: 'supplier'
-        }[this.doctype];
-
-      }
-      */
       return this.meta.getField(fieldname);
     },
     address() {
@@ -288,7 +278,7 @@ export default {
     },
     onSubmitClick() {
       let message =
-        this.doctype === 'SalesInvoice'
+        this.doctype === 'Quotation'
           ? this._('Are you sure you want to submit this invoice?')
           : this._('Are you sure you want to submit this bill?');
       showMessageDialog({
@@ -311,7 +301,7 @@ export default {
       handleErrorWithDialog(e, this.doc);
     },
     openInvoiceSettings() {
-      openSettings('Invoice');
+      openSettings('Quotation');
     },
     routeToList() {
       console.log(this.doctype); //HELKYDs 30-11-2020

@@ -12,7 +12,7 @@ module.exports = {
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,
-      default: 'JV'
+      default: 'JV ' + new Date().toISOString().slice(0, 4) //'JV'
     }
   ]
 };

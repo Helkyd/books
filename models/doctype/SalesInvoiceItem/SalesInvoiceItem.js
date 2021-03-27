@@ -1,3 +1,5 @@
+const frappe = require('frappejs');
+
 module.exports = {
   name: 'SalesInvoiceItem',
   doctype: 'DocType',
@@ -66,9 +68,20 @@ module.exports = {
       label: 'Tax',
       fieldtype: 'Link',
       target: 'Tax',
-      formula: (row, doc) => {
+      formula: async (row, doc) => {
         if (row.tax) return row.tax;
         return doc.getFrom('Item', row.item, 'tax');
+      },
+      readOnly: async doc => {
+        //HELKYds 18-01-21
+        console.log(doc);
+        let accountingSettings = await frappe.getSingle('AccountingSettings');
+        const regimeiva = accountingSettings.regimeIva;
+        if (regimeiva == 'Regime Geral') {
+          return 0;
+        } else {
+          return 1;
+        }
       }
     },
     {

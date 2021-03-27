@@ -7,32 +7,34 @@ const accountFields = [
   'isGroup',
   'account_type',
   'root_type',
-  'is_group'
+  'is_group',
+  'account_number'
 ];
 
 async function importAccounts(children, parent, rootType, rootAccount) {
   for (let accountName in children) {
     const child = children[accountName];
-
     if (rootAccount) {
       rootType = child.rootType || child.root_type;
     }
-
+    let accname_number = ''; //HELKYds 29-11-2020
+    if (child.account_number) {
+      accname_number = child.account_number + ' - ' + accountName;
+    }
     if (!accountFields.includes(accountName)) {
       let isGroup = identifyIsGroup(child);
       const doc = frappe.newDoc({
         doctype: 'Account',
-        name: accountName,
+        name: accname_number || accountName, //HELKyds 29-11-2020
+        account_number: child.account_number || '', //HELKyds 29-11-2020
         parentAccount: parent,
         isGroup,
         rootType,
         balance: 0,
         accountType: child.accountType || child.account_type
       });
-
       await doc.insert();
-
-      await importAccounts(child, accountName, rootType);
+      await importAccounts(child, accname_number || accountName, rootType);
     }
   }
 }
@@ -55,7 +57,6 @@ function identifyIsGroup(child) {
 async function getCountryCOA() {
   const doc = await frappe.getDoc('AccountingSettings');
   const conCode = countries[doc.country].code;
-
   try {
     const countryCoa = require('../fixtures/verified/' + conCode + '.json');
     return countryCoa.tree;

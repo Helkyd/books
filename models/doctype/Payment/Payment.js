@@ -1,4 +1,8 @@
 const utils = require('../../../accounting/utils');
+const frappe = require('frappejs');
+
+const { getActions } = require('../Transaction/Transaction');
+const PaymentTemplate = require('./PaymentTemplate.vue').default;
 
 module.exports = {
   name: 'Payment',
@@ -7,8 +11,17 @@ module.exports = {
   isChild: 0,
   isSubmittable: 1,
   keywordFields: [],
+  printTemplate: PaymentTemplate,
   settings: 'PaymentSettings',
   fields: [
+    {
+      label: 'Doc AGT', //HELKyds 18-01-2021
+      fieldname: 'docAgt',
+      fieldtype: 'Data',
+      required: 0,
+      readOnly: 1
+    },
+
     {
       fieldname: 'party',
       label: 'Party',
@@ -29,6 +42,7 @@ module.exports = {
       target: 'Account',
       required: 1,
       getFilters: (query, doc) => {
+        console.log('account');
         if (doc.paymentType === 'Pay') {
           if (doc.paymentMethod === 'Cash') {
             return { accountType: 'Cash', isGroup: 0 };
@@ -61,9 +75,16 @@ module.exports = {
           }
         }
       },
-      formula: doc => {
+      formula: async doc => {
         if (doc.paymentMethod === 'Cash') {
-          return 'Cash';
+          let conta = await frappe.db.getAll({
+            doctype: 'Account',
+            fields: ['name'],
+            filters: { account_number: ['like', '45110000%'] }
+          });
+          console.log(conta);
+          console.log(conta[0].name);
+          return conta[0].name;
         }
       }
     },
@@ -101,16 +122,16 @@ module.exports = {
       fieldname: 'amount',
       label: 'Amount',
       fieldtype: 'Currency',
-      required: 1,
-      default: doc => doc.getSum('for', 'amount')
+      required: 1 //Helkyds 29-11-2020 Removed Defaults causing error
     },
     {
       fieldname: 'writeoff',
       label: 'Write Off / Refund',
-      fieldtype: 'Currency'
+      fieldtype: 'Currency',
+      default: 0
     },
     {
-      fieldname: 'for',
+      fieldname: 'payfor', //Helkyds 29-11-2020 Renamed from for to payfor
       label: 'Payment For',
       fieldtype: 'Table',
       childtype: 'PaymentFor',
@@ -130,7 +151,7 @@ module.exports = {
     'clearanceDate',
     'amount',
     'writeoff',
-    'for'
+    'payfor'
   ],
 
   layout: [
@@ -170,7 +191,7 @@ module.exports = {
     {
       columns: [
         {
-          fields: ['for']
+          fields: ['payfor']
         }
       ]
     },
@@ -183,5 +204,6 @@ module.exports = {
     }
   ],
 
-  links: [utils.ledgerLink]
+  links: [utils.ledgerLink],
+  actions: getActions('Payment')
 };

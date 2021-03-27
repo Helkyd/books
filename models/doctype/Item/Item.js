@@ -56,11 +56,20 @@ module.exports = {
       },
       formulaDependsOn: ['itemType'],
       formula(doc) {
-        if (doc.itemType === 'Product') {
-          return 'Sales';
-        }
-        if (doc.itemType === 'Service') {
-          return 'Service';
+        if (frappe.AccountingSettings.currency === 'KZ') {
+          if (doc.itemType === 'Product') {
+            return '61110000 - Vendas'; //'Sales';
+          }
+          if (doc.itemType === 'Service') {
+            return '62110000 - Servicos Principais'; //'Service';
+          }
+        } else {
+          if (doc.itemType === 'Product') {
+            return 'Sales';
+          }
+          if (doc.itemType === 'Service') {
+            return 'Service';
+          }
         }
       }
     },
@@ -79,8 +88,19 @@ module.exports = {
         };
       },
       formulaDependsOn: ['itemType'],
-      formula() {
-        return 'Cost of Goods Sold';
+      //HELKYDs 30-11-2020; If Angola CoA
+      formula(doc) {
+        if (frappe.AccountingSettings.currency === 'KZ') {
+          if (doc.itemType === 'Product') {
+            return '71110000 - Custo das Existencias Vendidas e Consumidas'; //'Sales';
+          }
+          if (doc.itemType === 'Service') {
+            //return '71110000 - Custo das Existencias Vendidas e Consumidas'; //'Sales';
+            return '75239000 - Outros Servicos'; //'Service';
+          }
+        } else {
+          return 'Cost of Goods Sold';
+        }
       }
     },
     {

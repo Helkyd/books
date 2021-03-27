@@ -86,6 +86,39 @@ module.exports = {
     },
 
     {
+      fieldname: 'nifEmpresa',
+      label: 'NIF',
+      fieldtype: 'Data',
+      placeholder: 'NIF Empresa'
+    },
+    {
+      fieldname: 'regimeIva',
+      label: 'Regime do IVA',
+      fieldtype: 'Select',
+      options: [
+        'Regime Geral',
+        'Regime Transitorio',
+        'Regime Simplificado',
+        'Regime de Caixa',
+        'Regime de nao Sujeicao',
+        'Regime de Exclusao'
+      ],
+      default: 'Regime de Exclusao',
+      required: 1
+    },
+    {
+      fieldname: 'linguasistema',
+      label: 'System linguasistema',
+      fieldtype: 'Select',
+      options: [
+        'EN',
+        'PT-PT'
+      ],
+      default: 'EN',
+      required: 1
+    },
+
+    {
       fieldname: 'fiscalYearStart',
       label: 'Fiscal Year Start Date',
       fieldtype: 'Date',
@@ -116,6 +149,9 @@ module.exports = {
   quickEditFields: [
     'fullname',
     'email',
+    'nifEmpresa',
+    'regimeIva',
+    'linguasistema',
     'companyName',
     'country',
     'currency',
