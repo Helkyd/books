@@ -26,7 +26,6 @@
 </template>
 <script>
 import frappe from 'frappejs';
-import Observable from 'frappejs/utils/observable';
 import PageHeader from '@/components/PageHeader';
 import Button from '@/components/Button';
 import SearchBar from '@/components/SearchBar';
@@ -88,6 +87,7 @@ export default {
   },
   computed: {
     meta() {
+      console.log('meta ', frappe.getMeta(this.doctype));
       return frappe.getMeta(this.doctype);
     },
     listConfig() {
@@ -102,7 +102,14 @@ export default {
       }
     },
     title() {
-      return this.listConfig.title || this.doctype;
+      console.log('traduz');
+      console.log(frappe._traducao[this.listConfig.title || this.doctype]);
+      console.log(frappe.AccountingSettings.linguasistema);
+      if (frappe.AccountingSettings.linguasistema == 'PT-PT') {
+        return frappe._traducao[this.listConfig.title || this.doctype];
+      } else {
+        return this.listConfig.title || this.doctype;
+      }
     }
   }
 };

@@ -1,6 +1,10 @@
 const frappe = require('frappejs');
 const naming = require('frappejs/model/naming');
 const registerServerMethods = require('./registerServerMethods');
+const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
+//import { readFile } from 'frappejs/server/utils'; //HELKYD 26-03-2021
+const traduz = require('frappejs/utils');
+//const csv2json = require('csvjson-csv2json');
 
 module.exports = async function postStart() {
   // set server-side modules
@@ -170,8 +174,91 @@ module.exports = async function postStart() {
 
     //Adds Languange PT
     frappe.AccountingSettings.linguasistema = 'PT-PT';
+
     //Carregar o file das traducoes...
-    //console.log(frappeutils.utils.readFile(traducao));
+    frappe._messages = {};
+    //console.log(frappelerficheiro.readFile('./fixtures/verified/pt.csv'));
+    frappe._messages = frappelerficheiro.readFile('./fixtures/verified/pt.csv');
+    //console.log(frappe._messages.replace(/\n/g, "::").split('::'));
+
+    //console.log(frappe._messages.replace(/\n/g, "::").split('::')[8]);
+    //for (var ff in frappe._messages){
+    //  console.log(frappe._messages[ff]);
+    //};
+
+    //let tradu = JSON.parse(frappe._messages.replace(/\n/g,"").replace('""', '&quot;'));
+    //let tradu = JSON.stringify(frappe._messages);
+    //let tradu1 = JSON.parse(JSON.stringify(frappe._messages.replace('",',':')));
+    let tradu2 = JSON.parse(
+      JSON.stringify(frappe._messages.replace(/\n/g, '::').split('::'))
+    );
+
+    //convert "," to dict
+    frappe._traducao = {};
+    //let trad = '';
+    for (var xx in tradu2) {
+      //console.log('aaaa');
+      //console.log(tradu2[xx]);
+      //console.log(tradu2[xx] == "");
+
+      if (tradu2[xx] !== '') {
+        //console.log(tradu2[xx].indexOf('","'));
+        if (tradu2[xx].indexOf('","') != -1) {
+          //trad = tradu2[xx].split('","');
+          frappe._traducao[tradu2[xx].split('","')[0]] = tradu2[xx].split(
+            '","'
+          )[1];
+        } else {
+          //trad = tradu2[xx].split(',');
+          frappe._traducao[tradu2[xx].split(',')[0]] = tradu2[xx].split(',')[1];
+        }
+        //console.log(trad);
+      } else {
+        break;
+      }
+    }
+    console.log('frappe traducao');
+    console.log(frappe._traducao);
+
+    //console.log(tradu);
+    //console.log(tradu1);
+    //console.log(tradu2);
+
+    //console.log(typeof(tradu));
+    //console.log(typeof(tradu1));
+    //console.log(typeof(tradu2));
+
+    //const json = csvToJsonHandler(frappe._messages);
+    //let file = './fixtures/verified/pt.csv';
+
+    //getAsText('./fixtures/verified/pt.csv');
+    //getAsText(frappelerficheiro.readFile('./fixtures/verified/pt.csv').replace(/\n/g,""));
+
+    /*
+    let file = new Blob('./fixtures/verified/pt.csv',{ type: 'text/plain' });
+    let json = {};
+    const reader = new FileReader();
+    reader.onload = () => {
+      const csv = reader.result;
+      //const json = csvToJsonHandler(csv);
+      json = csv2json(csv, { parseNumbers: true });
+      //findMatchingReferences(json, report);
+    };
+    //reader.readAsBinaryString(file);
+    reader.readAsText(file,'utf-8');
+    */
+
+    //const json = csv2json(frappe._messages, { parseNumbers: true });
+    //console.log(frappe._messages);
+
+    //console.log(json);
+    //kk = json;
+    console.log(traduz._('GSTR 3B Report', frappe._traducao));
+    console.log('traducao');
+    console.log(frappe._traducao['GSTR 3B Report']);
+
+    //To clear.
+    frappe._messages = {};
   } else {
     frappe.AccountingSettings.linguasistema = 'EN';
   }
@@ -190,3 +277,47 @@ function getCurrencySymbols() {
       }, {});
     });
 }
+
+//TESTING
+/*
+export function traduzir(txt) {
+  if(txt){
+    return frappe._traducao[txt] ? (frappe._traducao[txt]): txt;
+  }
+}
+*/
+/*
+function getAsText(fileToRead) {
+  var reader = new FileReader();
+  // Read file into memory as UTF-8      
+  reader.readAsText(fileToRead);
+  // Handle errors load
+  reader.onload = loadHandler;
+  reader.onerror = errorHandler;
+}
+
+function loadHandler(event) {
+  var csv = event.target.result;
+  processData(csv);
+}
+
+function processData(csv) {
+    var allTextLines = csv.split(/\r\n|\n/);
+    var lines = [];
+    for (var i=0; i<allTextLines.length; i++) {
+        var data = allTextLines[i].split(';');
+            var tarr = [];
+            for (var j=0; j<data.length; j++) {
+                tarr.push(data[j]);
+            }
+            lines.push(tarr);
+    }
+  console.log(lines);
+}
+
+function errorHandler(evt) {
+  if(evt.target.error.name == "NotReadableError") {
+      alert("Canno't read file !");
+  }
+}
+*/

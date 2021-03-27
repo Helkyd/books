@@ -2,10 +2,59 @@ const frappe = require('frappejs');
 const utils = require('../../../accounting/utils');
 const { openQuickEdit } = require('@/utils');
 const Badge = require('@/components/Badge').default;
+const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
 
 module.exports = {
   getStatusColumn() {
     console.log('transiction');
+    if (!frappe._traducao) {
+      //Carregar o file das traducoes...
+      frappe._messages = {};
+      //console.log(frappelerficheiro.readFile('./fixtures/verified/pt.csv'));
+      frappe._messages = frappelerficheiro.readFile(
+        './fixtures/verified/pt.csv'
+      );
+      //console.log(frappe._messages.replace(/\n/g, "::").split('::'));
+
+      //console.log(frappe._messages.replace(/\n/g, "::").split('::')[8]);
+      //for (var ff in frappe._messages){
+      //  console.log(frappe._messages[ff]);
+      //};
+
+      //let tradu = JSON.parse(frappe._messages.replace(/\n/g,"").replace('""', '&quot;'));
+      //let tradu = JSON.stringify(frappe._messages);
+      //let tradu1 = JSON.parse(JSON.stringify(frappe._messages.replace('",',':')));
+      let tradu2 = JSON.parse(
+        JSON.stringify(frappe._messages.replace(/\n/g, '::').split('::'))
+      );
+
+      //convert "," to dict
+      frappe._traducao = {};
+      //let trad = '';
+      for (var xx in tradu2) {
+        //console.log('aaaa');
+        //console.log(tradu2[xx]);
+        //console.log(tradu2[xx] == "");
+
+        if (tradu2[xx] !== '') {
+          //console.log(tradu2[xx].indexOf('","'));
+          if (tradu2[xx].indexOf('","') != -1) {
+            //trad = tradu2[xx].split('","');
+            frappe._traducao[tradu2[xx].split('","')[0]] = tradu2[xx].split(
+              '","'
+            )[1];
+          } else {
+            //trad = tradu2[xx].split(',');
+            frappe._traducao[tradu2[xx].split(',')[0]] = tradu2[xx].split(
+              ','
+            )[1];
+          }
+          //console.log(trad);
+        } else {
+          break;
+        }
+      }
+    }
     return {
       label: 'Status',
       fieldname: 'status',

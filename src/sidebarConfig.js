@@ -11,17 +11,17 @@ const config = {
   },
   groups: [
     {
-      title: _('Get Started'),
+      title: 'Get Started',
       route: '/get-started',
       icon: getIcon('general', '24', '5')
     },
     {
-      title: _('Dashboard'),
+      title: 'Dashboard',
       route: '/',
       icon: getIcon('dashboard')
     },
     {
-      title: _('Sales'),
+      title: frappe._traducao['Sales'],
       icon: getIcon('sales'),
       action() {
         router.push('/list/SalesInvoice');
