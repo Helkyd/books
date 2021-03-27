@@ -36,13 +36,10 @@ module.exports = {
       required: 1
     },
     {
-      fieldname: 'linguasistema',  //HELKYds 26-03-2021
+      fieldname: 'linguasistema', //HELKYds 26-03-2021
       label: 'System linguasistema',
       fieldtype: 'Select',
-      options: [
-        'EN',
-        'PT-PT'
-      ],
+      options: ['EN', 'PT-PT'],
       default: 'EN',
       required: 1
     },

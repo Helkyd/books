@@ -110,10 +110,7 @@ module.exports = {
       fieldname: 'linguasistema',
       label: 'System linguasistema',
       fieldtype: 'Select',
-      options: [
-        'EN',
-        'PT-PT'
-      ],
+      options: ['EN', 'PT-PT'],
       default: 'EN',
       required: 1
     },

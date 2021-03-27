@@ -16,11 +16,11 @@ module.exports = {
       required: 1
     },
     {
-      fieldname: 'account_number',  //HELKYds 29-11-2020
+      fieldname: 'account_number', //HELKYds 29-11-2020
       label: 'Account Number',
       fieldtype: 'Data',
       required: 0
-    },    
+    },
     {
       fieldname: 'rootType',
       label: 'Root Type',

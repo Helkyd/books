@@ -172,7 +172,6 @@ module.exports = async function postStart() {
     frappe.AccountingSettings.linguasistema = 'PT-PT';
     //Carregar o file das traducoes...
     //console.log(frappeutils.utils.readFile(traducao));
-
   } else {
     frappe.AccountingSettings.linguasistema = 'EN';
   }
