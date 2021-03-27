@@ -2,9 +2,6 @@ const frappe = require('frappejs');
 const naming = require('frappejs/model/naming');
 const registerServerMethods = require('./registerServerMethods');
 
-const frappeutils = require('frappejs/server'); //HELKYD 26-03-2021
-const traducao = require('../fixtures/verified/pt.csv');
-
 module.exports = async function postStart() {
   // set server-side modules
   frappe.models.SalesInvoice.documentClass = require('../models/doctype/SalesInvoice/SalesInvoiceServer.js');
@@ -172,12 +169,11 @@ module.exports = async function postStart() {
     }
 
     //Adds Languange PT
-    frappe.AccountingSettings.language = 'PT-PT';
+    frappe.AccountingSettings.linguasistema = 'PT-PT';
     //Carregar o file das traducoes...
-    console.log(frappeutils.utils.readFile(traducao));
-
+    //console.log(frappeutils.utils.readFile(traducao));
   } else {
-    frappe.AccountingSettings.language = 'EN';
+    frappe.AccountingSettings.linguasistema = 'EN';
   }
 };
 

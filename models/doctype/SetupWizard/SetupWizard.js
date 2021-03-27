@@ -81,13 +81,10 @@ module.exports = {
       required: 1
     },
     {
-      fieldname: 'language',  //HELKYDS 26-03-2021
-      label: 'System Language',
+      fieldname: 'linguasistema', //HELKYDS 26-03-2021
+      label: 'System linguasistema',
       fieldtype: 'Select',
-      options: [
-        'EN',
-        'PT-PT'
-      ],
+      options: ['EN', 'PT-PT'],
       default: 'EN',
       required: 1
     },
@@ -151,7 +148,7 @@ module.exports = {
     'country',
     'nifEmpresa',
     'regimeIva',
-    'language',
+    'linguasistema',
     'currency',
     'fiscalYearStart',
     'fiscalYearEnd'

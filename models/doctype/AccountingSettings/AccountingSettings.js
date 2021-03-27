@@ -107,13 +107,10 @@ module.exports = {
       required: 1
     },
     {
-      fieldname: 'language',
-      label: 'System Language',
+      fieldname: 'linguasistema',
+      label: 'System linguasistema',
       fieldtype: 'Select',
-      options: [
-        'EN',
-        'PT-PT'
-      ],
+      options: ['EN', 'PT-PT'],
       default: 'EN',
       required: 1
     },
@@ -151,7 +148,7 @@ module.exports = {
     'email',
     'nifEmpresa',
     'regimeIva',
-    'language',
+    'linguasistema',
     'companyName',
     'country',
     'currency',
