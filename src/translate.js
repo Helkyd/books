@@ -1,6 +1,5 @@
 const frappe = require('frappejs');
 const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
-const AccountingSettings = require('../models/doctype/AccountingSettings/AccountingSettings');
 
 async function ling() {
   //if (!linguadosistema){
@@ -88,8 +87,29 @@ function __(txt, replace, lingua = 'PT-PT') {
 
   //console.log(frappe.AccountingSettings.linguasistema);
   if (frappe.AccountingSettings) {
-    console.log('lingua ', frappe.AccountingSettings.linguasistema);
+    //console.log('lingua ', frappe.AccountingSettings.linguasistema);
     if (frappe.AccountingSettings.linguasistema != 'PT-PT') return txt;
+  } else {
+    const fs = require('fs');
+    let ficheirolingua = '';
+    if (fs.existsSync('c://temp//lang.txt', 'utf-8')) {
+      ficheirolingua = fs.readFileSync('c://temp//lang.txt', 'utf-8');
+      console.log('C ', ficheirolingua);
+    } else if (fs.existsSync('/tmp/lang.txt', 'utf-8')) {
+      ficheirolingua = fs.readFileSync('/tmp/lang.txt', 'utf-8');
+      console.log('U ', ficheirolingua);
+    } else {
+      let ficheirolang =
+        frappe.db.dbPath.substring(0, frappe.db.dbPath.lastIndexOf('/')) +
+        '/lang.txt';
+      if (fs.existsSync(ficheirolang, 'utf-8')) {
+        ficheirolingua = fs.readFileSync(ficheirolang, 'utf-8');
+        console.log(ficheirolingua);
+      }
+    }
+    if (ficheirolingua != 'PT-PT') {
+      return txt;
+    }
   }
   //if (frappe.AccountingSettings.linguasistema != 'PT-PT') return txt;
   //console.log('frappe._traducao ', frappe._traducao);

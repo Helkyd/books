@@ -1,11 +1,10 @@
 const countryList = Object.keys(require('~/fixtures/countryInfo.json')).sort();
 
-const { _ } = require('frappejs/utils');
-//const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
 
 module.exports = {
   name: 'AccountingSettings',
-  label: _('Accounting Settings'),
+  label: __('Accounting Settings'),
   naming: 'name', // {random|autoincrement}
   isSingle: 1,
   isChild: 0,
@@ -14,14 +13,14 @@ module.exports = {
   keywordFields: [],
   fields: [
     {
-      label: _('Company Name'),
+      label: __('Company Name'),
       fieldname: 'companyName',
       fieldtype: 'Data',
       required: 1
     },
 
     {
-      label: _('Write Off Account'),
+      label: __('Write Off Account'),
       fieldname: 'writeOffAccount',
       fieldtype: 'Link',
       target: 'Account',
@@ -35,7 +34,7 @@ module.exports = {
     },
 
     {
-      label: _('Round Off Account'),
+      label: __('Round Off Account'),
       fieldname: 'roundOffAccount',
       fieldtype: 'Link',
       target: 'Account',
@@ -50,7 +49,7 @@ module.exports = {
 
     {
       fieldname: 'country',
-      label: _('Country'),
+      label: __('Country'),
       fieldtype: 'AutoComplete',
       placeholder: 'Select Country',
       required: 1,
@@ -59,21 +58,21 @@ module.exports = {
 
     {
       fieldname: 'currency',
-      label: _('Currency'),
+      label: __('Currency'),
       fieldtype: 'Data',
       required: 0
     },
 
     {
       fieldname: 'fullname',
-      label: _('Name'),
+      label: __('Name'),
       fieldtype: 'Data',
       required: 1
     },
 
     {
       fieldname: 'email',
-      label: _('Email'),
+      label: __('Email'),
       fieldtype: 'Data',
       required: 1,
       validate: {
@@ -83,7 +82,7 @@ module.exports = {
 
     {
       fieldname: 'bankName',
-      label: _('Bank Name'),
+      label: __('Bank Name'),
       fieldtype: 'Data',
       required: 1
     },
@@ -96,7 +95,7 @@ module.exports = {
     },
     {
       fieldname: 'regimeIva',
-      label: _('Regime do IVA'),
+      label: __('Regime do IVA'),
       fieldtype: 'Select',
       options: [
         'Regime Geral',
@@ -111,7 +110,7 @@ module.exports = {
     },
     {
       fieldname: 'linguasistema',
-      label: _('Lingua do Sistema'),
+      label: __('Lingua do Sistema'),
       fieldtype: 'Select',
       options: ['EN', 'PT-PT'],
       default: 'EN',
@@ -120,28 +119,28 @@ module.exports = {
 
     {
       fieldname: 'fiscalYearStart',
-      label: _('Fiscal Year Start Date'),
+      label: __('Fiscal Year Start Date'),
       fieldtype: 'Date',
       required: 1
     },
 
     {
       fieldname: 'fiscalYearEnd',
-      label: _('Fiscal Year End Date'),
+      label: __('Fiscal Year End Date'),
       fieldtype: 'Date',
       required: 1
     },
 
     {
       fieldname: 'setupComplete',
-      label: _('Setup Complete'),
+      label: __('Setup Complete'),
       fieldtype: 'Check',
       default: 0
     },
 
     {
       fieldname: 'autoUpdate',
-      label: _('Auto Update'),
+      label: __('Auto Update'),
       fieldtype: 'Check',
       default: 1
     }
