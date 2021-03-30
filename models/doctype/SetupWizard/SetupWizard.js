@@ -1,9 +1,11 @@
 const { DateTime } = require('luxon');
 const countryList = require('~/fixtures/countryInfo.json');
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'SetupWizard',
-  label: 'Setup Wizard',
+  label: __('Setup Wizard'),
   naming: 'name',
   isSingle: 1,
   isChild: 0,
@@ -13,12 +15,12 @@ module.exports = {
   fields: [
     {
       fieldname: 'companyLogo',
-      label: 'Company Logo',
+      label: __('Company Logo'),
       fieldtype: 'AttachImage'
     },
     {
       fieldname: 'country',
-      label: 'Country',
+      label: __('Country'),
       fieldtype: 'AutoComplete',
       placeholder: 'Select Country',
       required: 1,
@@ -27,7 +29,7 @@ module.exports = {
 
     {
       fieldname: 'fullname',
-      label: 'Your Name',
+      label: __('Your Name'),
       fieldtype: 'Data',
       placeholder: 'John Doe',
       required: 1
@@ -35,7 +37,7 @@ module.exports = {
 
     {
       fieldname: 'email',
-      label: 'Email',
+      label: __('Email'),
       fieldtype: 'Data',
       placeholder: 'john@doe.com',
       required: 1,
@@ -46,7 +48,7 @@ module.exports = {
 
     {
       fieldname: 'companyName',
-      label: 'Company Name',
+      label: __('Company Name'),
       placeholder: 'Company Name',
       fieldtype: 'Data',
       required: 1
@@ -54,7 +56,7 @@ module.exports = {
 
     {
       fieldname: 'bankName',
-      label: 'Bank Name',
+      label: __('Bank Name'),
       fieldtype: 'Data',
       placeholder: 'Prime Bank',
       required: 1
@@ -69,20 +71,22 @@ module.exports = {
     },
     {
       fieldname: 'regimeIva',
-      label: 'Regime do IVA',
+      label: __('Regime do IVA'),
       fieldtype: 'Select',
       options: [
         'Regime Geral',
         'Regime Transitorio',
+        'Regime Simplificado',
         'Regime de Caixa',
-        'Regime de nao Sujeicao'
+        'Regime de nao Sujeicao',
+        'Regime de Exclusao'
       ],
-      default: 'Regime de nao Sujeicao',
+      default: 'Regime de Exclusao',
       required: 1
     },
     {
       fieldname: 'linguasistema', //HELKYDS 26-03-2021
-      label: 'System linguasistema',
+      label: __('Lingua Sistema'),
       fieldtype: 'Select',
       options: ['EN', 'PT-PT'],
       default: 'EN',
@@ -91,7 +95,7 @@ module.exports = {
 
     {
       fieldname: 'fiscalYearStart',
-      label: 'Fiscal Year Start Date',
+      label: __('Fiscal Year Start Date'),
       placeholder: 'Fiscal Year Start Date',
       fieldtype: 'Date',
       formula: doc => {
@@ -109,7 +113,7 @@ module.exports = {
 
     {
       fieldname: 'fiscalYearEnd',
-      label: 'Fiscal Year End Date',
+      label: __('Fiscal Year End Date'),
       placeholder: 'Fiscal Year End Date',
       fieldtype: 'Date',
       formula: doc => {
@@ -126,7 +130,7 @@ module.exports = {
     },
     {
       fieldname: 'currency',
-      label: 'Currency',
+      label: __('Currency'),
       fieldtype: 'Data',
       placeholder: 'INR',
       formula: doc => {

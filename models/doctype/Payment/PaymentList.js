@@ -1,6 +1,8 @@
 import { _ } from 'frappejs/utils';
 import Badge from '@/components/Badge';
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 export default {
   doctype: 'Payment',
   title: _('Payments'),
@@ -15,7 +17,7 @@ export default {
         let status = 'Draft';
         let color = 'gray';
         if (!doc.submitted) {
-          status = 'Draft';
+          status = __('Draft');
           color = 'gray';
         }
 
@@ -24,10 +26,10 @@ export default {
           (doc.clearanceDate !== null || doc.paymentMethod === 'Cash')
         ) {
           color = 'green';
-          status = 'Submitted';
+          status = __('Submitted');
         } else if (doc.submitted === 2) {
           color = 'red';
-          status = 'Canceled';
+          status = __('Canceled');
         }
 
         return {

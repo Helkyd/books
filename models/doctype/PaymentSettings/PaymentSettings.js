@@ -1,13 +1,15 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'PaymentSettings',
-  label: 'Payment Settings',
+  label: __('Payment Settings'),
   isSingle: 1,
   isChild: 0,
   keywordFields: [],
   fields: [
     {
       fieldname: 'numberSeries',
-      label: 'Number Series',
+      label: __('Number Series'),
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,

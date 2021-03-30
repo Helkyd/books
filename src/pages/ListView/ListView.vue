@@ -34,6 +34,8 @@ import listConfigs from './listConfig';
 import Icon from '@/components/Icon';
 import FilterDropdown from '@/components/FilterDropdown';
 
+import { __ } from '../../translate'; //HELKYDS 30-03-2021
+
 export default {
   name: 'ListView',
   props: ['doctype', 'filters'],
@@ -106,7 +108,7 @@ export default {
       console.log(frappe._traducao[this.listConfig.title || this.doctype]);
       console.log(frappe.AccountingSettings.linguasistema);
       if (frappe.AccountingSettings.linguasistema == 'PT-PT') {
-        return frappe._traducao[this.listConfig.title || this.doctype];
+        return __(this.listConfig.title || this.doctype);
       } else {
         return this.listConfig.title || this.doctype;
       }

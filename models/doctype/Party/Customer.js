@@ -3,16 +3,18 @@ const { _ } = require('frappejs/utils');
 const router = require('@/router').default;
 const PartyWidget = require('./PartyWidget.vue').default;
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'Customer',
-  label: 'Customer',
+  label: __('Customer'),
   basedOn: 'Party',
   filters: {
     customer: 1
   },
   actions: [
     {
-      label: _('Create Invoice'),
+      label: __('Create Invoice'),
       condition: doc => !doc.isNew(),
       action: async customer => {
         let doc = await frappe.getNewDoc('SalesInvoice');
@@ -28,7 +30,7 @@ module.exports = {
       }
     },
     {
-      label: _('View Invoices'),
+      label: __('View Invoices'),
       condition: doc => !doc.isNew(),
       action: customer => {
         router.push({

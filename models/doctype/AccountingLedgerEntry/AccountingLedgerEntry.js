@@ -1,6 +1,8 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'AccountingLedgerEntry',
-  label: 'Ledger Entry',
+  label: __('Ledger Entry'),
   naming: 'autoincrement',
   doctype: 'DocType',
   isSingle: 0,
@@ -9,56 +11,56 @@ module.exports = {
   fields: [
     {
       fieldname: 'date',
-      label: 'Date',
+      label: __('Date'),
       fieldtype: 'Date'
     },
     {
       fieldname: 'account',
-      label: 'Account',
+      label: __('Account'),
       fieldtype: 'Link',
       target: 'Account',
       required: 1
     },
     {
       fieldname: 'description',
-      label: 'Description',
+      label: __('Description'),
       fieldtype: 'Text'
     },
     {
       fieldname: 'party',
-      label: 'Party',
+      label: __('Party'),
       fieldtype: 'Link',
       target: 'Party'
     },
     {
       fieldname: 'debit',
-      label: 'Debit',
+      label: __('Debit'),
       fieldtype: 'Currency'
     },
     {
       fieldname: 'credit',
-      label: 'Credit',
+      label: __('Credit'),
       fieldtype: 'Currency'
     },
     {
       fieldname: 'againstAccount',
-      label: 'Against Account',
+      label: __('Against Account'),
       fieldtype: 'Text'
     },
     {
       fieldname: 'referenceType',
-      label: 'Ref. Type',
+      label: __('Ref. Type'),
       fieldtype: 'Data'
     },
     {
       fieldname: 'referenceName',
-      label: 'Ref. Name',
+      label: __('Ref. Name'),
       fieldtype: 'DynamicLink',
       references: 'referenceType'
     },
     {
       fieldname: 'balance',
-      label: 'Balance',
+      label: __('Balance'),
       fieldtype: 'Currency'
     }
   ],

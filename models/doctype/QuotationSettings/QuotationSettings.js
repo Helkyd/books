@@ -1,8 +1,9 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
 let proform = 'INT-PP ' + new Date().toISOString().slice(0, 4);
 
 module.exports = {
   name: 'QuotationSettings',
-  label: 'Quotation Settings',
+  label: __('Quotation Settings'),
   doctype: 'DocType',
   isSingle: 1,
   isChild: 0,
@@ -10,7 +11,7 @@ module.exports = {
   fields: [
     {
       fieldname: 'numberSeries',
-      label: 'Number Series',
+      label: __('Number Series'),
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,
@@ -18,7 +19,7 @@ module.exports = {
     },
     {
       fieldname: 'template',
-      label: 'Template',
+      label: __('Template'),
       fieldtype: 'Select',
       options: ['Basic I', 'Basic II', 'Modern'],
       required: 1,
@@ -26,7 +27,7 @@ module.exports = {
     },
     {
       fieldname: 'font',
-      label: 'Font',
+      label: __('Font'),
       fieldtype: 'Select',
       options: ['Montserrat', 'Open Sans', 'Oxygen', 'Merriweather'],
       required: 1,
@@ -34,7 +35,7 @@ module.exports = {
     },
     {
       fieldname: 'themeColor',
-      label: 'Theme Color',
+      label: __('Theme Color'),
       fieldtype: 'Data',
       required: 1,
       default: '#000000',

@@ -1,6 +1,8 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'PaymentFor',
-  label: 'Payment For',
+  label: __('Payment For'),
   isSingle: 0,
   isChild: 1,
   keywordFields: [],
@@ -8,14 +10,14 @@ module.exports = {
   fields: [
     {
       fieldname: 'referenceType',
-      label: 'Reference Type',
+      label: __('Reference Type'),
       fieldtype: 'AutoComplete',
       options: ['SalesInvoice', 'PurchaseInvoice'],
       required: 1
     },
     {
       fieldname: 'referenceName',
-      label: 'Reference Name',
+      label: __('Reference Name'),
       fieldtype: 'DynamicLink',
       references: 'referenceType',
       getFilters: () => {
@@ -28,7 +30,7 @@ module.exports = {
     },
     {
       fieldname: 'amount',
-      label: 'Amount',
+      label: __('Amount'),
       fieldtype: 'Currency',
       formula: (row, doc) => {
         return doc.getFrom(

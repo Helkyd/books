@@ -13,6 +13,8 @@ import PortalVue from 'portal-vue';
 import App from './App';
 import router from './router';
 
+import { __ } from './translate'; //HELKYDS 30-03-2021
+
 (async () => {
   frappe.isServer = true;
   frappe.isElectron = true;
@@ -54,7 +56,8 @@ import router from './router';
     },
     methods: {
       _(...args) {
-        return frappe._(...args);
+        //return frappe._(...args);
+        return __(...args);
       }
     }
   });

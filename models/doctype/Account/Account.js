@@ -1,8 +1,10 @@
 const frappe = require('frappejs');
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'Account',
-  label: 'Account',
+  label: __('Account'),
   doctype: 'DocType',
   documentClass: require('./AccountDocument.js'),
   isSingle: 0,
@@ -11,26 +13,26 @@ module.exports = {
   fields: [
     {
       fieldname: 'name',
-      label: 'Account Name',
+      label: __('Account Name'),
       fieldtype: 'Data',
       required: 1
     },
     {
       fieldname: 'account_number', //HELKYds 29-11-2020
-      label: 'Account Number',
+      label: __('Account Number'),
       fieldtype: 'Data',
       required: 0
     },
     {
       fieldname: 'rootType',
-      label: 'Root Type',
+      label: __('Root Type'),
       fieldtype: 'Select',
       options: ['', 'Asset', 'Liability', 'Equity', 'Income', 'Expense'],
       required: 1
     },
     {
       fieldname: 'parentAccount',
-      label: 'Parent Account',
+      label: __('Parent Account'),
       fieldtype: 'Link',
       target: 'Account',
       getFilters: (query, doc) => {
@@ -43,7 +45,7 @@ module.exports = {
     },
     {
       fieldname: 'accountType',
-      label: 'Account Type',
+      label: __('Account Type'),
       fieldtype: 'Select',
       options: [
         '',
@@ -70,7 +72,7 @@ module.exports = {
     },
     {
       fieldname: 'balance',
-      label: 'Balance',
+      label: __('Balance'),
       fieldtype: 'Currency',
       default: '0',
       readOnly: 1

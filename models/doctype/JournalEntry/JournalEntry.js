@@ -1,8 +1,10 @@
 const { ledgerLink } = require('../../../accounting/utils');
 const { DateTime } = require('luxon');
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
-  label: 'Journal Entry',
+  label: __('Journal Entry'),
   name: 'JournalEntry',
   doctype: 'DocType',
   isSubmittable: 1,
@@ -10,7 +12,7 @@ module.exports = {
   fields: [
     {
       fieldname: 'entryType',
-      label: 'Entry Type',
+      label: __('Entry Type'),
       fieldtype: 'Select',
       placeholder: 'Entry Type',
       options: [
@@ -30,37 +32,37 @@ module.exports = {
     },
     {
       fieldname: 'date',
-      label: 'Date',
+      label: __('Date'),
       fieldtype: 'Date',
       default: DateTime.local().toISODate()
     },
     {
       fieldname: 'accounts',
-      label: 'Account Entries',
+      label: __('Account Entries'),
       fieldtype: 'Table',
       childtype: 'JournalEntryAccount',
       required: true
     },
     {
       fieldname: 'referenceNumber',
-      label: 'Reference Number',
+      label: __('Reference Number'),
       fieldtype: 'Data'
     },
     {
       fieldname: 'referenceDate',
-      label: 'Reference Date',
+      label: __('Reference Date'),
       fieldtype: 'Date'
     },
     {
       fieldname: 'userRemark',
-      label: 'User Remark',
+      label: __('User Remark'),
       fieldtype: 'Text',
       placeholder: 'User Remark'
     }
   ],
   actions: [
     {
-      label: 'Revert',
+      label: __('Revert'),
       condition: doc => doc.submitted,
       action(doc) {
         doc.revert();

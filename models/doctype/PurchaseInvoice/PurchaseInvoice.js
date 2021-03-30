@@ -1,10 +1,12 @@
 const { getActions } = require('../Transaction/Transaction');
 const InvoiceTemplate = require('../SalesInvoice/InvoiceTemplate.vue').default;
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'PurchaseInvoice',
   doctype: 'DocType',
-  label: 'Purchase Invoice',
+  label: __('Purchase Invoice'),
   documentClass: require('./PurchaseInvoiceDocument'),
   printTemplate: InvoiceTemplate,
   isSingle: 0,
@@ -15,7 +17,7 @@ module.exports = {
   showTitle: true,
   fields: [
     {
-      label: 'Bill No',
+      label: __('Bill No'),
       fieldname: 'name',
       fieldtype: 'Data',
       required: 1,
@@ -23,13 +25,13 @@ module.exports = {
     },
     {
       fieldname: 'date',
-      label: 'Date',
+      label: __('Date'),
       fieldtype: 'Date',
       default: new Date().toISOString().slice(0, 10)
     },
     {
       fieldname: 'supplier',
-      label: 'Supplier',
+      label: __('Supplier'),
       fieldtype: 'Link',
       target: 'Supplier',
       required: 1
@@ -57,7 +59,7 @@ module.exports = {
     },
     {
       fieldname: 'postingdate', //HELKyds 17-01-2021 2020-12-02T00:04:29
-      label: 'Date',
+      label: __('Date'),
       fieldtype: 'Date',
       required: 1,
       readOnly: 1,
@@ -67,7 +69,7 @@ module.exports = {
 
     {
       fieldname: 'account',
-      label: 'Account',
+      label: __('Account'),
       fieldtype: 'Link',
       target: 'Account',
       readOnly: 1, //HELKYDS 30-11-2020
@@ -81,7 +83,7 @@ module.exports = {
     },
     {
       fieldname: 'currency',
-      label: 'Supplier Currency',
+      label: __('Supplier Currency'),
       fieldtype: 'Link',
       target: 'Currency',
       hidden: 1,
@@ -90,21 +92,21 @@ module.exports = {
     },
     {
       fieldname: 'exchangeRate',
-      label: 'Exchange Rate',
+      label: __('Exchange Rate'),
       fieldtype: 'Float',
       formula: doc => doc.getExchangeRate(),
       required: true
     },
     {
       fieldname: 'items',
-      label: 'Items',
+      label: __('Items'),
       fieldtype: 'Table',
       childtype: 'PurchaseInvoiceItem',
       required: true
     },
     {
       fieldname: 'netTotal',
-      label: 'Net Total',
+      label: __('Net Total'),
       fieldtype: 'Currency',
       formula: doc => doc.getSum('items', 'amount'),
       readOnly: 1,
@@ -112,14 +114,14 @@ module.exports = {
     },
     {
       fieldname: 'baseNetTotal',
-      label: 'Net Total (Company Currency)',
+      label: __('Net Total (Company Currency)'),
       fieldtype: 'Currency',
       formula: doc => doc.netTotal * doc.exchangeRate,
       readOnly: 1
     },
     {
       fieldname: 'taxes',
-      label: 'Taxes',
+      label: __('Taxes'),
       fieldtype: 'Table',
       childtype: 'TaxSummary',
       formula: doc => doc.getTaxSummary(),
@@ -127,7 +129,7 @@ module.exports = {
     },
     {
       fieldname: 'grandTotal',
-      label: 'Grand Total',
+      label: __('Grand Total'),
       fieldtype: 'Currency',
       formula: doc => doc.getGrandTotal(),
       readOnly: 1,
@@ -135,14 +137,14 @@ module.exports = {
     },
     {
       fieldname: 'baseGrandTotal',
-      label: 'Grand Total (Company Currency)',
+      label: __('Grand Total (Company Currency)'),
       fieldtype: 'Currency',
       formula: doc => doc.grandTotal * doc.exchangeRate,
       readOnly: 1
     },
     {
       fieldname: 'outstandingAmount',
-      label: 'Outstanding Amount',
+      label: __('Outstanding Amount'),
       fieldtype: 'Currency',
       formula: doc => {
         if (doc.submitted) return;
@@ -152,7 +154,7 @@ module.exports = {
     },
     {
       fieldname: 'terms',
-      label: 'Terms',
+      label: __('Terms'),
       fieldtype: 'Text'
     }
   ],

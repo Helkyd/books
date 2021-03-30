@@ -1,55 +1,57 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'GetStarted',
   isSingle: 1,
   fields: [
     {
       fieldname: 'onboardingComplete',
-      label: 'Onboarding Complete',
+      label: __('Onboarding Complete'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'companySetup',
-      label: 'Company Setup',
+      label: __('Company Setup'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'systemSetup',
-      label: 'System Setup',
+      label: __('System Setup'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'invoiceSetup',
-      label: 'Invoice Setup',
+      label: __('Invoice Setup'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'itemCreated',
-      label: 'Item Created',
+      label: __('Item Created'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'customerCreated',
-      label: 'Customer Created',
+      label: __('Customer Created'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'supplierCreated',
-      label: 'Supplier Created',
+      label: __('Supplier Created'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'invoiceCreated',
-      label: 'Invoice Created',
+      label: __('Invoice Created'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'billCreated',
-      label: 'Bill Created',
+      label: __('Bill Created'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'chartOfAccountsReviewed',
-      label: 'Chart Of Accounts Reviewed',
+      label: __('Chart Of Accounts Reviewed'),
       fieldtype: 'Check'
     }
   ]

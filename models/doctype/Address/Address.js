@@ -1,3 +1,5 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'Address',
   doctype: 'DocType',
@@ -13,64 +15,64 @@ module.exports = {
   fields: [
     {
       fieldname: 'addressLine1',
-      label: 'Address Line 1',
+      label: __('Address Line 1'),
       placeholder: 'Address Line 1',
       fieldtype: 'Data',
-      required: 1,
+      required: 1
     },
     {
       fieldname: 'addressLine2',
-      label: 'Address Line 2',
+      label: __('Address Line 2'),
       placeholder: 'Address Line 2',
       fieldtype: 'Data'
     },
     {
       fieldname: 'city',
-      label: 'City / Town',
+      label: __('City / Town'),
       placeholder: 'City / Town',
       fieldtype: 'Data',
       required: 1
     },
     {
       fieldname: 'state',
-      label: 'State',
+      label: __('State'),
       placeholder: 'State',
       fieldtype: 'Data'
     },
     {
       fieldname: 'country',
-      label: 'Country',
+      label: __('Country'),
       placeholder: 'Country',
       fieldtype: 'Data',
       required: 1
     },
     {
       fieldname: 'postalCode',
-      label: 'Postal Code',
+      label: __('Postal Code'),
       placeholder: 'Postal Code',
       fieldtype: 'Data'
     },
     {
       fieldname: 'emailAddress',
-      label: 'Email Address',
+      label: __('Email Address'),
       placeholder: 'Email Address',
       fieldtype: 'Data'
     },
     {
       fieldname: 'phone',
-      label: 'Phone',
+      label: __('Phone'),
       placeholder: 'Phone',
       fieldtype: 'Data'
     },
     {
       fieldname: 'fax',
-      label: 'Fax',
+      label: __('Fax'),
       fieldtype: 'Data'
     },
     {
       fieldname: 'addressDisplay',
       fieldtype: 'Text',
-      label: 'Address Display',
+      label: __('Address Display'),
       readOnly: true,
       formula: doc => {
         return [

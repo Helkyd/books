@@ -1,3 +1,4 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
 module.exports = {
   name: 'TaxSummary',
   doctype: 'DocType',
@@ -5,26 +6,26 @@ module.exports = {
   fields: [
     {
       fieldname: 'account',
-      label: 'Tax Account',
+      label: __('Tax Account'),
       fieldtype: 'Link',
       target: 'Account',
       required: 1
     },
     {
       fieldname: 'rate',
-      label: 'Rate',
+      label: __('Rate'),
       fieldtype: 'Float',
       required: 1
     },
     {
       fieldname: 'amount',
-      label: 'Amount',
+      label: __('Amount'),
       fieldtype: 'Currency',
       required: 1
     },
     {
       fieldname: 'baseAmount',
-      label: 'Amount (Company Currency)',
+      label: __('Amount (Company Currency)'),
       fieldtype: 'Currency',
       formula: (row, doc) => row.amount * doc.exchangeRate,
       readOnly: 1

@@ -4,9 +4,11 @@ const frappe = require('frappejs');
 const { getActions } = require('../Transaction/Transaction');
 const PaymentTemplate = require('./PaymentTemplate.vue').default;
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'Payment',
-  label: 'Payment',
+  label: __('Payment'),
   isSingle: 0,
   isChild: 0,
   isSubmittable: 1,
@@ -24,20 +26,20 @@ module.exports = {
 
     {
       fieldname: 'party',
-      label: 'Party',
+      label: __('Party'),
       fieldtype: 'Link',
       target: 'Party',
       required: 1
     },
     {
       fieldname: 'date',
-      label: 'Posting Date',
+      label: __('Posting Date'),
       fieldtype: 'Date',
       default: new Date().toISOString()
     },
     {
       fieldname: 'account',
-      label: 'From Account',
+      label: __('From Account'),
       fieldtype: 'Link',
       target: 'Account',
       required: 1,
@@ -54,14 +56,14 @@ module.exports = {
     },
     {
       fieldname: 'paymentType',
-      label: 'Payment Type',
+      label: __('Payment Type'),
       fieldtype: 'Select',
       options: ['', 'Receive', 'Pay'],
       required: 1
     },
     {
       fieldname: 'paymentAccount',
-      label: 'To Account',
+      label: __('To Account'),
       placeholder: 'To Account',
       fieldtype: 'Link',
       target: 'Account',
@@ -90,7 +92,7 @@ module.exports = {
     },
     {
       fieldname: 'paymentMethod',
-      label: 'Payment Method',
+      label: __('Payment Method'),
       placeholder: 'Payment Method',
       fieldtype: 'Select',
       options: ['', 'Cash', 'Cheque', 'Transfer'],
@@ -98,20 +100,20 @@ module.exports = {
     },
     {
       fieldname: 'referenceId',
-      label: 'Ref. / Cheque No.',
+      label: __('Ref. / Cheque No.'),
       placeholder: 'Ref. / Cheque No.',
       fieldtype: 'Data',
       required: 1 // TODO: UNIQUE
     },
     {
       fieldname: 'referenceDate',
-      label: 'Ref. Date',
+      label: __('Ref. Date'),
       placeholder: 'Ref. Date',
       fieldtype: 'Date'
     },
     {
       fieldname: 'clearanceDate',
-      label: 'Clearance Date',
+      label: __('Clearance Date'),
       placeholder: 'Clearance Date',
       fieldtype: 'Date',
       hidden: doc => {
@@ -120,19 +122,19 @@ module.exports = {
     },
     {
       fieldname: 'amount',
-      label: 'Amount',
+      label: __('Amount'),
       fieldtype: 'Currency',
       required: 1 //Helkyds 29-11-2020 Removed Defaults causing error
     },
     {
       fieldname: 'writeoff',
-      label: 'Write Off / Refund',
+      label: __('Write Off / Refund'),
       fieldtype: 'Currency',
       default: 0
     },
     {
       fieldname: 'payfor', //Helkyds 29-11-2020 Renamed from for to payfor
-      label: 'Payment For',
+      label: __('Payment For'),
       fieldtype: 'Table',
       childtype: 'PaymentFor',
       required: 1

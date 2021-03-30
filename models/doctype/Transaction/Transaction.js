@@ -4,6 +4,8 @@ const { openQuickEdit } = require('@/utils');
 const Badge = require('@/components/Badge').default;
 const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   getStatusColumn() {
     console.log('transiction');
@@ -60,21 +62,21 @@ module.exports = {
       fieldname: 'status',
       fieldtype: 'Select',
       render(doc) {
-        let status = 'Unpaid';
+        let status = __('Unpaid');
         let color = 'orange';
         if (!doc.submitted) {
-          status = 'Draft';
+          status = __('Draft');
           color = 'gray';
         }
         if (doc.submitted === 1 && doc.name.includes('INT-PP')) {
-          status = 'Ordered';
+          status = __('Ordered');
           color = 'green';
         } else if (doc.submitted === 1 && doc.outstandingAmount === 0.0) {
-          status = 'Paid';
+          status = __('Paid');
           color = 'green';
         }
         if (doc.submitted === 2) {
-          status = 'Canceled';
+          status = __('Canceled');
           color = 'red';
         }
 
@@ -88,7 +90,7 @@ module.exports = {
   getActions(doctype) {
     return [
       {
-        label: 'Make Payment',
+        label: __('Make Payment'),
         condition: doc =>
           doc.submitted < 2 &&
           doc.outstandingAmount > 0 &&
@@ -141,7 +143,7 @@ module.exports = {
       },
       */
       {
-        label: 'Cancel',
+        label: __('Cancel'),
         condition: doc => doc.submitted === 1,
         //action(async doc) {
         action: async function(doc) {
@@ -250,7 +252,7 @@ module.exports = {
       },
 
       {
-        label: 'Print',
+        label: __('Print'),
         condition: doc => doc.submitted,
         action(doc, router) {
           router.push(`/print/${doc.doctype}/${doc.name}`);

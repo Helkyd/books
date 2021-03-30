@@ -1,36 +1,38 @@
 const frappe = require('frappejs');
 let { _ } = require('frappejs/utils');
 
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'Party',
-  label: 'Party',
+  label: __('Party'),
   keywordFields: ['name'],
   fields: [
     {
       fieldname: 'name',
-      label: 'Name',
+      label: __('Name'),
       fieldtype: 'Data',
       required: 1,
       placeholder: 'Full Name'
     },
     {
       fieldname: 'image',
-      label: 'Image',
+      label: __('Image'),
       fieldtype: 'AttachImage'
     },
     {
       fieldname: 'customer',
-      label: 'Customer',
+      label: __('Customer'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'supplier',
-      label: 'Supplier',
+      label: __('Supplier'),
       fieldtype: 'Check'
     },
     {
       fieldname: 'defaultAccount',
-      label: 'Default Account',
+      label: __('Default Account'),
       fieldtype: 'Link',
       target: 'Account',
       getFilters: (query, doc) => {
@@ -60,12 +62,12 @@ module.exports = {
     },
     {
       fieldname: 'outstandingAmount',
-      label: 'Outstanding Amount',
+      label: __('Outstanding Amount'),
       fieldtype: 'Currency'
     },
     {
       fieldname: 'currency',
-      label: 'Currency',
+      label: __('Currency'),
       fieldtype: 'Link',
       target: 'Currency',
       placeholder: 'INR',
@@ -73,7 +75,7 @@ module.exports = {
     },
     {
       fieldname: 'email',
-      label: 'Email',
+      label: __('Email'),
       fieldtype: 'Data',
       placeholder: 'john@doe.com',
       validate: {
@@ -92,7 +94,7 @@ module.exports = {
 
     {
       fieldname: 'phone',
-      label: 'Phone',
+      label: __('Phone'),
       fieldtype: 'Data',
       placeholder: 'Phone',
       validate: {
@@ -101,7 +103,7 @@ module.exports = {
     },
     {
       fieldname: 'address',
-      label: 'Address',
+      label: __('Address'),
       fieldtype: 'Link',
       target: 'Address',
       placeholder: _('Click to create'),
@@ -109,7 +111,7 @@ module.exports = {
     },
     {
       fieldname: 'addressDisplay',
-      label: 'Address Display',
+      label: __('Address Display'),
       fieldtype: 'Text',
       readOnly: true,
       formula: doc => {

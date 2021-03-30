@@ -1,6 +1,7 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
 module.exports = {
   name: 'Tax',
-  label: 'Tax',
+  label: __('Tax'),
   doctype: 'DocType',
   isSingle: 0,
   isChild: 0,
@@ -8,13 +9,13 @@ module.exports = {
   fields: [
     {
       fieldname: 'name',
-      label: 'Name',
+      label: __('Name'),
       fieldtype: 'Data',
       required: 1
     },
     {
       fieldname: 'details',
-      label: 'Details',
+      label: __('Details'),
       fieldtype: 'Table',
       childtype: 'TaxDetail',
       required: 1

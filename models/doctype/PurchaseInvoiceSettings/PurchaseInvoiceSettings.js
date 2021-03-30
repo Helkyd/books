@@ -1,6 +1,8 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'PurchaseInvoiceSettings',
-  label: 'Purchase Invoice Settings',
+  label: __('Purchase Invoice Settings'),
   doctype: 'DocType',
   isSingle: 1,
   isChild: 0,
@@ -8,7 +10,7 @@ module.exports = {
   fields: [
     {
       fieldname: 'numberSeries',
-      label: 'Number Series',
+      label: __('Number Series'),
       fieldtype: 'Link',
       target: 'NumberSeries',
       required: 1,

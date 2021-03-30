@@ -42,6 +42,8 @@ import { remote } from 'electron';
 import TwoColumnForm from '@/components/TwoColumnForm';
 import FormControl from '@/components/Controls/FormControl';
 
+import { __ } from '../../translate'; //HELKYDS 30-03-2021
+
 export default {
   name: 'TabInvoice',
   components: {
@@ -88,7 +90,7 @@ export default {
       remote.dialog.showOpenDialog(
         remote.getCurrentWindow(),
         {
-          title: frappe._('Select Logo'),
+          title: __('Select Logo'),
           properties: ['openFile'],
           filters: [{ name: 'Invoice Logo', extensions: ['png', 'jpg', 'svg'] }]
         },

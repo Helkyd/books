@@ -3,6 +3,8 @@ import { openSettings } from '@/utils';
 import { _ } from 'frappejs/utils';
 import Icon from './components/Icon';
 import router from './router';
+import { __ } from './translate'; //HELKYDS 30-03-2021
+//const __ = require('./translate'); //HELKYDS 30-03-2021
 
 const config = {
   getTitle: async () => {
@@ -11,129 +13,129 @@ const config = {
   },
   groups: [
     {
-      title: 'Get Started',
+      title: __('Get Started'),
       route: '/get-started',
       icon: getIcon('general', '24', '5')
     },
     {
-      title: 'Dashboard',
+      title: __('Dashboard'),
       route: '/',
       icon: getIcon('dashboard')
     },
     {
-      title: frappe._traducao['Sales'],
+      title: __('Sales'),
       icon: getIcon('sales'),
       action() {
         router.push('/list/SalesInvoice');
       },
       items: [
         {
-          label: _('Quotations'),
+          label: __('Quotations'),
           route: '/list/Quotation',
           doctype: 'Quotation'
         },
 
         {
-          label: _('Invoices'),
+          label: __('Invoices'),
           route: '/list/SalesInvoice',
           doctype: 'SalesInvoice'
         },
         {
-          label: _('Customers'),
+          label: __('Customers'),
           route: '/list/Customer',
           doctype: 'Customer'
         },
         {
-          label: _('Items'),
+          label: __('Items'),
           route: '/list/Item',
           doctype: 'Item'
         },
         {
-          label: _('Payments'),
+          label: __('Payments'),
           route: '/list/Payment',
           doctype: 'Payment'
         },
         {
-          label: _('Journal Entry'),
+          label: __('Journal Entry'),
           route: '/list/JournalEntry',
           doctype: 'JournalEntry'
         }
       ]
     },
     {
-      title: _('Purchases'),
+      title: __('Purchases'),
       icon: getIcon('purchase'),
       action() {
         router.push('/list/PurchaseInvoice');
       },
       items: [
         {
-          label: _('Bills'),
+          label: __('Bills'),
           route: '/list/PurchaseInvoice',
           doctype: 'PurchaseInvoice'
         },
         {
-          label: _('Suppliers'),
+          label: __('Suppliers'),
           route: '/list/Supplier',
           doctype: 'Supplier'
         },
         {
-          label: _('Items'),
+          label: __('Items'),
           route: '/list/Item',
           doctype: 'Item'
         },
         {
-          label: _('Payments'),
+          label: __('Payments'),
           route: '/list/Payment',
           doctype: 'Payment'
         },
         {
-          label: _('Journal Entry'),
+          label: __('Journal Entry'),
           route: '/list/JournalEntry',
           doctype: 'JournalEntry'
         }
       ]
     },
     {
-      title: _('Reports'),
+      title: __('Reports'),
       icon: getIcon('reports'),
       action() {
         router.push('/report/general-ledger');
       },
       items: [
         {
-          label: _('General Ledger'),
+          label: __('General Ledger'),
           route: '/report/general-ledger'
         },
         {
-          label: _('Profit And Loss'),
+          label: __('Profit And Loss'),
           route: '/report/profit-and-loss'
         },
         {
-          label: _('Balance Sheet'),
+          label: __('Balance Sheet'),
           route: '/report/balance-sheet'
         },
         {
-          label: _('Trial Balance'),
+          label: __('Trial Balance'),
           route: '/report/trial-balance'
         }
       ]
     },
     {
-      title: _('Setup'),
+      title: __('Setup'),
       icon: getIcon('settings'),
       items: [
         {
-          label: _('Chart of Accounts'),
+          label: __('Chart of Accounts'),
           route: '/chart-of-accounts'
         },
         {
-          label: _('Taxes'),
+          label: __('Taxes'),
           route: '/list/Tax',
           doctype: 'Tax'
         },
         {
-          label: _('Settings'),
+          label: __('Settings'),
           action() {
             openSettings();
           }

@@ -89,6 +89,11 @@ import Icon from '@/components/Icon';
 import Button from '@/components/Button';
 import { openSettings } from '@/utils';
 
+//import { _t } from '../translate'; //HELKYDS 30-03-2021
+import { __ } from '../translate'; //HELKYDS 30-03-2021
+//import { _t } from '../translate'; //HELKYDS 30-03-2021
+/* const __ = require('../translate'); //HELKYDS 30-03-2021 */
+
 export default {
   name: 'GetStarted',
   components: {
@@ -101,12 +106,12 @@ export default {
       /* eslint-disable vue/no-side-effects-in-computed-properties */
       return [
         {
-          label: _('Organisation'),
+          label: __('Organisation'),
 
           items: [
             {
               key: 'General',
-              label: _('General'),
+              label: __('General'),
               icon: 'general',
               description:
                 'Setup your company information, email, country and fiscal year',
@@ -114,7 +119,7 @@ export default {
             },
             {
               key: 'System',
-              label: _('System'),
+              label: __('System'),
               icon: 'general',
               description:
                 'Setup system defaults like date format and currency precision',
@@ -125,7 +130,7 @@ export default {
             },
             {
               key: 'Invoice',
-              label: _('Invoice'),
+              label: __('Invoice'),
               icon: 'invoice',
               description:
                 'Customize your invoices by adding a logo and address details',
@@ -137,12 +142,12 @@ export default {
           ]
         },
         {
-          label: _('Accounts'),
+          label: __('Accounts'),
 
           items: [
             {
               key: 'Review Accounts',
-              label: _('Review Accounts'),
+              label: __('Review Accounts'),
               icon: 'review-ac',
               description:
                 'Review your chart of accounts, add any account or tax heads as needed',
@@ -156,7 +161,7 @@ export default {
             },
             {
               key: 'Opening Balances',
-              label: _('Opening Balances'),
+              label: __('Opening Balances'),
               icon: 'opening-ac',
               description:
                 'Setup your opening balances before performing any accounting entries',
@@ -165,7 +170,7 @@ export default {
             },
             {
               key: 'Add Taxes',
-              label: _('Add Taxes'),
+              label: __('Add Taxes'),
               icon: 'percentage',
               description:
                 'Setup your tax templates for your sales or purchase transactions',
@@ -176,12 +181,12 @@ export default {
           ]
         },
         {
-          label: _('Sales'),
+          label: __('Sales'),
 
           items: [
             {
               key: 'Add Sales Items',
-              label: _('Add Items'),
+              label: __('Add Items'),
               icon: 'item',
               description:
                 'Add products or services that you sell to your customers',
@@ -192,7 +197,7 @@ export default {
             },
             {
               key: 'Add Customers',
-              label: _('Add Customers'),
+              label: __('Add Customers'),
               icon: 'customer',
               description: 'Add a few customers to create your first invoice',
               action: () => this.$router.push('/list/Customer'),
@@ -202,7 +207,7 @@ export default {
             },
             {
               key: 'Create Invoice',
-              label: _('Create Invoice'),
+              label: __('Create Invoice'),
               icon: 'sales-invoice',
               description:
                 'Create your first invoice and mail it to your customer',
@@ -213,12 +218,12 @@ export default {
           ]
         },
         {
-          label: _('Purchase'),
+          label: __('Purchase'),
 
           items: [
             {
               key: 'Add Purchase Items',
-              label: _('Add Items'),
+              label: __('Add Items'),
               icon: 'item',
               description:
                 'Add products or services that you buy from your suppliers',
@@ -227,7 +232,7 @@ export default {
             },
             {
               key: 'Add Suppliers',
-              label: _('Add Suppliers'),
+              label: __('Add Suppliers'),
               icon: 'supplier',
               description: 'Add a few suppliers to create your first bill',
               action: () => this.$router.push('/list/Supplier'),
@@ -235,7 +240,7 @@ export default {
             },
             {
               key: 'Create Bill',
-              label: _('Create Bill'),
+              label: __('Create Bill'),
               icon: 'purchase-invoice',
               description:
                 'Create your first bill and mail it to your supplier',

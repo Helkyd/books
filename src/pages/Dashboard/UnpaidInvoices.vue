@@ -74,6 +74,8 @@ import PeriodSelector from './PeriodSelector';
 import SectionHeader from './SectionHeader';
 import { getDatesAndPeriodicity } from './getDatesAndPeriodicity';
 
+import { __ } from '../../translate'; //HELKYDS 30-03-2021
+
 export default {
   name: 'UnpaidInvoices',
   components: {
@@ -84,7 +86,7 @@ export default {
   data: () => ({
     invoices: [
       {
-        title: 'Sales Invoices',
+        title: __('Sales Invoices'),
         doctype: 'SalesInvoice',
         total: 0,
         unpaid: 0,
@@ -95,7 +97,7 @@ export default {
         barWidth: 40
       },
       {
-        title: 'Purchase Invoices',
+        title: __('Purchase Invoices'),
         doctype: 'PurchaseInvoice',
         total: 0,
         unpaid: 0,

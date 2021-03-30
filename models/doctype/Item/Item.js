@@ -1,5 +1,6 @@
 const frappe = require('frappejs');
-const { _ } = require('frappejs/utils');
+//const { _ } = require('frappejs/utils');
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
 
 module.exports = {
   name: 'Item',
@@ -9,32 +10,32 @@ module.exports = {
   fields: [
     {
       fieldname: 'name',
-      label: 'Item Name',
+      label: __('Item Name'),
       fieldtype: 'Data',
       placeholder: 'Item Name',
       required: 1
     },
     {
       fieldname: 'image',
-      label: 'Image',
+      label: __('Image'),
       fieldtype: 'AttachImage'
     },
     {
       fieldname: 'description',
-      label: 'Description',
+      label: __('Description'),
       placeholder: 'Item Description',
       fieldtype: 'Text'
     },
     {
       fieldname: 'unit',
-      label: 'Unit Type',
+      label: __('Unit Type'),
       fieldtype: 'Select',
       default: 'Unit',
       options: ['Unit', 'Kg', 'Gram', 'Hour', 'Day']
     },
     {
       fieldname: 'itemType',
-      label: 'Type',
+      label: __('Type'),
       placeholder: 'Sales',
       fieldtype: 'Select',
       default: 'Product',
@@ -42,7 +43,7 @@ module.exports = {
     },
     {
       fieldname: 'incomeAccount',
-      label: 'Income',
+      label: __('Income'),
       fieldtype: 'Link',
       target: 'Account',
       placeholder: 'Sales',
@@ -75,7 +76,7 @@ module.exports = {
     },
     {
       fieldname: 'expenseAccount',
-      label: 'Expense',
+      label: __('Expense'),
       fieldtype: 'Link',
       target: 'Account',
       placeholder: 'Select Account',
@@ -105,14 +106,14 @@ module.exports = {
     },
     {
       fieldname: 'tax',
-      label: 'Tax',
+      label: __('Tax'),
       fieldtype: 'Link',
       target: 'Tax',
       placeholder: 'GST'
     },
     {
       fieldname: 'rate',
-      label: 'Rate',
+      label: __('Rate'),
       fieldtype: 'Currency',
       placeholder: '0.00',
       validate(value) {
@@ -127,7 +128,7 @@ module.exports = {
   quickEditFields: ['rate', 'unit', 'itemType', 'tax', 'description'],
   actions: [
     {
-      label: _('New Invoice'),
+      label: __('New Invoice'),
       condition: doc => !doc.isNew(),
       action: async (doc, router) => {
         const invoice = await frappe.getNewDoc('SalesInvoice');
@@ -140,7 +141,7 @@ module.exports = {
       }
     },
     {
-      label: _('New Bill'),
+      label: __('New Bill'),
       condition: doc => !doc.isNew(),
       action: async (doc, router) => {
         const invoice = await frappe.getNewDoc('PurchaseInvoice');

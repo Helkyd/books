@@ -1,10 +1,12 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'JournalEntryAccount',
   isChild: 1,
   fields: [
     {
       fieldname: 'account',
-      label: 'Account',
+      label: __('Account'),
       placeholder: 'Account',
       fieldtype: 'Link',
       target: 'Account',
@@ -14,13 +16,13 @@ module.exports = {
     },
     {
       fieldname: 'debit',
-      label: 'Debit',
+      label: __('Debit'),
       fieldtype: 'Currency',
       formula: autoDebitCredit('debit')
     },
     {
       fieldname: 'credit',
-      label: 'Credit',
+      label: __('Credit'),
       fieldtype: 'Currency',
       formula: autoDebitCredit('credit')
     }

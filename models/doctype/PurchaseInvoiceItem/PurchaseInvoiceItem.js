@@ -1,3 +1,5 @@
+const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   name: 'PurchaseInvoiceItem',
   doctype: 'DocType',
@@ -7,7 +9,7 @@ module.exports = {
   fields: [
     {
       fieldname: 'item',
-      label: 'Item',
+      label: __('Item'),
       fieldtype: 'Link',
       target: 'Item',
       required: 1,
@@ -22,21 +24,21 @@ module.exports = {
     },
     {
       fieldname: 'description',
-      label: 'Description',
+      label: __('Description'),
       fieldtype: 'Text',
       formula: (row, doc) => doc.getFrom('Item', row.item, 'description'),
       hidden: 1
     },
     {
       fieldname: 'quantity',
-      label: 'Quantity',
+      label: __('Quantity'),
       fieldtype: 'Float',
       required: 1,
       formula: () => 1
     },
     {
       fieldname: 'rate',
-      label: 'Rate',
+      label: __('Rate'),
       fieldtype: 'Currency',
       required: 1,
       formula: async (row, doc) => {
@@ -47,14 +49,14 @@ module.exports = {
     },
     {
       fieldname: 'baseRate',
-      label: 'Rate (Company Currency)',
+      label: __('Rate (Company Currency)'),
       fieldtype: 'Currency',
       formula: (row, doc) => row.rate * doc.exchangeRate,
       readOnly: 1
     },
     {
       fieldname: 'account',
-      label: 'Account',
+      label: __('Account'),
       fieldtype: 'Link',
       target: 'Account',
       required: 1,
@@ -62,7 +64,7 @@ module.exports = {
     },
     {
       fieldname: 'tax',
-      label: 'Tax',
+      label: __('Tax'),
       fieldtype: 'Link',
       target: 'Tax',
       formula: (row, doc) => {
@@ -72,7 +74,7 @@ module.exports = {
     },
     {
       fieldname: 'amount',
-      label: 'Amount',
+      label: __('Amount'),
       fieldtype: 'Currency',
       readOnly: 1,
       formula: row => row.quantity * row.rate,
@@ -80,7 +82,7 @@ module.exports = {
     },
     {
       fieldname: 'baseAmount',
-      label: 'Amount (Company Currency)',
+      label: __('Amount (Company Currency)'),
       fieldtype: 'Currency',
       readOnly: 1,
       formula: (row, doc) => row.amount * doc.exchangeRate

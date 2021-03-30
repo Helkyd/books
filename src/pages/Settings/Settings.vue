@@ -36,6 +36,7 @@ import TabSystem from './TabSystem.vue';
 import TabInvoice from './TabInvoice.vue';
 import Row from '@/components/Row';
 import Icon from '@/components/Icon';
+import { __ } from '../../translate'; //HELKYDS 30-03-2021
 
 export default {
   name: 'Settings',
@@ -48,7 +49,7 @@ export default {
       activeTab: 0,
       tabs: [
         {
-          label: _('General'),
+          label: __('General'),
           icon: 'general',
           component: TabGeneral
         },
@@ -57,12 +58,12 @@ export default {
         //   icon: 'mail'
         // },
         {
-          label: _('Invoice'),
+          label: __('Invoice'),
           icon: 'invoice',
           component: TabInvoice
         },
         {
-          label: _('System'),
+          label: __('System'),
           icon: 'system',
           component: TabSystem
         }
