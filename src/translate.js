@@ -1,41 +1,7 @@
 const frappe = require('frappejs');
 const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
 
-async function ling() {
-  //if (!linguadosistema){
-  console.log(AccountingSettings);
-  await frappe.getSingle('AccountingSettings');
-  console.log(AccountingSettings.linguasistema);
-  console.log(
-    await frappe.db.getAll({
-      doctype: 'SingleValue',
-      fields: ['parent', 'fieldname', 'value']
-    })
-  );
-  console.log('adfsadfsdfsa');
-  var lingua = await frappe.db.sql(
-    "select parent,fieldname,value from SingleValue where fieldname='linguasistema' and parent='AccountingSettings' ;"
-  );
-  //await frappe.getSingle('AccountingSettings');
-  console.log('Ja tem linguadosistema');
-  console.log(lingua);
-  //return linguadosistema;
-  //} else {
-  //    console.log('Ja tem linguadosistema');
-  //}
-}
-
-frappe._ = function(txt, replace) {
-  if (!txt) return txt;
-  if (typeof txt != 'string') return txt;
-  var ret = frappe._messages[txt.replace(/\n/g, '')] || txt;
-  if (replace && typeof replace === 'object') {
-    ret = $.format(ret, replace);
-  }
-  return ret;
-};
-
-function __(txt, replace, lingua = 'PT-PT') {
+function __(txt, replace) {
   //Carregar o file das traducoes...
   //Vendo que ja carregou no Server POSTSTART e no Transaction... NO NEED TO DO AGAIN...
 
@@ -118,7 +84,8 @@ function __(txt, replace, lingua = 'PT-PT') {
   if (typeof txt != 'string') return txt;
   var ret = frappe._traducao[txt.replace(/\n/g, '')] || txt;
   if (replace && typeof replace === 'object') {
-    ret = $.format(ret, replace);
+    //ret = $.format(ret, replace);
+    console.log('por verificar');
   }
 
   return ret;
@@ -174,7 +141,8 @@ function _t(txt, replace) {
   if (typeof txt != 'string') return txt;
   var ret = frappe._traducao[txt.replace(/\n/g, '')] || txt;
   if (replace && typeof replace === 'object') {
-    ret = $.format(ret, replace);
+    //ret = $.format(ret, replace);
+    console.log('por verificar');
   }
   console.log('Traduzido para');
   console.log(ret);
@@ -184,6 +152,5 @@ function _t(txt, replace) {
 
 module.exports = {
   __,
-  _t,
-  ling
+  _t
 };

@@ -16,7 +16,7 @@
         @keydown.up="highlightItemUp"
         @keydown.enter="selectHighlightedItem"
       >
-        {{ value }}
+        {{ _(value) }}
         <feather-icon name="chevron-down" class="ml-1 w-3 h-3" />
       </div>
     </template>
@@ -25,6 +25,8 @@
 
 <script>
 import Dropdown from '@/components/Dropdown';
+import { __ } from '../../translate'; //HELKYDS 30-03-2021
+
 export default {
   name: 'PeriodSelector',
   props: ['value'],
@@ -32,7 +34,8 @@ export default {
     Dropdown
   },
   data() {
-    let options = ['This Year', 'This Quarter', 'This Month'];
+    let options = [__('This Year'), __('This Quarter'), __('This Month')];
+    //let options = ['This Year', 'This Quarter', 'This Month'];
     return {
       periodOptions: options.map(option => {
         return {

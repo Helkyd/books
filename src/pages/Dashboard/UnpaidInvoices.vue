@@ -124,7 +124,6 @@ export default {
         let { fromDate, toDate } = await getDatesAndPeriodicity(
           this.$data[d.periodKey]
         );
-
         let result = await frappe.db
           .knex(d.doctype)
           .sum({ total: 'baseGrandTotal' })

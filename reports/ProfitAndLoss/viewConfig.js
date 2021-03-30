@@ -1,8 +1,9 @@
 const frappe = require('frappejs');
+const { __ } = require('../../src/translate'); //HELKYDS 30-03-2021
 
 const title = 'Profit and Loss';
 module.exports = {
-  title: title,
+  title: __(title),
   method: 'profit-and-loss',
   treeView: true,
   filterFields: [
@@ -45,7 +46,12 @@ module.exports = {
   ],
   getColumns(data) {
     const columns = [
-      { label: 'Account', fieldtype: 'Data', fieldname: 'account', width: 2 }
+      {
+        label: __('Account'),
+        fieldtype: 'Data',
+        fieldname: 'account',
+        width: 2
+      }
     ];
 
     if (data && data.columns) {

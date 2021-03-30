@@ -83,7 +83,7 @@
 
 <script>
 import frappe from 'frappejs';
-import { _ } from 'frappejs/utils';
+//import { _ } from 'frappejs/utils';
 import PageHeader from '@/components/PageHeader';
 import Icon from '@/components/Icon';
 import Button from '@/components/Button';

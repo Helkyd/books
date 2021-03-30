@@ -32,6 +32,8 @@ import UnpaidInvoices from './UnpaidInvoices';
 import ProfitAndLoss from './ProfitAndLoss';
 import Expenses from './Expenses';
 
+//import __ from '../../translate'; //HELKYDS 30-03-2021
+
 export default {
   name: 'Dashboard',
   components: {

@@ -5,9 +5,9 @@ const Badge = require('@/components/Badge').default;
 const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
 
 const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
-const { ling } = require('../../../src/translate'); //HELKYDS 30-03-2021
+//const { ling } = require('../../../src/translate'); //HELKYDS 30-03-2021
 
-var carregou = false;
+//var carregou = false;
 
 module.exports = {
   getStatusColumn() {

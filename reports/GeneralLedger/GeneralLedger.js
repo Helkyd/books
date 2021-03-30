@@ -1,5 +1,7 @@
 const frappe = require('frappejs');
 
+const { __ } = require('../../src/translate'); //HELKYDS 30-03-2021
+
 class GeneralLedger {
   async run(params) {
     const filters = {};
@@ -37,7 +39,7 @@ class GeneralLedger {
 
     glEntries.push({
       date: '',
-      account: { template: '<b>Opening</b>' },
+      account: { template: __('<b>Opening</b>') },
       party: '',
       debit: 0,
       credit: 0,
@@ -60,7 +62,7 @@ class GeneralLedger {
     }
     glEntries.push({
       date: '',
-      account: { template: '<b>Total</b>' },
+      account: { template: __('<b>Total</b>') },
       party: '',
       debit: debitTotal,
       credit: creditTotal,
@@ -70,7 +72,7 @@ class GeneralLedger {
     });
     glEntries.push({
       date: '',
-      account: { template: '<b>Closing</b>' },
+      account: { template: __('<b>Closing</b>') },
       party: '',
       debit: debitTotal,
       credit: creditTotal,

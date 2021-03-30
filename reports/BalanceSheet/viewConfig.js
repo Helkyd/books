@@ -1,7 +1,8 @@
 const frappe = require('frappejs');
+const { __ } = require('../../src/translate'); //HELKYDS 30-03-2021
 
 module.exports = {
-  title: 'Balance Sheet',
+  title: __('Balance Sheet'),
   method: 'balance-sheet',
   filterFields: [
     {
@@ -25,14 +26,19 @@ module.exports = {
         'Half Yearly',
         'Yearly'
       ],
-      label: 'Periodicity',
+      label: __('Periodicity'),
       fieldname: 'periodicity',
       default: 'Monthly'
     }
   ],
   getColumns(data) {
     const columns = [
-      { label: 'Account', fieldtype: 'Data', fieldname: 'account', width: 2 }
+      {
+        label: __('Account'),
+        fieldtype: 'Data',
+        fieldname: 'account',
+        width: 2
+      }
     ];
 
     if (data && data.columns) {

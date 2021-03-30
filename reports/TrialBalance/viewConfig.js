@@ -1,15 +1,16 @@
 const frappe = require('frappejs');
+const { __ } = require('../../src/translate'); //HELKYDS 30-03-2021
 
 const title = 'Trial Balance';
 module.exports = {
-  title: title,
+  title: __(title),
   method: 'trial-balance',
   treeView: true,
   filterFields: [
     {
       fieldtype: 'Date',
       fieldname: 'fromDate',
-      label: 'From Date',
+      label: __('From Date'),
       size: 'small',
       placeholder: 'From Date',
       required: 1,
@@ -22,7 +23,7 @@ module.exports = {
       size: 'small',
       placeholder: 'To Date',
       fieldname: 'toDate',
-      label: 'To Date',
+      label: __('To Date'),
       required: 1,
       default: async () => {
         return (await frappe.getSingle('AccountingSettings')).fiscalYearEnd;
@@ -41,26 +42,31 @@ module.exports = {
   ],
   getColumns(data) {
     const columns = [
-      { label: 'Account', fieldtype: 'Data', fieldname: 'account', width: 2 },
       {
-        label: 'Opening (Dr)',
+        label: __('Account'),
+        fieldtype: 'Data',
+        fieldname: 'account',
+        width: 2
+      },
+      {
+        label: __('Opening (Dr)'),
         fieldtype: 'Currency',
         fieldname: 'openingDebit'
       },
       {
-        label: 'Opening (Cr)',
+        label: __('Opening (Cr)'),
         fieldtype: 'Currency',
         fieldname: 'openingCredit'
       },
-      { label: 'Debit', fieldtype: 'Currency', fieldname: 'debit' },
-      { label: 'Credit', fieldtype: 'Currency', fieldname: 'credit' },
+      { label: __('Debit'), fieldtype: 'Currency', fieldname: 'debit' },
+      { label: __('Credit'), fieldtype: 'Currency', fieldname: 'credit' },
       {
-        label: 'Closing (Dr)',
+        label: __('Closing (Dr)'),
         fieldtype: 'Currency',
         fieldname: 'closingDebit'
       },
       {
-        label: 'Closing (Cr)',
+        label: __('Closing (Cr)'),
         fieldtype: 'Currency',
         fieldname: 'closingCredit'
       }

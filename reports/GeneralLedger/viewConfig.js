@@ -1,6 +1,8 @@
 import { partyWithAvatar } from '@/utils';
 
-let title = 'General Ledger';
+const { __ } = require('../../src/translate'); //HELKYDS 30-03-2021
+
+let title = __('General Ledger');
 
 const viewConfig = {
   title,
@@ -9,13 +11,13 @@ const viewConfig = {
       fieldtype: 'Select',
       options: [
         { label: '', value: '' },
-        { label: 'Sales Invoice', value: 'SalesInvoice' },
-        { label: 'Purchase Invoice', value: 'PurchaseInvoice' },
-        { label: 'Payment', value: 'Payment' },
-        { label: 'Journal Entry', value: 'JournalEntry' }
+        { label: __('Sales Invoice'), value: 'SalesInvoice' },
+        { label: __('Purchase Invoice'), value: 'PurchaseInvoice' },
+        { label: __('Payment'), value: 'Payment' },
+        { label: __('Journal Entry'), value: 'JournalEntry' }
       ],
       size: 'small',
-      label: 'Reference Type',
+      label: __('Reference Type'),
       fieldname: 'referenceType',
       placeholder: 'Reference Type'
     },
@@ -24,7 +26,7 @@ const viewConfig = {
       size: 'small',
       placeholder: 'Reference Name',
       references: 'referenceType',
-      label: 'Reference Name',
+      label: __('Reference Name'),
       fieldname: 'referenceName'
     },
     {
@@ -32,13 +34,13 @@ const viewConfig = {
       target: 'Account',
       size: 'small',
       placeholder: 'Account',
-      label: 'Account',
+      label: __('Account'),
       fieldname: 'account'
     },
     {
       fieldtype: 'Link',
       target: 'Party',
-      label: 'Party',
+      label: __('Party'),
       size: 'small',
       placeholder: 'Party',
       fieldname: 'party'
@@ -47,21 +49,21 @@ const viewConfig = {
       fieldtype: 'Date',
       size: 'small',
       placeholder: 'From Date',
-      label: 'From Date',
+      label: __('From Date'),
       fieldname: 'fromDate'
     },
     {
       fieldtype: 'Date',
       size: 'small',
       placeholder: 'To Date',
-      label: 'To Date',
+      label: __('To Date'),
       fieldname: 'toDate'
     }
   ],
   method: 'general-ledger',
   linkFields: [
     {
-      label: 'Clear Filters',
+      label: __('Clear Filters'),
       type: 'secondary',
       action: async report => {
         await report.getReportData({});
@@ -77,45 +79,45 @@ const viewConfig = {
   getColumns() {
     return [
       {
-        label: 'Account',
+        label: __('Account'),
         fieldtype: 'Link',
         fieldname: 'account'
       },
       {
-        label: 'Date',
+        label: __('Date'),
         fieldtype: 'Date',
         fieldname: 'date'
       },
       {
-        label: 'Debit',
+        label: __('Debit'),
         fieldtype: 'Currency',
         fieldname: 'debit',
         width: 0.5
       },
       {
-        label: 'Credit',
+        label: __('Credit'),
         fieldtype: 'Currency',
         fieldname: 'credit',
         width: 0.5
       },
       {
-        label: 'Balance',
+        label: __('Balance'),
         fieldtype: 'Currency',
         fieldname: 'balance',
         width: 0.5
       },
       {
-        label: 'Reference Type',
+        label: __('Reference Type'),
         fieldtype: 'Data',
         fieldname: 'referenceType'
       },
       {
-        label: 'Reference Name',
+        label: __('Reference Name'),
         fieldtype: 'Data',
         fieldname: 'referenceName'
       },
       {
-        label: 'Party',
+        label: __('Party'),
         fieldtype: 'Link',
         fieldname: 'party',
         component(cellValue) {
@@ -123,7 +125,7 @@ const viewConfig = {
         }
       },
       {
-        label: 'Description',
+        label: __('Description'),
         fieldtype: 'Data',
         fieldname: 'description'
       }

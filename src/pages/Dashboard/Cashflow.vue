@@ -2,15 +2,15 @@
   <div class="mt-6">
     <template v-if="hasData">
       <div class="flex items-center justify-between">
-        <div class="font-medium">{{ 'Cashflow' }}</div>
+        <div class="font-medium">{{ _('Cashflow') }}</div>
         <div class="flex text-base">
           <div class="flex items-center">
             <span class="w-3 h-3 rounded-sm inline-block bg-blue-500"></span>
-            <span class="ml-2">{{ 'Inflow' }}</span>
+            <span class="ml-2">{{ _('Inflow') }}</span>
           </div>
           <div class="flex items-center ml-6">
             <span class="w-3 h-3 rounded-sm inline-block bg-gray-500"></span>
-            <span class="ml-2">{{ 'Outflow' }}</span>
+            <span class="ml-2">{{ _('Outflow') }}</span>
           </div>
         </div>
         <PeriodSelector :value="period" @change="value => (period = value)" />
@@ -93,6 +93,8 @@ import { Chart } from 'frappe-charts';
 import PeriodSelector from './PeriodSelector';
 import Cashflow from '../../../reports/Cashflow/Cashflow';
 import { getDatesAndPeriodicity } from './getDatesAndPeriodicity';
+
+//import { __ } from '../../translate'; //HELKYDS 30-03-2021
 
 export default {
   name: 'Cashflow',
