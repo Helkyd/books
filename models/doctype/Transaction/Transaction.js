@@ -5,12 +5,25 @@ const Badge = require('@/components/Badge').default;
 const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
 
 const { __ } = require('../../../src/translate'); //HELKYDS 30-03-2021
+const { ling } = require('../../../src/translate'); //HELKYDS 30-03-2021
+
+var carregou = false;
 
 module.exports = {
   getStatusColumn() {
     console.log('transiction');
+    console.log('ver traducao');
+    if (frappe.AccountingSettings) {
+      console.log('linguaAQUI ', frappe.AccountingSettings.linguasistema);
+      //const { getstarted } = require('../../../src/translate'); //HELKYDS 30-03-2021
+      //} else if (carregou == false) {
+      //  ling();
+      //  carregou = true;
+    }
+
     if (!frappe._traducao) {
       //Carregar o file das traducoes...
+      console.log('Carregar o file das traducoes...');
       frappe._messages = {};
       //console.log(frappelerficheiro.readFile('./fixtures/verified/pt.csv'));
       frappe._messages = frappelerficheiro.readFile(
@@ -57,6 +70,7 @@ module.exports = {
         }
       }
     }
+
     return {
       label: 'Status',
       fieldname: 'status',

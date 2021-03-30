@@ -113,16 +113,18 @@ export default {
               key: 'General',
               label: __('General'),
               icon: 'general',
-              description:
-                'Setup your company information, email, country and fiscal year',
+              description: __(
+                'Setup your company information email country and fiscal year'
+              ),
               fieldname: 'companySetup'
             },
             {
               key: 'System',
               label: __('System'),
               icon: 'general',
-              description:
-                'Setup system defaults like date format and currency precision',
+              description: __(
+                'Setup system defaults like date format and currency precision'
+              ),
               fieldname: 'systemSetup',
               action() {
                 openSettings('System');
@@ -132,8 +134,9 @@ export default {
               key: 'Invoice',
               label: __('Invoice'),
               icon: 'invoice',
-              description:
-                'Customize your invoices by adding a logo and address details',
+              description: __(
+                'Customize your invoices by adding a logo and address details'
+              ),
               fieldname: 'invoiceSetup',
               action() {
                 openSettings('Invoice');
@@ -149,8 +152,9 @@ export default {
               key: 'Review Accounts',
               label: __('Review Accounts'),
               icon: 'review-ac',
-              description:
-                'Review your chart of accounts, add any account or tax heads as needed',
+              description: __(
+                'Review your chart of accounts add any account or tax heads as needed'
+              ),
               action: () => {
                 this.$router.push('/chart-of-accounts');
                 this.updateChecks({ chartOfAccountsReviewed: 1 });
@@ -163,8 +167,9 @@ export default {
               key: 'Opening Balances',
               label: __('Opening Balances'),
               icon: 'opening-ac',
-              description:
-                'Setup your opening balances before performing any accounting entries',
+              description: __(
+                'Setup your opening balances before performing any accounting entries'
+              ),
               documentation:
                 'https://frappebooks.com/docs/setting-up#5-setup-opening-balances'
             },
@@ -172,8 +177,9 @@ export default {
               key: 'Add Taxes',
               label: __('Add Taxes'),
               icon: 'percentage',
-              description:
-                'Setup your tax templates for your sales or purchase transactions',
+              description: __(
+                'Setup your tax templates for your sales or purchase transactions'
+              ),
               action: () => this.$router.push('/list/Tax'),
               documentation:
                 'https://frappebooks.com/docs/setting-up#2-add-taxes'
@@ -188,8 +194,9 @@ export default {
               key: 'Add Sales Items',
               label: __('Add Items'),
               icon: 'item',
-              description:
-                'Add products or services that you sell to your customers',
+              description: __(
+                'Add products or services that you sell to your customers'
+              ),
               action: () => this.$router.push('/list/Item'),
               fieldname: 'itemCreated',
               documentation:
@@ -199,7 +206,9 @@ export default {
               key: 'Add Customers',
               label: __('Add Customers'),
               icon: 'customer',
-              description: 'Add a few customers to create your first invoice',
+              description: __(
+                'Add a few customers to create your first invoice'
+              ),
               action: () => this.$router.push('/list/Customer'),
               fieldname: 'customerCreated',
               documentation:
@@ -209,8 +218,9 @@ export default {
               key: 'Create Invoice',
               label: __('Create Invoice'),
               icon: 'sales-invoice',
-              description:
-                'Create your first invoice and mail it to your customer',
+              description: __(
+                'Create your first invoice and mail it to your customer'
+              ),
               action: () => this.$router.push('/list/SalesInvoice'),
               fieldname: 'invoiceCreated',
               documentation: 'https://frappebooks.com/docs/invoices'
@@ -225,8 +235,9 @@ export default {
               key: 'Add Purchase Items',
               label: __('Add Items'),
               icon: 'item',
-              description:
-                'Add products or services that you buy from your suppliers',
+              description: __(
+                'Add products or services that you buy from your suppliers'
+              ),
               action: () => this.$router.push('/list/Item'),
               fieldname: 'itemCreated'
             },
@@ -234,7 +245,7 @@ export default {
               key: 'Add Suppliers',
               label: __('Add Suppliers'),
               icon: 'supplier',
-              description: 'Add a few suppliers to create your first bill',
+              description: __('Add a few suppliers to create your first bill'),
               action: () => this.$router.push('/list/Supplier'),
               fieldname: 'supplierCreated'
             },
@@ -242,8 +253,9 @@ export default {
               key: 'Create Bill',
               label: __('Create Bill'),
               icon: 'purchase-invoice',
-              description:
-                'Create your first bill and mail it to your supplier',
+              description: __(
+                'Create your first bill and mail it to your supplier'
+              ),
               action: () => this.$router.push('/list/PurchaseInvoice'),
               fieldname: 'billCreated',
               documentation: 'https://frappebooks.com/docs/bills'

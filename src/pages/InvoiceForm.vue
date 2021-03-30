@@ -9,7 +9,7 @@
           :icon="true"
           @click="$router.push(`/print/${doc.doctype}/${doc.name}`)"
         >
-          Print
+          {{ _('Print') }}
         </Button>
         <DropdownWithActions class="ml-2" :actions="actions" />
         <Button

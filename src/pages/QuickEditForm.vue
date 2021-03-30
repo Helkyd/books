@@ -11,7 +11,7 @@
           :icon="true"
           @click="$router.push(`/print/${doc.doctype}/${doc.name}`)"
         >
-          Print
+          {{ _('Print') }}
         </Button>
 
         <span v-if="statusText" class="ml-2 text-base text-gray-600">{{

@@ -104,8 +104,6 @@ export default {
       }
     },
     title() {
-      console.log('traduz');
-      console.log(frappe._traducao[this.listConfig.title || this.doctype]);
       console.log(frappe.AccountingSettings.linguasistema);
       if (frappe.AccountingSettings.linguasistema == 'PT-PT') {
         return __(this.listConfig.title || this.doctype);

@@ -1,6 +1,8 @@
+const { __ } = require('../src/translate'); //HELKYDS 30-03-2021
+
 module.exports = {
   ledgerLink: {
-    label: 'Ledger Entries',
+    label: __('Ledger Entries'),
     condition: doc => doc.submitted,
     action: (doc, router) => {
       router.push({
