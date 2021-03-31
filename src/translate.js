@@ -10,17 +10,16 @@ function __(txt, replace) {
     frappe._messages = {};
     //console.log(frappelerficheiro.readFile('./fixtures/verified/pt.csv'));
     //Verifica se consegue abrir o pt.csv ou le from TEMP if windows app
-
-    console.log('Dir da APP ', process.env.portable_executable_dir);
-    if (fs.existsSync('./fixtures/verified/pt.csv', 'utf-8')) {
-      frappe._messages = frappelerficheiro.readFile(
-        './fixtures/verified/pt.csv'
-      );
+    const traducaofile = './fixtures/verified/pt.csv';
+    console.log('Dir da APP ', process.env.PORTABLE_EXECUTABLE_DIR);
+    if (fs.existsSync(traducaofile, 'utf-8')) {
+      frappe._messages = frappelerficheiro.readFile(traducaofile);
     } else if (fs.existsSync('c://temp//pt.csv', 'utf-8')) {
       frappe._messages = frappelerficheiro.readFile('c://temp//pt.csv');
     }
 
-    frappe._messages = frappelerficheiro.readFile('./fixtures/verified/pt.csv');
+    if (!frappe._messages){ return txt;}
+    //frappe._messages = frappelerficheiro.readFile('./fixtures/verified/pt.csv');
     //console.log(frappe._messages.replace(/\n/g, "::").split('::'));
 
     //console.log(frappe._messages.replace(/\n/g, "::").split('::')[8]);
