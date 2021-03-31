@@ -1,5 +1,6 @@
 const frappe = require('frappejs');
 const frappelerficheiro = require('frappejs/server/utils'); //HELKYD 26-03-2021
+const fs = require('fs');
 
 function __(txt, replace) {
   //Carregar o file das traducoes...
@@ -8,6 +9,17 @@ function __(txt, replace) {
   if (!frappe._traducao) {
     frappe._messages = {};
     //console.log(frappelerficheiro.readFile('./fixtures/verified/pt.csv'));
+    //Verifica se consegue abrir o pt.csv ou le from TEMP if windows app
+
+    console.log('Dir da APP ', process.env.portable_executable_dir);
+    if (fs.existsSync('./fixtures/verified/pt.csv', 'utf-8')) {
+      frappe._messages = frappelerficheiro.readFile(
+        './fixtures/verified/pt.csv'
+      );
+    } else if (fs.existsSync('c://temp//pt.csv', 'utf-8')) {
+      frappe._messages = frappelerficheiro.readFile('c://temp//pt.csv');
+    }
+
     frappe._messages = frappelerficheiro.readFile('./fixtures/verified/pt.csv');
     //console.log(frappe._messages.replace(/\n/g, "::").split('::'));
 
@@ -56,7 +68,6 @@ function __(txt, replace) {
     //console.log('lingua ', frappe.AccountingSettings.linguasistema);
     if (frappe.AccountingSettings.linguasistema != 'PT-PT') return txt;
   } else {
-    const fs = require('fs');
     let ficheirolingua = '';
     if (fs.existsSync('c://temp//lang.txt', 'utf-8')) {
       ficheirolingua = fs.readFileSync('c://temp//lang.txt', 'utf-8');

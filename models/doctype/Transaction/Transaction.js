@@ -26,9 +26,19 @@ module.exports = {
       console.log('Carregar o file das traducoes...');
       frappe._messages = {};
       //console.log(frappelerficheiro.readFile('./fixtures/verified/pt.csv'));
-      frappe._messages = frappelerficheiro.readFile(
-        './fixtures/verified/pt.csv'
-      );
+
+      //Verifica se consegue abrir o pt.csv ou le from TEMP if windows app
+      const fs = require('fs');
+      //let ficheirolingua = '';
+      console.log('Dir da APP ', process.env.portable_executable_dir);
+      if (fs.existsSync('./fixtures/verified/pt.csv', 'utf-8')) {
+        frappe._messages = frappelerficheiro.readFile(
+          './fixtures/verified/pt.csv'
+        );
+      } else if (fs.existsSync('c://temp//pt.csv', 'utf-8')) {
+        frappe._messages = frappelerficheiro.readFile('c://temp//pt.csv');
+      }
+
       //console.log(frappe._messages.replace(/\n/g, "::").split('::'));
 
       //console.log(frappe._messages.replace(/\n/g, "::").split('::')[8]);
