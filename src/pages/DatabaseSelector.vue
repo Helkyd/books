@@ -110,7 +110,7 @@
             class="text-brand text-sm cursor-pointer"
             @click="showFiles = false"
           >
-            Select file manually
+            {{ _('Select file manually') }}
           </a>
         </div>
       </div>
@@ -121,6 +121,8 @@
 import fs from 'fs';
 import config from '@/config';
 import { DateTime } from 'luxon';
+
+//import { __ } from '../../translate'; //HELKYDS 30-03-2021
 
 import {
   createNewDatabase,

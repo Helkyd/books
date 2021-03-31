@@ -18,7 +18,9 @@ function __(txt, replace) {
       frappe._messages = frappelerficheiro.readFile('c://temp//pt.csv');
     }
 
-    if (!frappe._messages){ return txt;}
+    if (!frappe._messages) {
+      return txt;
+    }
     //frappe._messages = frappelerficheiro.readFile('./fixtures/verified/pt.csv');
     //console.log(frappe._messages.replace(/\n/g, "::").split('::'));
 
