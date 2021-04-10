@@ -126,9 +126,11 @@ module.exports = {
           });
           let isSales = doctype === 'SalesInvoice';
           //let isSales = doctype ? 'Quotation' : 'SalesInvoice';
+          console.log('evenda ', isSales);
           let party = isSales ? doc.customer : doc.supplier;
           let paymentType = isSales ? 'Receive' : 'Pay';
           let hideAccountField = isSales ? 'account' : 'paymentAccount';
+          console.log('hideAccountfield ', hideAccountField);
           openQuickEdit({
             doctype: 'Payment',
             name: payment.name,
@@ -137,14 +139,14 @@ module.exports = {
               'date',
               hideAccountField,
               'paymentType',
-              'for'
+              'payfor'
             ],
             defaults: {
               party,
               [hideAccountField]: doc.account,
               date: new Date().toISOString().slice(0, 10),
               paymentType,
-              for: [
+              payfor: [
                 {
                   referenceType: doc.doctype,
                   referenceName: doc.name,

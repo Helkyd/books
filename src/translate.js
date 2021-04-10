@@ -67,24 +67,36 @@ function __(txt, replace) {
   //console.log(frappe.AccountingSettings.linguasistema);
   if (frappe.AccountingSettings) {
     //console.log('lingua ', frappe.AccountingSettings.linguasistema);
+    if (frappe.AccountingSettings.linguasistema == 'EN') {
+      console.log('para traduzir ', txt);
+    }
     if (frappe.AccountingSettings.linguasistema != 'PT-PT') return txt;
   } else {
     let ficheirolingua = '';
     if (fs.existsSync('c://temp//lang.txt', 'utf-8')) {
       ficheirolingua = fs.readFileSync('c://temp//lang.txt', 'utf-8');
-      console.log('C ', ficheirolingua);
+      //console.log('C ', ficheirolingua);
     } else if (fs.existsSync('/tmp/lang.txt', 'utf-8')) {
       ficheirolingua = fs.readFileSync('/tmp/lang.txt', 'utf-8');
-      console.log('U ', ficheirolingua);
+      //console.log('U ', ficheirolingua);
     } else {
-      let ficheirolang =
-        frappe.db.dbPath.substring(0, frappe.db.dbPath.lastIndexOf('/')) +
-        '/lang.txt';
-      if (fs.existsSync(ficheirolang, 'utf-8')) {
-        ficheirolingua = fs.readFileSync(ficheirolang, 'utf-8');
-        console.log(ficheirolingua);
+      console.log('frappe.db');
+      console.log(frappe.db);
+      if (frappe.db == undefined) {
+        ficheirolingua = 'PT-PT';
+      } else {
+        let ficheirolang =
+          frappe.db.dbPath.substring(0, frappe.db.dbPath.lastIndexOf('/')) +
+          '/lang.txt';
+        if (fs.existsSync(ficheirolang, 'utf-8')) {
+          ficheirolingua = fs.readFileSync(ficheirolang, 'utf-8');
+          console.log(ficheirolingua);
+        }
       }
     }
+    //if (ficheirolingua == 'EN') {
+    //  console.log('para traduzir ', txt);
+    //} else if (ficheirolingua != 'PT-PT') {
     if (ficheirolingua != 'PT-PT') {
       return txt;
     }
@@ -99,7 +111,7 @@ function __(txt, replace) {
     //ret = $.format(ret, replace);
     console.log('por verificar');
   }
-
+  console.log('traducaao ', ret);
   return ret;
 }
 
