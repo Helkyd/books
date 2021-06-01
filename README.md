@@ -65,7 +65,7 @@ database.
 
 ```bash
 # clone the repository
-git clone https://github.com/frappe/books.git
+git clone https://github.com/Helkyd/books.git
 
 # change directory
 cd books
